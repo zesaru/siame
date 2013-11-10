@@ -1,0 +1,96 @@
+<html>  
+<head>  
+  <style>  
+    .sangria {  
+        text-indent: 50px; 
+    }
+    .sangriad {  
+    text-indent: 60px; 
+    }
+    p{
+        font-family: Arial;
+        font-size: 11;
+    }
+    #piedepagina{
+    position:relativa;
+    top:200px;
+    left: 50px;
+    width: 300px;
+
+    }
+
+  </style>  
+</head>  
+<body>
+    <table border="0">
+        <tr>
+            <td colspan="3" height="20">          
+                <img src="{{ pdf_image('NotasBundle:logoembajadaes.jpg') }}" width="140" height="85"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" height="20">
+            <p><strong>FORMATO Nº 01</strong></p>
+            <p align="center"><strong>SOLICITUD DE VACACIONES</strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p class="sangriad">AL </p>
+            </td>
+            <td >
+            <p >: JEFE DE CANCILLERIA</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p class="sangriad">DE </p>
+            </td>
+            <td >
+            <p >: (Sra., Srta., Sr.) {{ entity.personal.nombres }} {{ entity.personal.apellidos }}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p class="sangriad">FECHA  </p>
+            </td>
+            <td >
+            <p >: {{ entity.fechadesolitud|fecha ('long','none','es')}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+            <p >------------------------------------------------------------------------------------------------------------------------------------  </p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+            <p>De conformidad con los Memoranda Circulares Nº 04/2012 y Nº 01/2013, me permito solicitar el uso de {{ entity.cantidad }} días de vacaciones, los días {{ entity.fechadeinicio|fecha ('long','none','es') }} al {{ entity.fechadefin|fecha ('long','none','es') }}.
+            </p>
+            <p>Durante las fechas en las que haría uso de vacaciones, el suscrito (a) no tiene tareas oficiales que cumplir intuito personae, habiendo coordinado con la/el Sra./Sr. {{ entity.comentario }}, a fin que se haga cargo temporalmente de mis temas durante mi ausencia. Asimismo, he cumplido con informar a la (al) Sra. / Sr. {{ entity.comentario }} sobre la relación de los temas que tengo pendientes.
+            </p>                
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <p></p>
+            </td>   
+        </tr>
+        <tr>
+            <td colspan="3">
+                <p align="center">Firma del Solicitante</p>
+            </td>       
+        </tr>
+        <tr>
+            <td>
+            <p></p>
+            </td>   
+        </tr>
+        <tr>
+            <td colspan="3">
+                <p>Aprobado el………. Le restan …… días de vacaciones del 2013</p>
+            </td>       
+        </tr>        
+    </table>
+</body>
+</html>

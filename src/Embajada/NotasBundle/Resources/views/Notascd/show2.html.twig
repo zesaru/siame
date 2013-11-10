@@ -1,0 +1,85 @@
+<html>  
+<head>  
+  <style>  
+    .sangria {  
+        text-indent: 50px; 
+    }
+    p{
+        font-family: Arial;
+        font-size: 11;
+    }
+    #piedepagina{
+    position:relativa;
+    top:200px;
+    left: 50px;
+    width: 300px;
+
+    }
+
+  </style>  
+</head>  
+<body>
+    <table border="0">
+        <tr>
+            <td colspan="3" height="20">
+            {% if entity.idioma=='in' %}    
+                <img src="{{ pdf_image('NotasBundle:logoembajadaIN.jpg') }}" width="140" height="85"/>
+            {% else %}
+                <img src="{{ pdf_image('NotasBundle:logoembajadaes.jpg') }}" width="140" height="85"/>
+            {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" height="20">
+                
+                <br>
+            {% if entity.idioma=='es' %}
+            <p><strong>Nota Nº 5-18-J/{{ entity.numerodenota }}-20{{ entity.fecha|date('y')}}</strong></p>
+            {% else %}
+            <p><strong>Note Nº 5-18-J/{{ entity.numerodenota }}-20{{ entity.fecha|date('y')}}</strong></p>
+            {% endif%}
+            </td>
+        </tr>
+        <tr>
+            <td height="20" colspan="3"> </td>
+        </tr>
+    
+        <tr >
+            <td width="25">&nbsp;</td>
+            <td height="460" width="420" colspan="2">
+            <p class="sangria"><span  style="text-align:justify;"> {{ entity.cuerpo |nl2br }}</span></p>
+            <br>
+            <br>
+            {% if entity.idioma=='in' %}     
+            <p><span  style="text-align:right;">Tokyo, {{ entity.fecha|fecha ('long','none','en')}}</span></p>
+            {% else %}
+            <p><span  style="text-align:right;">Tokio, {{ entity.fecha|fecha ('long','none','es')}}</span></p>
+            {% endif %}
+            </td>
+        </tr>
+        <table>
+        <tr>
+              <td height="1" colspan="3"></td>
+          </tr>
+          <tr>
+            {% if entity.idioma=='es' %}    
+            <td width="25"><p><strong>A</strong></p></td>
+            {% else %}
+            <td width="25"><p><strong>To</strong></p></td>
+
+            {% endif %}
+            <td width="450"><p><strong>{{ entity.destinatario|nl2br }}</strong></p></td>
+            <td width="195">&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="25"><p></p></td>
+            {% if entity.idioma=='es' %}   
+            <td width="266"><p><strong><u>Tokio.-</u></p></strong></td>
+            {% else %}
+            <td width="266"><p><strong><u>Tokyo.-</u></p></strong></td>
+            {% endif %}  
+            <td width="195"></td>
+          </tr>
+        </table> 
+</body>
+</html>

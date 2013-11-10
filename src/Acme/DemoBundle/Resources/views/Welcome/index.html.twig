@@ -1,0 +1,177 @@
+<html>
+<head>  
+</head>
+
+<body> 
+
+<table>
+<thead>
+    <tr>
+    <th>
+        Nombre y Apellidos
+    </th>    
+    {% for i in 0..29 %}        
+        {%if i==0%}
+        <th>{{ 'now'|fecha ('full','none','es')| mostrar_primer_caracter| upper}}</th>
+        {%elseif i==1%}<th>{{ 'now'| date_modify('+1 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==2%}
+            {{ 'now'| date_modify('+2 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th> 
+        <th>{%elseif i==3%}
+            {{ 'now'| date_modify('+3 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==4%}
+            {{ 'now'| date_modify('+4 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==5%}
+            {{ 'now'| date_modify('+5 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==6%}
+            {{ 'now'| date_modify('+6 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==7%}
+            {{ 'now'| date_modify('+7 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==8%}
+            {{ 'now'| date_modify('+8 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>  
+        <th>{%elseif i==9%}
+            {{ 'now'| date_modify('+9 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==10%}
+            {{ 'now'| date_modify('+10 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==11%}
+            {{ 'now'| date_modify('+11 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==12%}
+            {{ 'now'| date_modify('+12 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==13%}
+            {{ 'now'| date_modify('+13 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==14%}
+            {{ 'now'| date_modify('+14 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>  
+        <th>{%elseif i==15%}
+            {{ 'now'| date_modify('+15 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==16%}
+            {{ 'now'| date_modify('+16 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==17%}
+            {{ 'now'| date_modify('+17 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==18%}
+            {{ 'now'| date_modify('+18 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==19%}
+            {{ 'now'| date_modify('+19 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==20%}
+            {{ 'now'| date_modify('+20 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+         <th>{%elseif i==21%}
+            {{ 'now'| date_modify('+21 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==22%}
+            {{ 'now'| date_modify('+22 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==23%}
+            {{ 'now'| date_modify('+23 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==24%}
+            {{ 'now'| date_modify('+24 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>  
+        <th>{%elseif i==25%}
+            {{ 'now'| date_modify('+25 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==26%}
+            {{ 'now'| date_modify('+26 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==27%}
+            {{ 'now'| date_modify('+27 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==28%}
+            {{ 'now'| date_modify('+28 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+        <th>{%elseif i==29%}
+            {{ 'now'| date_modify('+29 day')|fecha ('full','none','es')| mostrar_primer_caracter| upper}}
+        </th>
+    {%endif%}   
+    {% endfor %}        
+    </tr>
+     
+    </thead>        
+    <tbody>
+
+        <tr>
+            <td></td>
+            {% for i in 0..30 %}
+            {%if i==0%}
+            <td>{{ 'now'| date ('d')}}
+            {%elseif i==1%}  
+            <td>{{ ('now'| date_modify('+1 day')|date ('d'))}}</td>
+            {%elseif i==2%}
+            <td>{{ ('now'| date_modify('+2 day')|date ('d'))}}</td>
+            {%elseif i==3%}
+            <td>{{ ('now'| date_modify('+3 day')|date ('d'))}}</td>
+            {%elseif i==4%}
+            <td>{{ ('now'| date_modify('+4 day')|date ('d'))}}</td>
+            {%elseif i==5%}
+            <td>{{ ('now'| date_modify('+5 day')|date ('d'))}}</td>
+            {%elseif i==6%}
+            <td>{{ ('now'| date_modify('+6 day')|date ('d'))}}</td>
+            {%elseif i==7%}
+            <td>{{ ('now'| date_modify('+7 day')|date ('d'))}}</td>
+            {%elseif i==8%}
+            <td>{{ ('now'| date_modify('+8 day')|date ('d'))}}</td>
+            {%elseif i==9%}
+            <td>{{ ('now'| date_modify('+9 day')|date ('d'))}}</td>
+            {%elseif i==10%}
+            <td>{{ ('now'| date_modify('+10 day')|date ('d'))}}</td>
+            {%elseif i==11%}
+            <td>{{ ('now'| date_modify('+11 day')|date ('d'))}}</td>
+            {%elseif i==12%}
+            <td>{{ ('now'| date_modify('+12 day')|date ('d'))}}</td>
+            {%elseif i==13%}
+            <td>{{ ('now'| date_modify('+13 day')|date ('d'))}}</td>
+            {%elseif i==14%}
+            <td>{{ ('now'| date_modify('+14 day')|date ('d'))}}</td>
+            {%elseif i==15%}
+            <td>{{ ('now'| date_modify('+15 day')|date ('d'))}}</td>
+            {%elseif i==16%}
+            <td>{{ ('now'| date_modify('+16 day')|date ('d'))}}</td>
+            {%elseif i==17%}
+            <td>{{ ('now'| date_modify('+17 day')|date ('d'))}}</td>
+            {%elseif i==18%}
+            <td>{{ ('now'| date_modify('+18 day')|date ('d'))}}</td>
+            {%elseif i==19%}
+            <td>{{ ('now'| date_modify('+19 day')|date ('d'))}}</td>
+            {%elseif i==20%}
+            <td>{{ ('now'| date_modify('+20 day')|date ('d'))}}</td>
+            {%elseif i==21%}
+            <td>{{ ('now'| date_modify('+21 day')|date ('d'))}}</td>
+            {%elseif i==22%}
+            <td>{{ ('now'| date_modify('+22 day')|date ('d'))}}</td>
+            {%elseif i==23%}
+            <td>{{ ('now'| date_modify('+23 day')|date ('d'))}}</td>
+            {%elseif i==24%}
+            <td>{{ ('now'| date_modify('+24 day')|date ('d'))}}</td>
+            {%elseif i==25%}
+            <td>{{ ('now'| date_modify('+25 day')|date ('d'))}}</td>
+            {%elseif i==26%}
+            <td>{{ ('now'| date_modify('+26 day')|date ('d'))}}</td>
+            {%elseif i==27%}
+            <td>{{ ('now'| date_modify('+27 day')|date ('d'))}}</td>
+            {%elseif i==28%}
+            <td>{{ ('now'| date_modify('+28 day')|date ('d'))}}</td>
+            {%elseif i==29%}
+            <td>{{ ('now'| date_modify('+29 day')|date ('d'))}}</td>
+            {%endif%}
+            {% endfor %} 
+        </tr>
+    </tbody>
+</table>        
+</body>        

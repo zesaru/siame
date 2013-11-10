@@ -1,0 +1,61 @@
+{% extends "::base8.html.twig" %}
+{% block body %}
+<h3>Personal</h3>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="box box-color box-bordered green">
+                            <div class="box-title">
+                                <h3>
+                                    <i class="icon-table"></i>
+                                    Personal
+                                </h3>
+                            </div>
+                            <div class="box-content nopadding">
+                                <table class="table table-hover table-nomargin table-striped dataTable dataTable-reorder">    
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Fechadenacimiento</th>
+                                    <th>Direccion</th>
+                                    <th>Fechadeingreso</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                                <tbody>
+                                {% for entity in entities %}
+                                    <tr>
+                                        <td><a href="{{ path('personal_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                                        <td>{{ entity.nombres }}</td>
+                                        <td>{{ entity.apellidos }}</td>
+                                        <td>{% if entity.fechadenacimiento %}{{ entity.fechadenacimiento|date('Y-m-d H') }}{% endif %}</td>
+                                        <td>{{ entity.direccion }}</td>
+                                        <td>{% if entity.fechadeingreso %}{{ entity.fechadeingreso|date('Y-m-d H') }}{% endif %}</td>
+                                        <td>
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ path('personal_show', { 'id': entity.id }) }}">show</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('personal_edit', { 'id': entity.id }) }}">edit</a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                             </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<ul>
+    <li>
+        <a href="{{ path('personal_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock body %}

@@ -1,0 +1,114 @@
+<html>  
+<head>  
+ <style>
+ 	body{
+
+    font-size: 14px;
+    padding-left: 10px;
+  	}
+  	.contenedor {
+  	
+  	}
+  	section{
+  		display: block;
+  	}
+  	h3{
+  		margin-top: 2em;
+  		text-align: center;
+  	}
+  	figure{
+  		padding-bottom: 1em;
+  	}
+	p{
+        font-family: Arial;
+        font-size: 13;
+        text-align: left;
+    }
+	td{
+	    font-size: 12px;
+	    text-align: left;
+    }
+    tr{
+
+    }
+    .centrado{
+    	height: 20px;
+    	text-align: center;
+    }
+    .medio{
+    	min-height: 100px;
+    }
+    .nuevo{
+    	border:1px solid black;
+    }
+  </style>  
+</head>  
+<body>
+	<figure>
+	 	<img src="{{ pdf_image('NotasBundle:logoembajadaes.jpg') }}" width="140" height="85">
+	 <figure>
+	 <br>
+	<p align="center"><strong>HOJA DE REMISIÓN Nº 5-18-A/{{ entity.numero}}-20{{ entity.fecha|date('y')}}</strong></p>
+	
+	<table>
+		<tr> 
+			<td height="25px" width="100px">PARA</td>
+			<td height="25px" width="20px">:</td>
+			<td width="400px">{{ entity.destino}}</td>
+			
+		</tr>
+		<tr> 
+			<td height="25px" >DE</td>
+			<td >:</td>
+			<td >L-TOKIO</td>
+		</tr>
+		<tr> 
+			<td height="25px" width="100px">ASUNTO</td>
+			<td width="20px">:</td>
+			<td width="400px">{{ entity.asunto}}</td>
+			
+		</tr>
+		<tr> 
+			<td height="25px">FECHA</td>
+			<td >:</td>
+			<td >{{ entity.fecha|date('d/m/Y')}}</td>
+		</tr>
+		<tr> 
+			{% if entity.ferencia=='' %}
+			<td></td>
+			{% else %}
+			<td height="25px">REFERENCIA</td>
+			<td >:</td>
+			<td >{{ entity.ferencia }}</td>
+			{% endif %}
+		</tr>		
+	</table>
+	<p></p>
+	<table border="1px">
+		<tr> 
+			<td class="centrado" width="100px">DESCRIPCIÓN</td>
+			<td class="centrado" width="240px">SUMILLA</td>
+			<td class="centrado" width="80px">ORIGEN</td>
+			<td class="centrado" width="80px">DESTINO</td>			
+		</tr>
+		<tr> 
+			<td height="100px">
+				{{ entity.descripcion }}
+			</td>
+			<td class="medio">{{ entity.sumilla}}</td>
+			<td {#{pdf_line_height="10px"}#}>L-TOKIO</td>
+			<td class="medio">{{ entity.destino}}</td>
+		</tr>
+	</table>
+	<p></p>
+	{% if entity.observaciones=='' %}<p></p>
+	{% else %}
+	<p><strong>OBSERVACIONES:</strong></p>
+	<p>{{ entity.observaciones }}</p>
+	{% endif %}
+	<section>
+			<p class="nuevo">de</p>
+			<p class="nuevo">de</p>
+	</section>
+</body>
+</html>

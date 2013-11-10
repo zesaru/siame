@@ -1,0 +1,7 @@
+parameters:
+#    notas.example.class: Embajada\NotasBundle\Example
+
+services:
+#    notas.example:
+#        class: %notas.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

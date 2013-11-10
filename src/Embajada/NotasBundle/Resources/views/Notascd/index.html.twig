@@ -1,0 +1,63 @@
+{% extends "NotasBundle::layout_admin.html.twig" %}
+
+{% block title %}Listado de Notas {% endblock %}
+{% block pageid 'admin' %}
+{% block header %}
+<h1 class="grid_6 alpha">Administracion</h1>
+    <nav class="grid_10 omega">
+    <ul>
+    </ul>
+    </nav>
+{% endblock %}
+{% block body %}
+
+<div>
+    <a href="{{ path('notascd_new') }}">
+    Crear
+    </a>
+</div>
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Numerodenota</th>
+            <th>Sumilla</th>
+            <th>Fecha</th>
+            <th>Idioma</th>
+            <th>Aprobado</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{app.user.username}}</td>
+            <td>{{entity.ucreado}}</td>
+            <td><a href="{{ path('notascd_show', { 'id': entity.id }) }}"><img src="{{ asset('/Siame/web/bundles/notas/images/icons/page_white_acrobat.png')}}"></a></td>
+            <td>{{ entity.numerodenota }}</td>
+            <td>{{ entity.sumilla }}</td>
+            <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y') }}{% endif %}</td>
+            <td>{{ entity.idioma }}</td>
+            {% if  entity.aprobado %}
+            
+            <td><img src="{{ asset('/Siame/web/bundles/notas/images/icons/accept.png') }}"  /></td>
+            {% else %}
+            <td>Por aprobar</td>
+            {% endif %}
+            <td>
+                        <a href="{{ path('notascd_edit', { 'id': entity.id }) }}">editar</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

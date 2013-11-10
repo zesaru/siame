@@ -1,0 +1,30 @@
+{% block body %}
+<h2>Lista de Invitados que NO participaran {{ contactos }}</h2>
+ <table border="1" with="100%">
+                            <thead >
+                                <tr>
+                                    <th width="12%">Categoria</th>
+                                    <th width="10%">Vocativo</th>
+                                    <th width="18%">Nombre y Apellido </th>
+                                    <th width="23%">Titulo</th>
+                                    <th width="30%">Organizacion</th>
+                                    <th align="center" width="4%">Hora</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for entity in entities %}
+                                <tr>
+                                    <td width="12%">{{ entity.categoria.nombre }}</td>
+                                    <td width="10%">{{ entity.vocativo }}</td>
+                                    <td width="18%">{{ entity.nombres }} {{ entity.apellidos }}</td>
+                                    <td width="23%">{{ entity.titulo1 }}</td>
+                                    <td width="30%">{{ entity.organizacion }}</td>
+                                    <td align="center" width="4%">{{ entity.observaciones }}</td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+</table>
+                            
+{% endblock body %}

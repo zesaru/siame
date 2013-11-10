@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <style>
+        body { font: 13px/1.5 Arial, sans-serif; }
+        ul { margin-left: .5em; padding-left: 0; }
+    </style>
+</head>
+
+<body>
+    <table cellpadding="0" cellspacing="0" style="width:100%;" width="100%">
+        <tr style="background: #1BE022; color: #FFF;">
+            <td style="padding: 1em;"><a style="color: #FFF; font-size: 21px; text-decoration: none;" >Solicitud de Vacaciones</a></td>
+            <td style="text-align: right; padding: 1em;">{% if entity.fechadesolitud %}{{ entity.fechadesolitud|date('d-m-Y') }}{% endif %}<span style="color: #FFF; display: block; font-size: 18px;"></span></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" style="font-size: 18px; padding: 1em .5em;">Email de ejemplo<br>La presente es para comunicarle que el se&ntilde;or (a) {{ entity.personal.nombres }} {{ entity.personal.apellidos }} ha solicitado hacer uso de sus vaciones desde el dia {% if entity.fechadeinicio %}{{ entity.fechadeinicio|date('d-m-Y') }}{% endif %} al dia {% if entity.fechadefin %}{{ entity.fechadefin|date('d-m-Y') }}{% endif %} . </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 5px;">
+                <a style="color: #000; font-size: 21px; font-weight: bold; text-decoration: none;" >
+                <div style="font-size: 16px;"></div>
+            </td>
+            <td style="padding-top: 20px;">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                <a href="192.168.0.250/{{ path('vacaciones_edit', { 'id': entity.id }) }}"style="background:#0066FF ; border-radius: 5px; color: #FFF; font-size: 21px; padding: .5em 1em; text-decoration: none;" >Ver solicidud</a>
+            </td>
+            <td style="font-size: 28px; padding: .5em;">
+                 <strong style="color: #C06; padding-left: 1em;"></strong>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="color: #AAA; font-size: 13px;">
+                &copy;  - Embajada del Per&uacute; en Jap&oacute;n</em>
+            </td>
+        </tr>      
+</body>
+
+</html>

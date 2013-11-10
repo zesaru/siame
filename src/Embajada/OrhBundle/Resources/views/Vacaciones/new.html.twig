@@ -1,0 +1,61 @@
+{% extends "::base8.html.twig" %}
+
+{% block title %}Solicitud de Vacaciones {% endblock %}
+
+{% block body %}
+<h1>Solicitud de Vacaciones</h1>
+<form action="{{ path('vacaciones_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+                 <div>
+                 {{ form_errors (form.cantidad) }} 
+                 {{ form_label (form.cantidad) }}  
+                 {{ form_widget (form.cantidad, { 'attr': {
+                'class' :"input-small",
+                }}
+                 )}}
+				</div>
+                 <div>
+                 {{ form_errors (form.fechadeinicio) }} 
+                 {{ form_label (form.fechadeinicio) }}  
+                 {{ form_widget (form.fechadeinicio)}}
+				</div>
+                 <div>
+                 {{ form_errors (form.fechadefin) }} 
+                 {{ form_label (form.fechadefin) }}  
+                 {{ form_widget (form.fechadefin, { 'attr': {
+                'size'      :5,
+                }}
+                 )}}
+				</div>
+				 <div>
+                    {{ form_label(form.comentario,'Persona que se encargara de sus temas en su ausencia') }}
+                    {{ form_errors(form.comentario) }}
+                    {{ form_widget (form.comentario, { 'attr': {
+                    'size'  :20,
+                    'class' :"input-xlarge"
+                    }}
+
+                    )}}
+                </div>
+				 <div>
+                    {{ form_label(form.personal) }}
+                    {{ form_errors(form.personal) }}
+                    {{ form_widget (form.personal) }}
+                </div>
+                <div>
+                    {{ form_widget(form._token) }}
+                </div>
+
+				    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('vacaciones') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

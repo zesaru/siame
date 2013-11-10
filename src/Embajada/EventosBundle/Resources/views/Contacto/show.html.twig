@@ -1,0 +1,108 @@
+{% extends "::base8.html.twig" %}
+{% block body %}
+
+<div class="row-fluid">
+<div class="span1">
+</div>    
+    <div class="span6">
+        <div class="box box-bordered box-color">
+            <div class="box-title">
+                <h3><i class="icon-th-list"></i> Contactos</h3>
+            </div>
+            <div class="box-content nopadding">
+            <form action="#" method="POST" class='form-horizontal form-bordered'>
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Id</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.id }}</p>
+                        </div>
+                    </div>                
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Vocativo</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.vocativo }}</p>
+                        </div>
+                    </div>                
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Nombres</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.nombres }}</p>
+                        </div>
+                    </div>                
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Apellidos</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.apellidos }}</p>
+                        </div>
+                    </div>                    
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Titulo1</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.titulo1 }}</p>
+                    </div>
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Titulo2</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.titulo2 }}</p>
+                    </div>
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Organizacion</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.organizacion }}</p>
+                    </div>
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Direccion 1</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.dir1 }}</p>
+                    </div>
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Direccion 2</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.dir2 }}</p>
+                    </div>
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Codigo Postal</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.codigopostal }}</p>
+                    </div>
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Telefono</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.telefono }}</p>
+                    </div>                    
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Movil</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.movil }}</p>
+                    </div>
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Email</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.email }}</p>
+                    </div>
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Observaciones</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.observaciones }}</p>
+                    </div>                    
+                    <div class="control-group">
+                        <label for="textfield" class="control-label">Fecha de actualizacion</label>
+                        <div class="controls">
+                            <p style="padding-top: 5px;">{{ entity.fechadeactualizacion|date('d-m-Y') }}</p>
+                    </div> 
+                <div class="actions">
+
+                </div>
+
+                    <div class="box-content">
+                        
+                        <a href="{{ path('contactos_edit', { 'id': entity.id }) }}" style="background:#0066FF ; border-radius: 1px; color: #FFF; font-size: 15px; padding: .3em 1em; text-decoration: none;" >Editar</a>
+                        <a href="{{ path('contactos') }}" style="background:#0066FF ; border-radius: 1px; color: #FFF; font-size: 15px; padding: .3em 1em; text-decoration: none;" >Regresar</a>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>            
+{% endblock body %}

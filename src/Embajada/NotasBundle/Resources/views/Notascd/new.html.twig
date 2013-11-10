@@ -1,0 +1,159 @@
+<html>
+<head>  
+  <style>
+  #contenedor{
+         
+        margin-left: 100px;  
+        width: 1000px; 
+                      
+                     
+    }
+    #izquierda{
+        float: left;
+        margin:auto;  
+        width: 300px; 
+                     
+                      
+    }
+    #derecha{
+        float: right;
+        margin:auto;  
+        width: 300px; 
+                      
+                      
+    }
+    #piedepagina{
+        position:absolute;
+        top:600;
+        right: 0;
+        width: 300px;
+        
+        }
+    </style>
+
+</head>
+<h2>Notas Cuerpo Diplomaticos</h2>
+<div id="contenedor">
+<form action="{{ path('notascd_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+     
+            <div id="izquierda">
+                <div>
+                    <label for="destinatario">Destinatario</label>
+                    <select required name="destinatario" id="destinatario">
+                        <option value="">Elije un destinatario</option>
+                        <option value="ame">America Lat. y el Caribe</option>
+                        <option value="all">All Diplomtic Mission</option>
+                        <option value="otr">Otros Destinatarios</option>
+                    </select>                       
+                {{form_row(form.idioma)}}
+                    
+
+ 
+                </div>    
+                <div>
+                 {{ form_errors (form.cantidad) }} 
+                 {{ form_label (form.cantidad) }}  
+                 {{ form_widget (form.cantidad, { 'attr': {
+                'size'      :2,
+                }}
+                 )}}
+                    
+                </div>    
+                <div>    
+                {{ form_errors(form.numerodenota) }}
+                Nota N 5-18-J/{{ form_widget (form.numerodenota, { 'attr': {
+                'size'      :3,
+                'maxlength' :3,
+                }}
+
+                )}}-2013
+                </div>
+                <div>
+                    {{ form_errors(form.cuerpo) }}
+                    {{ form_widget (form.cuerpo, { 'attr': {
+                    'cols'  :70,
+                    'rows'  :30
+                    }}
+
+                    )}}
+                </div>
+                
+            </div>
+            <div id="derecha">
+                <div>
+                    {{ form_label(form.destinatario) }}
+                    {{ form_errors(form.destinatario) }}
+                    {{ form_widget (form.destinatario, { 'attr': {
+                    'cols'  :50,
+                    'rows'  :5
+                    }}
+
+                    )}}
+                </div>
+                <div>
+                    {{ form_label(form.observaciones) }}
+                    {{ form_errors(form.observaciones) }}
+                    {{ form_widget (form.observaciones, { 'attr': {
+                    'cols'  :50,
+                    'rows'  :5
+                    }}
+
+                    )}}
+                </div>
+                <div>
+                    {{ form_label(form.fecha) }}
+                    {{ form_errors(form.fecha) }}
+                    {{ form_widget(form.fecha, { 'attr': {
+                    'disabled'  :false,          
+                    }}
+                    ) }}
+
+                <div>
+                    {{ form_widget(form._token) }}
+                </div>
+                <div>
+                    
+                    <button type="submit">Generar</button>
+                </div>
+            </div>
+</form>
+            <div>        
+
+            <ul class="record_actions">
+                <li>
+                    <a href="{{ path('notascd') }}">
+                        regresar
+                    </a>
+                </li>
+            </ul>
+            </div>
+</div>
+<script type="text/javascript">
+var lista = document.getElementById('embajada_notasbundle_notascdtype_idioma');
+var desti = document.getElementById('destinatario');
+var cuerpo = document.getElementById('embajada_notasbundle_notascdtype_cuerpo');
+var destinatarios = document.getElementById('embajada_notasbundle_notascdtype_destinatario');
+
+
+    desti.onchange = function texto(){
+
+        cuerpo.value="";
+        if (desti.value=='ame'){
+    
+            cuerpo.value="La Embajada del Perú saluda muy atentamente  a las Honorables Misiones Diplomáticas de América Latina y del Caribe y tiene a honra informar \n \n \nLa Embajada del Perú se vale de esta ocasión para reiterar a las Honorables Misiones Diplomáticas de América Latina y del Caribe las seguridades de su más alta y distinguida consideración.";
+            destinatarios.value='las Honorables \nMisiones Diplomáticas de \nAmérica Latina y del Caribe';
+            lista.selectedIndex = 1;
+        }
+        if (desti.value=='all'){
+    
+            cuerpo.value="The Embassy of Peru  presents  its compliments to All Diplomatic Missions, The European Commission and International Organizations in Japan and has the honor to inform \n \n \nThe Embassy of Peru avails itself of this opportunity to renew to All Diplomatic Missions, The European Commission and International Organizations in Japan the assurances of its highest consideration.";
+            destinatarios.value='All Diplomatic Mission, \nThe Delegation of the European Commission and \nInternational Organizations in Japan';
+            lista.selectedIndex = 2;
+        }
+
+
+}
+</script>
+</html>
+

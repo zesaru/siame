@@ -1,0 +1,7 @@
+parameters:
+#    orh.example.class: Embajada\OrhBundle\Example
+
+services:
+#    orh.example:
+#        class: %orh.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

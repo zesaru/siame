@@ -1,0 +1,30 @@
+notas:
+    pattern:  /
+    defaults: { _controller: "NotasBundle:Notas:index" }
+
+notas_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "NotasBundle:Notas:show" }
+
+notas_new:
+    pattern:  /new
+    defaults: { _controller: "NotasBundle:Notas:new" }
+
+notas_create:
+    pattern:  /create
+    defaults: { _controller: "NotasBundle:Notas:create" }
+    requirements: { _method: post }
+
+notas_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "NotasBundle:Notas:edit" }
+
+notas_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "NotasBundle:Notas:update" }
+    requirements: { _method: post }
+
+notas_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "NotasBundle:Notas:delete" }
+    requirements: { _method: post }

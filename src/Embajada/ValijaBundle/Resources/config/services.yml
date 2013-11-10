@@ -1,0 +1,7 @@
+parameters:
+#    valija.example.class: Embajada\ValijaBundle\Example
+
+services:
+#    valija.example:
+#        class: %valija.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

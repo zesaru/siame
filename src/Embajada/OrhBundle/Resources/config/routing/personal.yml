@@ -1,0 +1,30 @@
+personal:
+    pattern:  /
+    defaults: { _controller: "OrhBundle:Personal:index" }
+
+personal_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrhBundle:Personal:show" }
+
+personal_new:
+    pattern:  /new
+    defaults: { _controller: "OrhBundle:Personal:new" }
+
+personal_create:
+    pattern:  /create
+    defaults: { _controller: "OrhBundle:Personal:create" }
+    requirements: { _method: post }
+
+personal_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrhBundle:Personal:edit" }
+
+personal_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrhBundle:Personal:update" }
+    requirements: { _method: post }
+
+personal_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrhBundle:Personal:delete" }
+    requirements: { _method: post }

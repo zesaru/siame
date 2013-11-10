@@ -1,0 +1,228 @@
+<html>
+<head>  
+  <style>
+  #contenedor{
+         
+        margin-left: 100px;  
+        width: 1000px; 
+                      
+                     
+    }
+    #izquierda{
+        float: left;
+        margin:auto;  
+        width: 300px; 
+                     
+                      
+    }
+    #derecha{
+        float: right;
+        margin:auto;  
+        width: 300px; 
+                      
+                      
+    }
+    #piedepagina{
+        position:absolute;
+        top:600;
+        right: 0;
+        width: 300px;
+        
+        }
+    </style>
+
+</head>
+<body>
+<div id="contenedor">
+<form action="{{ path('notas_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+     
+            <div id="izquierda">
+                <div>
+                    <label for="destinatario">Destinatario</label>
+                    <select required name="destinatario" id="destinatario">
+                        <option value="">Elije un destinatario</option>
+                        <option value="pro">Protocol Office</option>
+                        <option value="dga">Dir. Gral. de A.L.</option>
+                        <option value="dpc">Dirección de Política Consular</option>
+                        <option value="oce">Division de Oceanos</option>
+                        <option value="otr">Otros Destinatarios</option>
+                    </select>                       
+                {{form_row(form.idioma)}}
+                    
+
+ 
+                </div>    
+                <div>
+                 {{ form_errors (form.sumilla) }} 
+                 {{ form_label (form.sumilla) }}  
+                 {{ form_widget (form.sumilla, { 'attr': {
+                'size'      :60,
+                }}
+                 )}}
+                    
+                </div>    
+                <div>    
+                {{ form_errors(form.numerodenota) }}
+            Nota N 5-18-M/{{ form_widget (form.numerodenota, { 'attr': {
+                'size'      :3,
+                'maxlength' :3,
+                }}
+
+            )}}-2013
+                </div>
+                <div>
+                    {{ form_errors(form.cuerpo) }}
+                    {{ form_widget (form.cuerpo, { 'attr': {
+                    'cols'  :70,
+                    'rows'  :40
+                    }}
+
+                    )}}
+                </div>
+                
+            </div>
+            <div id="derecha">
+                <div>
+                    {{ form_label(form.destinatario) }}
+                    {{ form_errors(form.destinatario) }}
+                    {{ form_widget (form.destinatario, { 'attr': {
+                    'cols'  :50,
+                    'rows'  :5
+                    }}
+
+                    )}}
+                </div>
+                <div>
+                    {{ form_label(form.observaciones) }}
+                    {{ form_errors(form.observaciones) }}
+                    {{ form_widget (form.observaciones, { 'attr': {
+                    'cols'  :50,
+                    'rows'  :5
+                    }}
+
+                    )}}
+                </div>
+                <div>
+                    {{ form_label(form.aprobado) }}
+                    {{ form_errors(form.aprobado) }}
+                    {{ form_widget(form.aprobado, { 'attr': {
+                    'disabled'  :false,          
+                    }}
+                    ) }}
+                </div>  
+                  
+            {{ form_rest(form)}}
+            <div>
+                <button type="submit">Generar</button>
+            </div>
+            </div>
+        
+        
+
+        
+</form>
+            <div>        
+
+            <ul class="record_actions">
+                <li>
+                    <a href="{{ path('notas') }}">
+                        regresar
+                    </a>
+                </li>
+            </ul>
+            </div>
+</div>
+<script type="text/javascript">
+var lista = document.getElementById('embajada_notasbundle_notastype_idioma');
+var desti = document.getElementById('destinatario');
+var cuerpo = document.getElementById('embajada_notasbundle_notastype_cuerpo');
+var destinatarios = document.getElementById('embajada_notasbundle_notastype_destinatario');
+
+var oficina = '-Protocol Office-';
+var destinarioingles = "the Honorable \nMinistry of Foreign Affairs of Japan \n";
+var mensajeingles ='The Embassy of Peru presents its compliments to the Honorable Ministry of Foreign Affairs of Japan \n \n \nThe Embassy of Peru avails itself of this opportunity to renew to the Honorable Ministry of Foreign Affairs of Japan -Protocol Office- the assurances of its highest consideration.';
+desti.onchange = function texto(){
+lista.disabled=false;    
+if (desti.value=='pro'){
+    
+    cuerpo.value="";
+    destinatarios.value='';
+    lista.selectedIndex = 2;
+    //lista.disabled=true;
+    //destinatarios.disabled=true;
+    cuerpo.value ='The Embassy of Peru presents its compliments to the Honorable Ministry of Foreign Affairs of Japan -Protocol Office- \n \n \nThe Embassy of Peru avails itself of this opportunity to renew to the Honorable Ministry of Foreign Affairs of Japan -Protocol Office- the assurances of its highest consideration.';
+    destinatarios.value = destinarioingles+oficina;
+
+    
+    }else if(desti.value=='dga'){
+    
+    cuerpo.value="";
+    destinatarios.value='';
+    lista.selectedIndex=1;
+    destinatarios.value='Honorable \nMinisterio de Asuntos Exteriores \n-Dirección General de América Latina y el Caribe-.'
+    cuerpo.value='La Embajada del Perú saluda muy atentamente al Honorable Ministerio de Asuntos Exteriores -Dirección General de América Latina y el Caribe- \n\n\nLa Embajada del Perú hace propicia la oportunidad para reiterar al Honorable Ministerio de Asuntos Exteriores -Dirección General de América Latina y el Caribe- las seguridades de su más alta y distinguida consideración.'
+    
+    
+    }else if(desti.value=='dpc'){
+    
+    cuerpo.value="";
+    destinatarios.value='';
+    lista.selectedIndex=1;
+    destinatarios.value='Honorable \nMinisterio de Asuntos Exteriores \n-Dirección de Política Consular-.'
+    cuerpo.value='La Embajada del Perú saluda muy atentamente al Honorable Ministerio de Asuntos Exteriores -Dirección de Política Consular- \n\n\nLa Embajada del Perú hace propicia la oportunidad para reiterar al Honorable Ministerio de Asuntos Exteriores -Dirección General de América Latina y el Caribe- las seguridades de su más alta y distinguida consideración.'
+    
+    
+    } else if(desti.value=='oce'){
+    
+    cuerpo.value="";
+    destinatarios.value='';
+    lista.selectedIndex=1;
+    destinatarios.value='Honorable \nMinisterio de Asuntos Exteriores \n-División de Océanos-.'
+    cuerpo.value='La Embajada del Perú saluda muy atentamente al Honorable Ministerio de Asuntos Exteriores -División de Océanos- \n\n\nLa Embajada del Perú hace propicia la oportunidad para reiterar al Honorable Ministerio de Asuntos Exteriores -Dirección General de América Latina y el Caribe- las seguridades de su más alta y distinguida consideración.'
+    
+    
+    } 
+}
+
+//
+lista.onchange = function mensaje() {
+if (desti.value==''){
+    
+    alert("Debe elegir el campo Destinatario");
+    lista.selectedIndex = 0 ;
+}
+else if (desti.value=='pro'){
+    
+    lista.selectedIndex= 2;
+}
+else {
+    var idioma=lista.value 
+    
+       if (idioma=='in' && desti.value=='dga'){
+            
+            cuerpo.value='The Embassy of Peru presents its compliments to the Honorable Ministry of Foreign Affairs of Japan -Latin America and the Caribbean Bureau-\n \n \nThe Embassy of Peru avails itself of this opportunity to renew to the Honorable Ministry of Foreign Affairs of Japan -Latin America and the Caribbean Bureau- the assurances of its highest consideration.';
+            destinatarios.value=destinarioingles+'-Latin America and the Caribbean Bureau-';
+
+            }
+        else if (idioma=='in' && desti.value=='otr'){
+            cuerpo.value='The Embassy of Peru presents its compliments to the Honorable Ministry of Foreign Affairs of Japan - -\n \n \nThe Embassy of Peru avails itself of this opportunity to renew to the Honorable Ministry of Foreign Affairs of Japan - - the assurances of its highest consideration.';
+            destinatarios.value=destinarioingles+'-  -';
+            }
+        else if (idioma=='es' && desti.value=='otr'){
+            cuerpo.value='La Embajada del Perú saluda muy atentamente al Honorable Ministerio de Asuntos Exteriores -  - \n\n\nLa Embajada del Perú hace propicia la oportunidad para reiterar al Honorable Ministerio de Asuntos Exteriores -  - las seguridades de su más alta y distinguida consideración.'
+        destinatarios.value='Honorable \nMinisterio de Asuntos Exteriores \n-  -.'
+        
+            }    
+        else {
+        cuerpo.value='La Embajada del Perú saluda muy atentamente al Honorable Ministerio de Asuntos Exteriores -Dirección General de América Latina y el Caribe- \n\n\nLa Embajada del Perú hace propicia la oportunidad para reiterar al Honorable Ministerio de Asuntos Exteriores -Dirección General de América Latina y el Caribe- las seguridades de su más alta y distinguida consideración.'
+        destinatarios.value='Honorable \nMinisterio de Asuntos Exteriores \n-Dirección General de América Latina y el Caribe-.'
+
+
+        }
+
+}}
+
+    </script>
+</body>
+</html>

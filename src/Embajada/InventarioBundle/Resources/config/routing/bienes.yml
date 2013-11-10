@@ -1,0 +1,30 @@
+Bienes:
+    pattern:  /
+    defaults: { _controller: "InventarioBundle:Bienes:index" }
+
+Bienes_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InventarioBundle:Bienes:show" }
+
+Bienes_new:
+    pattern:  /new
+    defaults: { _controller: "InventarioBundle:Bienes:new" }
+
+Bienes_create:
+    pattern:  /create
+    defaults: { _controller: "InventarioBundle:Bienes:create" }
+    requirements: { _method: post }
+
+Bienes_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InventarioBundle:Bienes:edit" }
+
+Bienes_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InventarioBundle:Bienes:update" }
+    requirements: { _method: post }
+
+Bienes_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InventarioBundle:Bienes:delete" }
+    requirements: { _method: post }

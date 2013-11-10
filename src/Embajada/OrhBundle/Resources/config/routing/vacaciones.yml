@@ -1,0 +1,38 @@
+vacaciones:
+    pattern:  /
+    defaults: { _controller: "OrhBundle:Vacaciones:index" }
+
+vacaciones_pdf:
+    pattern:  /{id}/pdf
+    defaults: { _controller: "OrhBundle:Vacaciones:pdf" }
+
+vacaciones_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "OrhBundle:Vacaciones:show" }
+
+vacaciones_new:
+    pattern:  /new
+    defaults: { _controller: "OrhBundle:Vacaciones:new" }
+
+vacaciones_create:
+    pattern:  /create
+    defaults: { _controller: "OrhBundle:Vacaciones:create" }
+    requirements: { _method: post }
+
+vacaciones_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "OrhBundle:Vacaciones:edit" }
+
+vacaciones_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "OrhBundle:Vacaciones:update" }
+    requirements: { _method: post }
+
+vacaciones_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "OrhBundle:Vacaciones:delete" }
+    requirements: { _method: post }
+
+vacaciones_vista:
+    pattern:  /vista
+    defaults: { _controller: "OrhBundle:Vacaciones:vista" }

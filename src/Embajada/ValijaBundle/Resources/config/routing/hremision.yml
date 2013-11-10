@@ -1,0 +1,30 @@
+hremision:
+    pattern:  /
+    defaults: { _controller: "ValijaBundle:Hremision:index" }
+
+hremision_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ValijaBundle:Hremision:show" }
+
+hremision_new:
+    pattern:  /new
+    defaults: { _controller: "ValijaBundle:Hremision:new" }
+
+hremision_create:
+    pattern:  /create
+    defaults: { _controller: "ValijaBundle:Hremision:create" }
+    requirements: { _method: post }
+
+hremision_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ValijaBundle:Hremision:edit" }
+
+hremision_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ValijaBundle:Hremision:update" }
+    requirements: { _method: post }
+
+hremision_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ValijaBundle:Hremision:delete" }
+    requirements: { _method: post }

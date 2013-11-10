@@ -1,0 +1,30 @@
+notascd:
+    pattern:  /
+    defaults: { _controller: "NotasBundle:Notascd:index" }
+
+notascd_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "NotasBundle:Notascd:show" }
+
+notascd_new:
+    pattern:  /new
+    defaults: { _controller: "NotasBundle:Notascd:new" }
+
+notascd_create:
+    pattern:  /create
+    defaults: { _controller: "NotasBundle:Notascd:create" }
+    requirements: { _method: post }
+
+notascd_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "NotasBundle:Notascd:edit" }
+
+notascd_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "NotasBundle:Notascd:update" }
+    requirements: { _method: post }
+
+notascd_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "NotasBundle:Notascd:delete" }
+    requirements: { _method: post }

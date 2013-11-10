@@ -1,0 +1,30 @@
+categoria:
+    pattern:  /
+    defaults: { _controller: "EventosBundle:Categoria:index" }
+
+categoria_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EventosBundle:Categoria:show" }
+
+categoria_new:
+    pattern:  /new
+    defaults: { _controller: "EventosBundle:Categoria:new" }
+
+categoria_create:
+    pattern:  /create
+    defaults: { _controller: "EventosBundle:Categoria:create" }
+    requirements: { _method: post }
+
+categoria_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EventosBundle:Categoria:edit" }
+
+categoria_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EventosBundle:Categoria:update" }
+    requirements: { _method: post }
+
+categoria_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EventosBundle:Categoria:delete" }
+    requirements: { _method: post }

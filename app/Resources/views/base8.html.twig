@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!-- Apple devices fullscreen -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <!-- Apple devices fullscreen -->
+  <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>{% block title %}Sistema Informático de Administración {% endblock %} | www.embajadadelperuenjapon.org</title>
+
+   <!-- Bootstrap -->
+
+    <link rel="stylesheet" href="{{ asset('/Siame/web/css/bootstrap.min.css')}}">
+    <!-- Bootstrap responsive -->
+    <link rel="stylesheet" href="{{ asset('/Siame/web/css/bootstrap-responsive.min.css')}}">
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="{{ asset('/Siame/web/css/plugins/jquery-ui/smoothness/jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{ asset('/Siame/web/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css')}}">
+    <!-- PageGuide -->
+    <link rel="stylesheet" href="{{ asset('/Siame/web/css/plugins/pageguide/pageguide.css')}}">
+    <!-- Fullcalendar -->
+    <link rel="stylesheet" href="{{ asset('/Siame/web/css/plugins/fullcalendar/fullcalendar.css')}}">
+    <link rel="stylesheet" href="{{ asset('/Siame/web/css/plugins/fullcalendar/fullcalendar.print.css')}}" media="print">
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{{ asset('/Siame/web/css/style.css')}}">
+    <!-- Color CSS -->
+    <link rel="stylesheet" href="{{ asset('/Siame/web/css/themes.css')}}">
+    <!-- Datepicker -->
+	<link rel="stylesheet" href="{{ asset('/Siame/web/css/plugins/datepicker/datepicker.css')}}">
+
+    {% block stylesheets %}
+
+  	{% endblock %}
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{asset('/Siame/web/img/favicone.ico')}}" />
+    <!-- Apple devices Homescreen icon -->
+    <link rel="apple-touch-icon-precomposed" href="{{asset('/Siame/web/img/apple-touch-icon-precomposed.png')}}" />
+</head>
+<body>
+    <div id="navigation">
+        <div class="container-fluid">
+            <a href="#" id="brand">SIAME</a>
+            <a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
+            <ul class='main-nav'>
+                <li>
+                    <a href="">
+                        <i class="icon-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+                        <i class="icon-edit"></i>
+                        <span>Notas </span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="">Gaimusho</a>
+                        </li>
+                        <li>
+                            <a href="">Cuerpo Diplomatico</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+                        <i class="icon-th-large"></i>
+                        <span>Memorandum</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="">Al Personal</a>
+                        </li>
+                        <li>
+                            <a href="">A los Consulados</a>
+                        </li>
+                        <li>
+                            <a href="">Mensajes</a>
+                        </li>
+                        <li>
+                            <a href="">Correspondencia</a>
+                        </li>
+                        <li>
+                            <a href="">Cesar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class='active'>
+                    <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+                        <i class="icon-table"></i>
+                        <span>RRHH</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class='active'>
+                            <a href="{{ path('personal') }}">Empleados</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('vacaciones') }}">Vacaciones</a>
+                        </li>
+                        <li>
+                            <a href="">Compensatorios</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+                        <i class="icon-th-large"></i>
+                        <span>Valija</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="">Oficios</a>
+                        </li>
+                        <li>
+                            <a href="">Hojas de Remision</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+                        <i class="icon-th"></i>
+                        <span>Paginas</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="">Libros</a>
+                        </li>
+                        <li>
+                            <a href="">Inventario</a>
+                        </li>
+                        <li>
+                            <a href="">Actividades</a>
+                        </li>
+                        <li>
+                            <a href="">Calendario</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+            </ul>
+            <div class="user">
+                <div class="dropdown">
+                    <a href="#" class='dropdown-toggle' data-toggle="dropdown">{{ app.user }}<img src="" alt=""></a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="">Editar perfil</a>
+                        </li>
+                        <li>
+                            <a href="#"></a>
+                        </li>
+                        <li>
+                            <a href="">Salir</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>            
+{% block body %}{% endblock %}            
+
+
+                    
+{% block javascript %}
+    <!-- jQuery -->
+    <script src="{{ asset('/Siame/web/js/jquery.min.js')}}"></script>
+    <!-- Nice Scroll -->
+    <script src="{{ asset('/Siame/web/js/plugins/nicescroll/jquery.nicescroll.min.js')}}"></script>
+    <!-- jQuery UI -->
+    <script src="{{ asset('/Siame/web/js/plugins/jquery-ui/jquery.ui.core.min.js')}}"></script>
+    <script src="{{ asset('/Siame/web/js/plugins/jquery-ui/jquery.ui.widget.min.js')}}"></script>
+    <script src="{{ asset('/Siame/web/js/plugins/jquery-ui/jquery.ui.mouse.min.js')}}"></script>
+    <script src="{{ asset('/Siame/web/js/plugins/jquery-ui/jquery.ui.draggable.min.js')}}"></script>
+    <script src="{{ asset('/Siame/web/js/plugins/jquery-ui/jquery.ui.resizable.min.js')}}"></script>
+    <script src="{{ asset('/Siame/web/js/plugins/jquery-ui/jquery.ui.sortable.min.js')}}"></script>
+    <!-- Touch enable for jquery UI -->
+    <script src="{{ asset('/Siame/web/js/plugins/touch-punch/jquery.touch-punch.min.js')}}"></script>
+    <!-- slimScroll -->
+    <script src="{{ asset('/Siame/web/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('/Siame/web/js/bootstrap.min.js')}}"></script>
+    <!-- vmap -->
+    <script src="{{ asset('/Siame/web/js/plugins/vmap/jquery.vmap.min.js')}}"></script>
+    <script src="{{ asset('/Siame/web/js/plugins/vmap/jquery.vmap.world.js')}}"></script>
+    <script src="{{ asset('/Siame/web/js/plugins/vmap/jquery.vmap.sampledata.js')}}"></script>
+    <!-- Bootbox -->
+    <script src="{{ asset('/Siame/web/js/plugins/bootbox/jquery.bootbox.js')}}"></script>
+    <!-- Chosen -->
+    <script src='js/plugins/chosen/chosen.jquery.min.js'></script>
+    <!-- dataTables -->
+    <script src="{{ asset('/Siame/web/js/plugins/datatable/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('/Siame/web/js/plugins/datatable/TableTools.min.js')}}"></script>
+    <script src="{{ asset('/Siame/web/js/plugins/datatable/ColReorder.min.js')}}"></script>
+    <script src="{{ asset('/Siame/web/js/plugins/datatable/ColVis.min.js')}}"></script>
+    <script src="{{ asset('/Siame/web/js/plugins/datatable/jquery.dataTables.columnFilter.js')}}"></script>
+    <!-- Datepicker -->
+    <script src="{{ asset('/Siame/web/js/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+    <!-- Flot -->
+    <script src="{{ asset('/Siame/web/js/plugins/flot/jquery.flot.min.js')}}"></script>
+    <script src="{{ asset('/Siame/web/js/plugins/flot/jquery.flot.bar.order.min.js')}}"></script>
+    <script src="{{ asset('/Siame/web/js/plugins/flot/jquery.flot.pie.min.js')}}"></script>
+    <script src="{{ asset('/Siame/web/js/plugins/flot/jquery.flot.resize.min.js')}}"></script>
+    <!-- imagesLoaded -->
+    <script src="{{ asset('/Siame/web/js/plugins/imagesLoaded/jquery.imagesloaded.min.js')}}"></script>
+    <!-- PageGuide -->
+    <script src="{{ asset('/Siame/web/js/plugins/pageguide/jquery.pageguide.js')}}"></script>
+    <!-- FullCalendar -->
+    <script src="{{ asset('/Siame/web/js/plugins/fullcalendar/fullcalendar.min.js')}}"></script>
+
+    <!-- Theme framework -->
+    <script src="{{ asset('/Siame/web/js/eakroko.min.js')}}"></script>
+    <!-- Theme scripts -->
+    <script src="{{ asset('/Siame/web/js/application.min.js')}}"></script>
+    <!-- Just for demonstration -->
+    <script src="{{ asset('/Siame/web/js/demonstration.min.js')}}"></script>
+{% endblock %}
+</body>
+</html>

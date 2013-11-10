@@ -1,0 +1,128 @@
+<html>
+<head>  
+  <style>
+  #contenedor{
+         
+        margin-left: 100px;  
+        width: 1000px; 
+                      
+                     
+    }
+    #izquierda{
+        float: left;
+        margin:auto;  
+        width: 300px; 
+                     
+                      
+    }
+    #derecha{
+        float: right;
+        margin:auto;  
+        width: 300px; 
+                      
+                      
+    }
+    #piedepagina{
+        position:absolute;
+        top:600;
+        right: 0;
+        width: 300px;
+        
+        }
+    </style>
+
+</head>
+<body>
+
+{% if entity.aprobado==0 %} 
+<h1> Editar Notas</h1>
+<div id="contenedor">
+<form action="{{ path('notas_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_errors(edit_form) }}
+    <div id="izquierda">
+    {{form_row(edit_form.idioma)}}    
+        <div>
+        {{ form_errors(edit_form.numerodenota) }}
+            Nota N 5-18-M/{{ form_widget (edit_form.numerodenota, { 'attr': {
+                'size'      :3,
+                'maxlength' :3,
+                }}
+
+            )}}-2013
+        </div>
+        <div>
+         {{ form_errors (edit_form.sumilla) }} 
+         {{ form_label (edit_form.sumilla) }}  
+         {{ form_widget (edit_form.sumilla, { 'attr': {
+        'size'      :60,
+        }}
+         )}}
+
+        </div> 
+        <div>
+            {{ form_errors(edit_form.cuerpo) }}
+            {{ form_widget (edit_form.cuerpo, { 'attr': {
+            'cols'  :70,
+            'rows'  :30
+            }}
+
+            )}}
+        </div>        
+    </div>
+    <div id="derecha">
+        <div>
+            {{ form_label(edit_form.destinatario) }}
+            {{ form_errors(edit_form.destinatario) }}
+            {{ form_widget (edit_form.destinatario, { 'attr': {
+            'cols'  :50,
+            'rows'  :5
+            }}
+
+            )}}
+        </div>
+        <div>
+            {{ form_label(edit_form.observaciones) }}
+            {{ form_errors(edit_form.observaciones) }}
+            {{ form_widget (edit_form.observaciones, { 'attr': {
+            'cols'  :50,
+            'rows'  :5
+            }}
+
+            )}}
+        </div>
+        <div>
+            {{ form_label(edit_form.aprobado, 'Aprobado') }}
+            {{ form_errors(edit_form.aprobado) }}
+            {% if is_granted("ROLE_ADMIN") %}
+                            
+               {{ form_widget(edit_form.aprobado) }}
+             
+            {% else %} 
+                {{ form_widget(edit_form.aprobado, { 'attr': {
+                    'disabled':true,}}
+                ) }}
+            {% endif %}    
+            
+        </div> 
+
+    {{ form_rest(edit_form)}}
+    <div>      
+    <p>
+        <button type="submit">Guardar</button>
+    </p>
+
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('notas') }}">
+            Back to the list
+        </a>
+    </li>
+
+</ul>
+</div>          
+{% else %}
+Esta Nota Diplom&aacute;tica no se puede modificar
+
+{% endif%}

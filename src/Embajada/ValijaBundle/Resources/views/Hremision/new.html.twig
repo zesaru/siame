@@ -1,0 +1,92 @@
+{% extends "::base8.html.twig" %}
+{% block body %}
+<style type='text/css'>
+textarea{
+	height: 10em;
+	width: 100%;
+}
+</style>
+<br>
+<div class="row-fluid">
+	<div class="span12">
+		<div class="box">
+			<div class="box-title">
+				<h3><i class="icon-list"></i> Crear</h3>
+			</div>
+			<div class="box-content">
+				<form class="form-horizontal form-column" action="{{ path('hremision_create') }}" method="post" {{ 	form_enctype(form) }}>
+				<div class="span6">
+
+					    {{ form_errors (form.numero) }} 
+						{{ form_label (form.numero) }}  
+						{{ form_widget (form.numero, { 'attr': {'class':"input-small",}}
+						)}}
+					    {{ form_errors (form.destino) }} 
+						{{ form_label (form.destino) }}  
+						{{ form_widget (form.destino, { 'attr': {'class':"input-medium",}}
+						)}}
+				</div>
+				<div class="span6">
+
+					    {{ form_errors (form.fecha) }} 
+						{{ form_label (form.fecha) }}  
+						{{ form_widget (form.fecha, { 'attr': {'class':"input-medium datepick",}}
+						)}}
+
+					    {{ form_errors (form.ferencia) }} 
+						{{ form_label (form.ferencia,'Referencia') }}  
+						{{ form_widget (form.ferencia, { 'attr': {'class':"input-medium",}}
+						)}}
+				</div>
+				<div class="span12">
+						{{ form_errors (form.asunto) }} 
+						{{ form_label (form.asunto) }}  
+						{{ form_widget (form.asunto, 
+							{ 'attr': 
+								{
+								'class':"input-xxlarge",
+
+								}}
+						)}}
+				</div>
+				<div class="span12">
+					<div class="span4">
+							{{ form_errors (form.descripcion) }} 
+							{{ form_label (form.descripcion) }}  
+							{{ form_widget (form.descripcion)}}
+					</div>
+					<div class="span4">
+							{{ form_errors (form.sumilla) }} 
+							{{ form_label (form.sumilla,'Contenido') }}  
+							{{ form_widget (form.sumilla)}}
+					</div>
+					<div class="span4">
+							{{ form_errors (form.origen) }} 
+							{{ form_label (form.origen) }}  
+							{{ form_widget (form.origen )}}
+					</div>
+				</div>
+				<div class="span12">
+							{{ form_errors (form.observaciones) }} 
+							{{ form_label (form.observaciones) }}  
+							{{ form_widget (form.observaciones)}}
+							{{ form_widget(form._token) }}				
+				
+				    <p>
+				        <button type="submit">Crear</button>
+				    </p>
+
+				</form>
+				<ul class="record_actions">
+				    <li>
+				        <a href="{{ path('hremision') }}">
+				            Back to the list
+				        </a>
+				    </li>
+				</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock body %}

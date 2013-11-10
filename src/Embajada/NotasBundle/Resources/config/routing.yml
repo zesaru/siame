@@ -1,0 +1,3 @@
+notas_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: NotasBundle:Default:index }

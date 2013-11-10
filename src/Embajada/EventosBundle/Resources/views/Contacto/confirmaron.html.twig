@@ -1,0 +1,22 @@
+<body>
+ <table border="1">
+        <tr>
+            <td width="12%">Categoria</td>
+            <td width="10%">Vocativo</td>
+            <td width="18%">Nombre y Apellido </td>
+            <td width="23%">Titulo</td>
+            <td width="30%">Organizacion</td>
+            <td  width="4%">Hora</td>
+        </tr>
+         {% for entity in entities %}
+        <tr>
+            <td width="12%">{{ entity.categoria.nombre }}</td>
+            <td width="10%">{{ entity.vocativo }}</td>
+            <td width="18%">{{ entity.nombres }} {{ entity.apellidos }}</td>
+            <td width="23%">{{ entity.titulo1 }}</td>
+            <td width="30%">{{ entity.organizacion }}</td>
+            <td width="4%">{{ entity.observaciones }}</td>
+        </tr>
+        {% endfor %} 
+</table>
+</body>

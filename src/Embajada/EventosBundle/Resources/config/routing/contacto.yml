@@ -1,0 +1,70 @@
+contactos:
+    pattern:  /
+    defaults: { _controller: "EventosBundle:Contacto:index" }
+
+contactos_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EventosBundle:Contacto:show" }
+
+contactos_new:
+    pattern:  /new
+    defaults: { _controller: "EventosBundle:Contacto:new" }
+
+contactos_create:
+    pattern:  /create
+    defaults: { _controller: "EventosBundle:Contacto:create" }
+    requirements: { _method: post }
+
+contactos_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EventosBundle:Contacto:edit" }
+
+contactos_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EventosBundle:Contacto:update" }
+    requirements: { _method: post }
+
+contactos_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EventosBundle:Contacto:delete" }
+    requirements: { _method: post }
+
+contactos_invitados:
+    pattern:  /invitados
+    defaults: { _controller: "EventosBundle:Contacto:invitados" }
+
+contactos_impresas:
+    pattern:  /impresas
+    defaults: { _controller: "EventosBundle:Contacto:impresas" }
+
+contactos_enviadas:
+    pattern:  /enviadas
+    defaults: { _controller: "EventosBundle:Contacto:enviadas" }
+
+contactos_contestadas:
+    pattern:  /contestadas
+    defaults: { _controller: "EventosBundle:Contacto:contestadas" }
+
+contactos_contestadasno:
+    pattern:  /contestadasno
+    defaults: { _controller: "EventosBundle:Contacto:contestadasno" }
+
+contactos_confirmaronpdf:
+    pattern:  /confirmaronpdf
+    defaults: { _controller: "EventosBundle:Contacto:confirmaronpdf" }
+
+contactos_noconfirmaronpdf:
+    pattern:  /noconfirmaronpdf
+    defaults: { _controller: "EventosBundle:Contacto:noconfirmaronpdf" }
+
+contactos_prueba:
+    pattern:  /prueba
+    defaults: { _controller: "EventosBundle:Contacto:prueba" }
+
+contactos_prueba2:
+    pattern:  /prueba2
+    defaults: { _controller: "EventosBundle:Contacto:prueba2"}
+
+contactos_sincontestar:
+    pattern:  /sincontestar
+    defaults: { _controller: "EventosBundle:Contacto:sincontestar" }
