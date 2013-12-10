@@ -29,6 +29,9 @@
     <link rel="stylesheet" href="{{ asset('/Siame/web/css/themes.css')}}">
     <!-- Datepicker -->
 	<link rel="stylesheet" href="{{ asset('/Siame/web/css/plugins/datepicker/datepicker.css')}}">
+    <!-- jQuery -->
+    <script src="{{ asset('/Siame/web/js/jquery.min.js')}}"></script>
+    <script src="/Siame/web/js/plugins/datepicker/bootstrap-datepicker.js"></script>
 
     {% block stylesheets %}
 
@@ -119,7 +122,7 @@
                             <a href="">Oficios</a>
                         </li>
                         <li>
-                            <a href="">Hojas de Remision</a>
+                            <a href="{{ path('hremision') }}">Hojas de Remision</a>
                         </li>
                         
                     </ul>
@@ -170,8 +173,7 @@
 
                     
 {% block javascript %}
-    <!-- jQuery -->
-    <script src="{{ asset('/Siame/web/js/jquery.min.js')}}"></script>
+
     <!-- Nice Scroll -->
     <script src="{{ asset('/Siame/web/js/plugins/nicescroll/jquery.nicescroll.min.js')}}"></script>
     <!-- jQuery UI -->

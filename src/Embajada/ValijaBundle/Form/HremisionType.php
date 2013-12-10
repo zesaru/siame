@@ -11,16 +11,16 @@ class HremisionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('numero','text')
+            ->add('numero')
             ->add('destino')
             ->add('asunto')
             ->add('fecha','date', array('widget' => 'single_text','format' => 'MM/dd/yyyy'
             ))
-            ->add('ferencia')
+            ->add('ferencia','text',array('required'=> false)) 
             ->add('descripcion')
             ->add('sumilla')
             ->add('origen')
-            ->add('observaciones')
+            ->add('observaciones','textarea',array('required'=> false))
             ->add('numerodevalija')
             ->add('direccion')
             ->add('estado')

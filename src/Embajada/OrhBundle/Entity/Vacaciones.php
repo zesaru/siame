@@ -24,7 +24,7 @@ class Vacaciones
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechadesolitud", type="date", nullable=false)
+     * @ORM\Column(name="fechadesolitud", type="datetime", nullable=false)
      */
     private $fechadesolitud;
 
@@ -71,14 +71,14 @@ class Vacaciones
     private $observaciones;
 
     /**
-     * @var \Personal
+     * @var \FosUser
      *
-     * @ORM\ManyToOne(targetEntity="Embajada\OrhBundle\Entity\Personal")
+     * @ORM\ManyToOne(targetEntity="Embajada\UserBundle\Entity\User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="personal_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="ucreado", referencedColumnName="id")
      * })
      */
-    private $personal;
+    private $ucreado;
 
 
 
@@ -252,28 +252,27 @@ class Vacaciones
     {
         return $this->id;
     }
-
     /**
-     * Set personal
+     * Set ucreado
      *
-     * @param \Embajada\OrhBundle\Entity\Personal $personal
-     * @return Vacaciones
+     * @param \Embajada\UserBundle\Entity\User $ucreado
+     * @return Notascd
      */
-    public function setPersonal(\Embajada\OrhBundle\Entity\Personal $personal = null)
+    public function setUcreado(\Embajada\UserBundle\Entity\User $ucreado = null)
     {
-        $this->personal = $personal;
+        $this->ucreado = $ucreado;
     
         return $this;
     }
 
     /**
-     * Get personal
+     * Get ucreado
      *
-     * @return \Embajada\OrhBundle\Entity\Personal 
+     * @return \Embajada\UserBundle\Entity\User 
      */
-    public function getPersonal()
+    public function getUcreado()
     {
-        return $this->personal;
+        return $this->ucreado;
     }
 
 

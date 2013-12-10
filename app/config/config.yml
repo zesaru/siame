@@ -69,44 +69,20 @@ swiftmailer:
     username:  namiayumis@gmail.com
     password:  Bachata.31
 
-
-# app/config/config.yml
 fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Embajada\UserBundle\Entity\User
     registration:
         form:
-            type: fos_user_registration
-#sonata admin
-#sonata_admin:
-#    title:      Sonata Project
-#    title_logo: /bundles/sonataadmin/logo_title.png
+            type: embajada_user_registration
 
-sonata_block:
-    default_contexts: [cms]
-    blocks:
-        sonata.admin.block.admin_list:
-            contexts: [admin]
-
-        sonata.block.service.text: ~
-        sonata.block.service.action: ~
-        sonata.block.service.rss: ~
-
-sonata_admin:
-    title:      Siame
-    title_logo: /bundles/sonataadmin/logo_title.png
-    templates:
-        # default global templates
-        layout:  SonataAdminBundle::standard_layout.html.twig
-        ajax:    SonataAdminBundle::ajax_layout.html.twig
-
-        # default actions templates, should extend a global templates
-        list:    SonataAdminBundle:CRUD:list.html.twig
-        show:    SonataAdminBundle:CRUD:show.html.twig
-        edit:    SonataAdminBundle:CRUD:edit.html.twig
-
-    dashboard:
-        blocks:
-            # display a dashboard block
-            - { position: left, type: sonata.admin.block.admin_list }
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     /usr/bin/wkhtmltopdf
+        options:    []
+    image:
+        enabled:    true
+        binary:     /usr/bin/wkhtmltoimage
+        options:    []

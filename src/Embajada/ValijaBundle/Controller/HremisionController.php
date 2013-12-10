@@ -3,6 +3,7 @@
 namespace Embajada\ValijaBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Embajada\ValijaBundle\Entity\Hremision;
@@ -41,55 +42,35 @@ public function showAction($id)
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Biblioteca entity.');
         }
-
-    
-
         $response = $this->render('ValijaBundle:Hremision:impresion.html.twig', array(
             'entity'      => $entity,
            ));
-        
-        
         //elimina la molesta cabecera 
         $html = $response->getContent();
-        
         $pdf = $this->container->get("white_october.tcpdf")->create();
-
         $pdf->SetAuthor('Cesar Murillo');
         $pdf->SetTitle('Notas');
-        
-        
         // set default font subsetting mode
         $pdf->setFontSubsetting(true);
-
-
-
        // $pdf->
         $pdf->SetPrintHeader(false);
         $pdf->SetPrintFooter(false);
         //set margins
-        $pdf->SetMargins(20,5,10);
-
+        $pdf->SetMargins(17,5,10);
         // Add a page
         // This method has several options, check the source code documentation for more information.
         $pdf->AddPage();
-        
         // set core font
         $pdf->SetFont('helvetica', '', 10);
-
         // output the HTML content
         $pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=false);
-
         $pdf->Ln();
-
         // reset pointer to the last page
         $pdf->lastPage();
-        
         $pdf->Output('hojasderemision.pdf', 'I');
-        
-        
-
     }        
          
+
     public function show2Action($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -106,7 +87,37 @@ public function showAction($id)
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
+    public function show7Action($id)
+    {
+        $em = $this->getDoctrine()->getManager();
 
+        $entity = $em->getRepository('ValijaBundle:Hremision')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Hremision entity.');
+        }
+    //$this->get('knp_snappy.pdf')->generateFromHtml(
+    //$this->renderView('ValijaBundle:Hremision:impresion.html.twig',
+    //    array(
+    //        'entity'      => $entity
+    //    )
+    //),
+    //'/web/file.pdf'
+    //);
+
+    $html = $this->renderView('ValijaBundle:Hremision:impresion.pdf.twig', array(
+        'entity'      => $entity
+    ));
+
+    return new Response(
+        $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+        200,
+        array(
+            'Content-Type'          => 'application/pdf',
+            'Content-Disposition'   => 'attachment; filename="file.pdf"'
+        )
+    );
+    }
     /**
      * Displays a form to create a new Hremision entity.
      *
@@ -134,11 +145,14 @@ public function showAction($id)
         $form->bind($request);
 
         if ($form->isValid()) {
+            $usuario = $this->getUser();
+            $entity->setUcreado($usuario);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('hremision_show', array('id' => $entity->getId())));
+        return $this->redirect($this->generateUrl('hremision'));
         }
 
         return $this->render('ValijaBundle:Hremision:new.html.twig', array(
@@ -193,7 +207,7 @@ public function showAction($id)
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('hremision_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('hremision'));
         }
 
         return $this->render('ValijaBundle:Hremision:edit.html.twig', array(

@@ -1,5 +1,32 @@
 {% extends "::base8.html.twig" %}
 {% block body %}
+<style>
+a{
+    color: red;
+    font-size: 16px;
+}
+.boton{
+    background-color:#368EE0;
+    color: white;
+    font-weight: bold;
+    margin-top: 5em;
+    padding: 0.5em;
+    text-decoration: none; 
+}
+ul{
+    margin-top: 2em;
+}
+li{
+    list-style-type: none;
+}
+.icon-ok-sign{
+    color: green;
+    font-size: 1.4em;
+}
+table tr td .aprobado{
+    text-align: center;
+}
+</style>
                 <div class="row-fluid">
                     <div class="span12">
                         <div class="box box-color box-bordered green">
@@ -10,7 +37,7 @@
                                 </h3>
                             </div>
                             <div class="box-content nopadding">
-                                <table class="table table-hover table-nomargin table-striped dataTable dataTable-reorder">  
+                            <table class="table table-hover table-nomargin table-striped dataTable dataTable-reorder">  
                                 <thead>
                                     <tr>
                                         <th>Id</th>
@@ -18,40 +45,44 @@
                                         <th>Destino</th>
                                         <th>Asunto</th>
                                         <th>Fecha</th>
-                                        <th>Refencia</th>
+                                        <th>Aprobado</th>
+                                        <th>Gestor</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 {% for entity in entities %}
                                     <tr>
-                                        <td><a href="{{ path('hremision_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                                         <td><a href="{{ path('hremision_show', { 'id': entity.id }) }}"><i class="icon-file"></i></td></a>
                                         <td>{{ entity.numero }}</td>
                                         <td>{{ entity.destino }}</td>
-                                        <td>{{ entity.asunto }}</td>
-                                        <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                        <td>{{ entity.ferencia }}</td>
-
+                                        <td>{{ entity.asunto|upper  }}</td>
+                                        <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d') }}{% endif %}</td>
+                                        {% if entity.estado==1 %}
+                                        <td style="text-align:center"><i class="icon-ok-sign"></i></td>
+                                        {%else%}
+                                        <td style="text-align:center"><i class="icon-time"></i></td>
+                                        {% endif %}
+                                        <td>{{ entity.ucreado }}</td>
                                         <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ path('hremision_show', { 'id': entity.id }) }}">show</a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ path('hremision_edit', { 'id': entity.id }) }}">edit</a>
-                                                </li>
-                                            </ul>
+                                            <a href="{{ path('hremision_edit', { 'id': entity.id }) }}">editar</a>
                                         </td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
                             </table>
-
+                            </div>
+                        </div>    
+                    </div>        
+                </div>
 <ul>
     <li>
-        <a href="{{ path('hremision_new') }}">
-            Create a new entry
+        <a class="boton" href="{{ path('hremision_new') }}">
+            
+            Crear Hoja de Remision
+            
         </a>
+
     </li>
 </ul>
 {% endblock body %}

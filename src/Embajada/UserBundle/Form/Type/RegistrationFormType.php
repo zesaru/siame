@@ -11,8 +11,11 @@ class RegistrationFormType extends BaseType
     {
         parent::buildForm($builder, $options);
 
-        // add your custom field
-        //$builder->add('name');
+        //add your custom field
+        $builder->add('name');
+        $builder->add('apellidos');
+        $builder->add('fechadeingreso');
+        $builder->add('numerodediasdevacaciones');
     }
 
     public function getName()

@@ -18,6 +18,12 @@ services:
         tags:
             - { name: twig.extension }
 
+    acme_user.registration.form.type:
+        class: Embajada\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: embajada_user_registration }
+
     sonata.embajada.admin.inventario:
         class: Embajada\InventarioBundle\Admin\InventarioAdmin
         tags:

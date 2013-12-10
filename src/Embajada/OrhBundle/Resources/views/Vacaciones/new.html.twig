@@ -1,32 +1,59 @@
 {% extends "::base8.html.twig" %}
-
-{% block title %}Solicitud de Vacaciones {% endblock %}
-
 {% block body %}
-<h1>Solicitud de Vacaciones</h1>
-<form action="{{ path('vacaciones_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_errors(form) }}
+<style type='text/css'>
+a{
+    color: red;
+    font-size: 16px;
+}
+.boton{
+    background-color:#368EE0;
+    color: white;
+    font-weight: bold;
+    margin-top: 5em;
+    padding: 0.5em;
+    text-decoration: none; 
+}
+ul{
+    margin-top: 2em;
+}
+li{
+    list-style-type: none;
+}
+</style>
+
+<br>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-list"></i>Usted tiene una cantidad de <span id="numerodias"> {{usuarios}}</span> dias de vacaciones</h3>
+            </div>
+            <div class="box-content">
+            <form action="{{ path('vacaciones_create') }}" method="post" {{ form_enctype(form) }}>
+             {{ form_errors(form) }}
                  <div>
                  {{ form_errors (form.cantidad) }} 
                  {{ form_label (form.cantidad) }}  
                  {{ form_widget (form.cantidad, { 'attr': {
-                'class' :"input-small",
-                }}
-                 )}}
+                    'class':"input-small",
+                    'min':"1"
+                    ,}}
+                        )}}
 				</div>
                  <div>
                  {{ form_errors (form.fechadeinicio) }} 
                  {{ form_label (form.fechadeinicio) }}  
-                 {{ form_widget (form.fechadeinicio)}}
+                 {{ form_widget (form.fechadeinicio, { 'attr': {
+                 'class':"input-small datepick",
+                    }}
+                        )}}
 				</div>
                  <div>
                  {{ form_errors (form.fechadefin) }} 
                  {{ form_label (form.fechadefin) }}  
-                 {{ form_widget (form.fechadefin, { 'attr': {
-                'size'      :5,
-                }}
-                 )}}
-				</div>
+                 {{ form_widget (form.fechadefin, { 'attr': {'class':"input-small datepick",}}
+                        )}}
+                </div>
 				 <div>
                     {{ form_label(form.comentario,'Persona que se encargara de sus temas en su ausencia') }}
                     {{ form_errors(form.comentario) }}
@@ -37,25 +64,63 @@
 
                     )}}
                 </div>
-				 <div>
-                    {{ form_label(form.personal) }}
-                    {{ form_errors(form.personal) }}
-                    {{ form_widget (form.personal) }}
-                </div>
+
                 <div>
                     {{ form_widget(form._token) }}
                 </div>
+                    <p>
+                        <button type="submit">Guardar</button>
+                    </p>
 
-				    <p>
-        <button type="submit">Create</button>
-    </p>
-</form>
+                </form>
+                <ul class="record_actions">
+                    <li>
+                        <a href="{{ path('hremision') }}">
+                            Back to the list
+                        </a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var max = parseInt($('#numerodias').text());
+    $(function(){
+        $('#embajada_orhbundle_vacacionestype_cantidad').attr("max",max);
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('vacaciones') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
-{% endblock %}
+    //validar fechas
+        $('#embajada_orhbundle_vacacionestype_fechadeinicio').datepicker({
+            todayBtn: true,
+            daysOfWeekDisabled:"0,6",
+            autoclose: true,
+        });
+
+        var nowTemp = new Date();
+        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+         
+        var checkin = $('#embajada_orhbundle_vacacionestype_fechadeinicio').datepicker({
+          onRender: function(date) {
+            return date.valueOf() < now.valueOf() ? 'disabled' : '';
+          }
+        }).on('changeDate', function(ev) {
+          if (ev.date.valueOf() > checkout.date.valueOf()) {
+            var newDate = new Date(ev.date)
+            newDate.setDate(newDate.getDate() + 1);
+            checkout.setValue(newDate);
+          }
+          checkin.hide();
+          $('#embajada_orhbundle_vacacionestype_fechadefin')[0].focus();
+        }).data('datepicker');
+        var checkout = $('#embajada_orhbundle_vacacionestype_fechadefin').datepicker({
+          onRender: function(date) {
+            return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+          }
+        }).on('changeDate', function(ev) {
+          checkout.hide();
+        }).data('datepicker');
+     
+});
+</script>
+{% endblock body %}

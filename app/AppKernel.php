@@ -23,15 +23,9 @@ class AppKernel extends Kernel
             new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
             new Ps\PdfBundle\PsPdfBundle(),
             
-            
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
 
-            new Sonata\BlockBundle\SonataBlockBundle(),
-            new Sonata\jQueryBundle\SonatajQueryBundle(),
-            new Sonata\AdminBundle\SonataAdminBundle(),
-            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Yepsua\SmarTwigBundle\YepsuaSmarTwigBundle(),
-
             new Embajada\NotasBundle\NotasBundle(),
             new Embajada\UserBundle\UserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
@@ -41,6 +35,9 @@ class AppKernel extends Kernel
 
             new Leg\GoogleChartsBundle\LegGoogleChartsBundle(),
             new Embajada\ValijaBundle\ValijaBundle(),
+            new Inicio\InicioBundle\InicioBundle(),
+
+
         );
         
 

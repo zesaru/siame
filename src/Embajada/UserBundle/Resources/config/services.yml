@@ -1,3 +1,4 @@
+# src/Embajada/UserBundle/Resources/config/services.yml
 services:
     embajada_user.registration.form.type:
         class: Embajada\UserBundle\Form\Type\RegistrationFormType

@@ -13,12 +13,14 @@ class VacacionesType extends AbstractType
         $builder
             ->add('fechadesolitud')
             ->add('cantidad')
-            ->add('fechadeinicio')
-            ->add('fechadefin')
+            ->add('fechadeinicio','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy'
+            ))
+            ->add('fechadefin','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy'
+            ))
             ->add('comentario')
             ->add('fechadeaprobacion')
             ->add('observaciones')
-            ->add('personal')
+            //->add('personal')
         ;
 
     }

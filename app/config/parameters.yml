@@ -10,6 +10,6 @@ parameters:
     mailer_host:       localhost
     mailer_user:       ~
     mailer_password:   ~
-    
+
     locale:            es
     secret:            ThisTokenIsNotS0SecretChangeIt

@@ -19,12 +19,14 @@ security:
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: ROLE_USER }
+        - { path: ^/resetting, role: ROLE_ADMIN }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/personal/, role: ROLE_ADMIN }
         - { path: ^/notas/, role: ROLE_USER }
         - { path: ^/notascd/, role: ROLE_USER }
         - { path: ^/vacaciones/, role: ROLE_USER }
+        - { path: ^/hremision/, role: ROLE_USER }
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER

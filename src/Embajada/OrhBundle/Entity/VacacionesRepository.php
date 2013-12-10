@@ -14,7 +14,7 @@ class VacacionesRepository extends EntityRepository
           $query = $em->createQuery('
 
             select v.fechadeinicio ,p.nombres , p.apellidos, DATE_DIFF(v.fechadefin, v.fechadeinicio) numDias
-            from OrhBundle:Vacaciones v JOIN v.personal p
+            from OrhBundle:Vacaciones v JOIN v.personal_id p
             where v.fechadeinicio >= :fecha
             ');
           $query->setParameter('fecha', new \DateTime('today'));
@@ -27,8 +27,9 @@ class VacacionesRepository extends EntityRepository
         $em = $this->getEntityManager();
           $query = $em->createQuery('
 
-            select v, p
-            from OrhBundle:Vacaciones v JOIN v.personal p
+            select v.id, u.apellidos, v.fechadeinicio, v.fechadesolitud, v.cantidad, v.fechadefin, u.name
+            from OrhBundle:Vacaciones v 
+            JOIN v.ucreado u
             ');
           return $query->getResult(); 
         
@@ -39,14 +40,21 @@ class VacacionesRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
           $query = $em->createQuery('
-
-            select u, v
-            from OrhBundle:Personal p JOIN u.usuario_id u
-            where u.usuario_id = :usuario
-            ');
+            select u.numerodediasdevacaciones
+            from UserBundle:User u
+            where u.id = :id');
           $query->setParameter('id', $usuario);
           return $query->getSingleScalarResult(); 
-        
-        
+    }
+
+   public function actualizarvacaciones($usuario, $numvac)
+    {
+        $em = $this->getEntityManager();
+          $query = $em->createQuery('
+            update UserBundle:User u
+            set u.nmerodediasdevacaciones = :u.numerodediasdevacaciones-num
+            where u.id = :id');
+          $query->setParameter('id', $usuario);
+          $query->setParameter('num',$numvac);
     }
 }

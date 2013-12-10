@@ -21,6 +21,6 @@ monolog:
 
 assetic:
     use_controller: false
-
+    
 #swiftmailer:
 #    delivery_address: me@example.com

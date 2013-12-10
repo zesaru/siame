@@ -15,7 +15,7 @@
         </tr>
 
         <tr>
-            <td colspan="2" style="font-size: 18px; padding: 1em .5em;">Email de ejemplo<br>La presente es para comunicarle que el se&ntilde;or (a) {{ entity.personal.nombres }} {{ entity.personal.apellidos }} ha solicitado hacer uso de sus vaciones desde el dia {% if entity.fechadeinicio %}{{ entity.fechadeinicio|date('d-m-Y') }}{% endif %} al dia {% if entity.fechadefin %}{{ entity.fechadefin|date('d-m-Y') }}{% endif %} . </td>
+            <td colspan="2" style="font-size: 18px; padding: 1em .5em;">Email de ejemplo<br>La presente es para comunicarle que el se&ntilde;or (a) {#{ entity.pnombres }#} {#{ entity.personal.apellidos }#} ha solicitado hacer uso de sus vaciones desde el dia {% if entity.fechadeinicio %}{{ entity.fechadeinicio|date('d-m-Y') }}{% endif %} al dia {% if entity.fechadefin %}{{ entity.fechadefin|date('d-m-Y') }}{% endif %} . </td>
         </tr>
         <tr>
             <td style="padding-top: 5px;">
@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <td>
-                <a href="192.168.0.250/{{ path('vacaciones_edit', { 'id': entity.id }) }}"style="background:#0066FF ; border-radius: 5px; color: #FFF; font-size: 21px; padding: .5em 1em; text-decoration: none;" >Ver solicidud</a>
+                <a href="192.168.0.250/{{ path('vacaciones_edit', { 'id': entity.id }) }}"style="background:#0066FF ; border-radius: 5px; color: #FFF; font-size: 21px; padding: .5em 1em; text-decoration: none;" >Ver solicitud</a>
             </td>
             <td style="font-size: 28px; padding: .5em;">
                  <strong style="color: #C06; padding-left: 1em;"></strong>

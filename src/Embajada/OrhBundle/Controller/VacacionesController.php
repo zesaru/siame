@@ -68,14 +68,23 @@ class VacacionesController extends Controller
      */
     public function newAction()
     {
+        $usuario = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $usuarios = $em->getRepository('OrhBundle:Vacaciones')->findPersonal($usuario);
+        if (!$usuarios) {
+            throw $this->createNotFoundException('Unable Usuario');
+        }
+        
         $entity = new Vacaciones();
         $entity ->setFechadeinicio(new \DateTime());
         $entity ->setFechadefin(new \DateTime());
+
         $form   = $this->createForm(new VacacionesType(), $entity);
 
         return $this->render('OrhBundle:Vacaciones:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'usuarios' => $usuarios,
         ));
     }
 
@@ -134,28 +143,38 @@ class VacacionesController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
-                     
+            $usuario = $this->getUser();
+            $entity->setUcreado($usuario);
+            $entity -> setFechadesolitud(new \DateTime());
+            $diasdevaca= $entity->getCantidad();
+
             $em = $this->getDoctrine()->getManager();
+            $cantidadactual = $em->getRepository('OrhBundle:Vacaciones')->findPersonal($usuario);
+            $numvac = $em->getRepository('UserBundle:User')->find($usuario);
+            $numvac->setNumerodediasdevacaciones($cantidadactual-$diasdevaca);
             $em->persist($entity);
             $em->flush();
 
+            $email=$usuario."@embperujapan.org";
             $mensaje = \Swift_Message::newInstance()
                 ->setSubject('Solicitud de Vacaciones')
-                ->setFrom('namiayumis@gmail.com')
-                ->setTo('namiayumis@gmail.com')
+                ->setFrom('vacaciones@embperujapan.org')
+                ->setTo($email)
                 ->setBody(
                 $this->renderView('OrhBundle:Vacaciones:email.html.twig', array(
-            'entity' => $entity,'id' => $entity->getId())),'text/html');     
+            'entity' => $entity,
+
+            'id' => $entity->getId())),'text/html');     
                 $this->get('mailer')->send($mensaje);
 
-
+            
             return $this->redirect($this->generateUrl('vacaciones'));
 
         }
 
         return $this->render('OrhBundle:Vacaciones:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form'   => $form->createView()
         ));
     }
 

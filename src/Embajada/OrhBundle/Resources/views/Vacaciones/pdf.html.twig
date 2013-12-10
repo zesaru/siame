@@ -47,7 +47,35 @@
             <p class="sangriad">DE </p>
             </td>
             <td >
-            <p >: (Sra., Srta., Sr.) {{ entity.personal.nombres }} {{ entity.personal.apellidos }}</p>
+            <p >: 
+                {% if entity.ucreado=='cmurillo' %}
+                Sr: Cesar Murillo
+                {% elseif entity.ucreado=='eescala' %}
+                Sr: Elard Escala
+                {% elseif entity.ucreado=='msantivanez' %}
+                Sr: Marco Antonio Santivañez
+                {% elseif entity.ucreado=='amiranda' %}
+                Sr: Antonio Miranda
+                {% elseif entity.ucreado=='oortega' %}
+                Sr: Omar Ortega
+                {% elseif entity.ucreado=='dwakao' %}
+                Sr: Elard Escala
+                {% elseif entity.ucreado=='ytanaka' %}
+                Sra: Yoshiko Tanka
+                {% elseif entity.ucreado=='hmiyauchi' %}
+                Sra: Hiroko Miyauchi
+                {% elseif entity.ucreado=='tokawa' %}
+                Sra: Tracy Okawa
+                {% elseif entity.ucreado=='karaneda' %}
+                Sra: Keiko Araneda
+                {% elseif entity.ucreado=='auemise' %}
+                Sra: Akiko Uemise
+                {% elseif entity.ucreado=='tshibata' %}
+                Sra: Tessy Shibata
+                {% elseif entity.ucreado=='rkon' %}
+                Sra: Reiko Kon
+                {% endif%}
+            </p>
             </td>
         </tr>
         <tr>
