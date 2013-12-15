@@ -1,0 +1,40 @@
+{#% extends "::base8.html.twig" %#}
+{% block body %}
+<style>
+body{
+    font-family: Arial;
+    margin-top: 10px;
+}
+p{
+    font-size: 11px;
+}
+.contenedor{
+
+}
+.etiqueta{
+
+    height:80px;
+    margin: 4em;
+    display: inline-block;
+}
+.etiqueta:nth-child(even){
+        float:rigth;
+    }
+.numerodehoja{
+    text-align: center;
+
+}
+
+</style>
+<table>
+{% for hojaderemision in hojaderemision %}
+    <tr class="etiqueta">
+        <td>EMBAJADA DEL PERÚ EN JAPÓN<br><br>
+        H.R. 5-18-A/{{ hojaderemision.numero }}{{ hojaderemision.destino }}<br><br>
+        Ministerio de Relaciones Exteriores<br>
+        Jr. Lampa 353 Lima1 - Perú</td>
+   </tr>
+{% endfor %}
+</table>
+
+{% endblock body %}

@@ -12,9 +12,9 @@ class VacacionesRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
           $query = $em->createQuery('
-
-            select v.fechadeinicio ,p.nombres , p.apellidos, DATE_DIFF(v.fechadefin, v.fechadeinicio) numDias
-            from OrhBundle:Vacaciones v JOIN v.personal_id p
+            select v.fechadeinicio ,u.name , u.apellidos, DATE_DIFF(v.fechadefin, v.fechadeinicio) numDias
+            from OrhBundle:Vacaciones v 
+            JOIN v.ucreado u
             where v.fechadeinicio >= :fecha
             ');
           $query->setParameter('fecha', new \DateTime('today'));
@@ -26,7 +26,6 @@ class VacacionesRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
           $query = $em->createQuery('
-
             select v.id, u.apellidos, v.fechadeinicio, v.fechadesolitud, v.cantidad, v.fechadefin, u.name
             from OrhBundle:Vacaciones v 
             JOIN v.ucreado u

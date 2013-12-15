@@ -33,7 +33,7 @@ li{
              {{ form_errors(form) }}
                  <div>
                  {{ form_errors (form.cantidad) }} 
-                 {{ form_label (form.cantidad) }}  
+                 {{ form_label (form.cantidad, 'Días de Vacaciones a solicitar') }}  
                  {{ form_widget (form.cantidad, { 'attr': {
                     'class':"input-small",
                     'min':"1"
@@ -89,38 +89,7 @@ li{
     var max = parseInt($('#numerodias').text());
     $(function(){
         $('#embajada_orhbundle_vacacionestype_cantidad').attr("max",max);
-
-    //validar fechas
-        $('#embajada_orhbundle_vacacionestype_fechadeinicio').datepicker({
-            todayBtn: true,
-            daysOfWeekDisabled:"0,6",
-            autoclose: true,
-        });
-
-        var nowTemp = new Date();
-        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-         
-        var checkin = $('#embajada_orhbundle_vacacionestype_fechadeinicio').datepicker({
-          onRender: function(date) {
-            return date.valueOf() < now.valueOf() ? 'disabled' : '';
-          }
-        }).on('changeDate', function(ev) {
-          if (ev.date.valueOf() > checkout.date.valueOf()) {
-            var newDate = new Date(ev.date)
-            newDate.setDate(newDate.getDate() + 1);
-            checkout.setValue(newDate);
-          }
-          checkin.hide();
-          $('#embajada_orhbundle_vacacionestype_fechadefin')[0].focus();
-        }).data('datepicker');
-        var checkout = $('#embajada_orhbundle_vacacionestype_fechadefin').datepicker({
-          onRender: function(date) {
-            return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
-          }
-        }).on('changeDate', function(ev) {
-          checkout.hide();
-        }).data('datepicker');
-     
+       
 });
 </script>
 {% endblock body %}

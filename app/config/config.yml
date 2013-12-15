@@ -66,8 +66,8 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: gmail
-    username:  namiayumis@gmail.com
-    password:  Bachata.31
+    username:  vacaciones@embassyofperuinjapan.org
+    password:  R1e9i7k6
 
 fos_user:
     db_driver: orm

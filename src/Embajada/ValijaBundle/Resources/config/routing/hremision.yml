@@ -6,6 +6,10 @@ hremision_show:
     pattern:  /{id}/show
     defaults: { _controller: "ValijaBundle:Hremision:show" }
 
+hremision_etiquetas:
+    pattern:  /{id}/etiquetas
+    defaults: { _controller: "ValijaBundle:Hremision:etiquetas" }
+
 hremision_new:
     pattern:  /new
     defaults: { _controller: "ValijaBundle:Hremision:new" }

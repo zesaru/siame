@@ -71,22 +71,43 @@ public function showAction($id)
     }        
          
 
-    public function show2Action($id)
+    public function etiquetasAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ValijaBundle:Hremision')->find($id);
+        $hojaderemision = $em->getRepository('ValijaBundle:Hremision')->findByNumerodevalija($id);
 
-        if (!$entity) {
+        if (!$hojaderemision) {
             throw $this->createNotFoundException('Unable to find Hremision entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('ValijaBundle:Hremision:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+        $response = $this->render('ValijaBundle:Hremision:etiquetas.html.twig', array(
+            'hojaderemision'      => $hojaderemision,       ));
+                //elimina la molesta cabecera 
+        $html = $response->getContent();
+        $pdf = $this->container->get("white_october.tcpdf")->create();
+        $pdf->SetAuthor('Cesar Murillo');
+        $pdf->SetTitle('Notas');
+        // set default font subsetting mode
+        $pdf->setFontSubsetting(true);
+       // $pdf->
+        $pdf->SetPrintHeader(false);
+        $pdf->SetPrintFooter(false);
+        //set margins
+        $pdf->SetMargins(17,5,10);
+        // Add a page
+        // This method has several options, check the source code documentation for more information.
+        $pdf->AddPage();
+        // set core font
+        $pdf->SetFont('helvetica', '', 10);
+        // output the HTML content
+        $pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=false);
+        $pdf->Ln();
+        // reset pointer to the last page
+        $pdf->lastPage();
+        $pdf->Output('etiquetas.pdf', 'I');
     }
+
     public function show7Action($id)
     {
         $em = $this->getDoctrine()->getManager();

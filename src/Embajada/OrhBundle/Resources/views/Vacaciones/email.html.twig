@@ -15,7 +15,7 @@
         </tr>
 
         <tr>
-            <td colspan="2" style="font-size: 18px; padding: 1em .5em;">Email de ejemplo<br>La presente es para comunicarle que el se&ntilde;or (a) {#{ entity.pnombres }#} {#{ entity.personal.apellidos }#} ha solicitado hacer uso de sus vaciones desde el dia {% if entity.fechadeinicio %}{{ entity.fechadeinicio|date('d-m-Y') }}{% endif %} al dia {% if entity.fechadefin %}{{ entity.fechadefin|date('d-m-Y') }}{% endif %} . </td>
+            <td colspan="2" style="font-size: 18px; padding: 1em .5em;">Email de ejemplo<br>La presente es para comunicarle que el se&ntilde;or (a) {{ numvac.name }} {{ numvac.apellidos }} ha solicitado hacer uso de sus vaciones desde el dia {% if entity.fechadeinicio %}{{ entity.fechadeinicio|date('d/m/Y') }}{% endif %} al dia {% if entity.fechadefin %}{{ entity.fechadefin|date('d/m/Y') }}{% endif %} . </td>
         </tr>
         <tr>
             <td style="padding-top: 5px;">

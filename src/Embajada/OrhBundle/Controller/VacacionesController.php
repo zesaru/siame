@@ -91,7 +91,9 @@ class VacacionesController extends Controller
 
     public function pdfAction($id)
     {
+        $usuario = $this->getUser();
         $em = $this->getDoctrine()->getManager();
+        $cantidadactual = $em->getRepository('OrhBundle:Vacaciones')->findPersonal($usuario);
         $entity = $em->getRepository('OrhBundle:Vacaciones')->find($id);
 
         if (!$entity) {
@@ -99,6 +101,7 @@ class VacacionesController extends Controller
         }
         $response = $this->render('OrhBundle:Vacaciones:pdf.html.twig', array(
             'entity'      => $entity,
+            'cantidadactual' =>$cantidadactual,
            ));
         //elimina la molesta cabecera 
         $html = $response->getContent();
@@ -158,11 +161,14 @@ class VacacionesController extends Controller
             $email=$usuario."@embperujapan.org";
             $mensaje = \Swift_Message::newInstance()
                 ->setSubject('Solicitud de Vacaciones')
-                ->setFrom('vacaciones@embperujapan.org')
-                ->setTo($email)
+                ->setFrom('vacaciones@embperujapan.org', "NO responder a este correo")
+                ->setTo('msantivanez@embperujapan.org','Jefe de Cancillería')
+                ->setBcc('eescala@embperujapan.org','Embajador')
+                ->setCc($email)
                 ->setBody(
                 $this->renderView('OrhBundle:Vacaciones:email.html.twig', array(
             'entity' => $entity,
+            'numvac' => $numvac,
 
             'id' => $entity->getId())),'text/html');     
                 $this->get('mailer')->send($mensaje);
