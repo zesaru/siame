@@ -1,0 +1,59 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+@import "compass";
+
+// FontAwesome
+@import "font-awesome.scss";
+
+// Colors
+@import "colors.scss";
+
+// Overwrite bootstrap styling
+@import "bootstrap-override.scss";
+
+// Media Query
+@import "media-queries.scss";
+
+// Page structure
+@import "_structure.scss";
+
+// Page elements
+@import "_elements.scss";
+
+// Custom pages
+@import "_pages.scss";
+
+// Plugin styling
+@import "_plugins.scss";
+
+html,body{
+	height:100%;
+}
+
+body{
+	background: #fff;
+	font-family: 'Open Sans', sans-serif;
+	font-size:13px !important;
+}
+
+a{
+	color:$blue;
+	&:focus{
+		outline:none;
+		text-decoration:none;
+	}
+}
+
+.ulreset{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nopadding{
+	padding: 0 !important;
+}
+
+.row-fluid.margin-top{
+	margin-top: 30px;
+}
+

@@ -1,0 +1,21 @@
+.slider{
+	margin: 10px 0;
+	@include border-radius(0);
+	height:6px;
+	position: relative;
+
+	.amount{
+		position: absolute;
+		left:0;
+		top:-20px;
+
+	}
+
+	.ui-slider-handle{
+		border:0;
+		@include border-radius(0);
+		background:$blue;
+		width: 14px;
+		height: 14px;
+	}
+}

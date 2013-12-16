@@ -1,0 +1,10 @@
+.datepicker{
+	&.datepicker-dropdown{
+		@include border-radius(0);
+
+		&:before, &:after{
+			border:0;
+		}
+
+	}
+}
