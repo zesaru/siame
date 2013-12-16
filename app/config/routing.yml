@@ -1,3 +1,7 @@
+memorandum:
+    resource: "@MemorandumBundle/Resources/config/routing.yml"
+    prefix:   /
+
 _welcome:
     pattern:  /
     defaults: { _controller: InicioBundle:Default:index }

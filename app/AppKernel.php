@@ -36,8 +36,7 @@ class AppKernel extends Kernel
             new Leg\GoogleChartsBundle\LegGoogleChartsBundle(),
             new Embajada\ValijaBundle\ValijaBundle(),
             new Inicio\InicioBundle\InicioBundle(),
-
-
+            new Embajada\MemorandumBundle\MemorandumBundle(),
         );
         
 
