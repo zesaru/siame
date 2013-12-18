@@ -1,0 +1,30 @@
+Memoi:
+    pattern:  /
+    defaults: { _controller: "DocumentosBundle:Memoi:index" }
+
+Memoi_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "DocumentosBundle:Memoi:show" }
+
+Memoi_new:
+    pattern:  /new
+    defaults: { _controller: "DocumentosBundle:Memoi:new" }
+
+Memoi_create:
+    pattern:  /create
+    defaults: { _controller: "DocumentosBundle:Memoi:create" }
+    requirements: { _method: post }
+
+Memoi_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "DocumentosBundle:Memoi:edit" }
+
+Memoi_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "DocumentosBundle:Memoi:update" }
+    requirements: { _method: post }
+
+Memoi_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "DocumentosBundle:Memoi:delete" }
+    requirements: { _method: post }

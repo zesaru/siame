@@ -1,0 +1,47 @@
+{% extends "::base8.html.twig" %}
+{% block body %}
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box box-color box-bordered green">
+            <div class="box-title">
+                <h3><a class="btn btn-success" href="{{ path('Memoi_new') }}"><i class="icon-plus-sign"></i>Agregar Memorandum Internos</a>  </h3>
+            </div>
+        </div>
+        <div class="box-content nopadding">
+            <table class="table table-hover table-nomargin table-striped dataTable dataTable-reorder">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Numerodememo</th>
+                        <th>Remitente</th>
+                        <th>Destinatario</th>
+                        <th>Fecha</th>
+                        <th>Referencia</th>
+                        <th>Cuerpo</th>
+                        <th>Aprobado</th>
+                        <th>Clasificacion</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('Memoi_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.numerodememo }}</td>
+                        <td>{{ entity.remitente }}</td>
+                        <td>{{ entity.destinatario }}</td>
+                        <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ entity.referencia }}</td>
+                        <td>{{ entity.cuerpo }}</td>
+                        <td>{{ entity.aprobado }}</td>
+                        <td>{{ entity.clasificacion }}</td>
+                        <td>
+
+                                    <a href="{{ path('Memoi_edit', { 'id': entity.id }) }}">edit</a></td>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock body %}

@@ -120,7 +120,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="">Oficios</a>
+                            <a href="{{ path('Oficios') }}">Oficios</a>
                         </li>
                         <li>
                             <a href="{{ path('hremision') }}">Hojas de Remision</a>
@@ -219,11 +219,11 @@
     <script src="{{ asset('bundles/notas/js/plugins/fullcalendar/fullcalendar.min.js')}}"></script>
 
     <!-- Theme framework -->
-    <script src="{#{ asset('bundles/notas/js/eakroko.js')}#}"></script>
+    <script src="{{ asset('bundles/notas/js/eakroko.js')}}"></script>
     <!-- Theme scripts -->
-    <script src="{{ asset('bundles/notas/js/application.min.js')}}"></script>
+    <script src="{{ asset('bundles/notas/js/application.js')}}"></script>
     <!-- Just for demonstration -->
-    <script src="{#{ asset('bundles/notas/js/demonstration.min.js')}#}"></script>
+    <script src="{{ asset('bundles/notas/js/demonstration.js')}}"></script>
 {% endblock %}
 </body>
 </html>

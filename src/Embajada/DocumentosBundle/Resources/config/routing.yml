@@ -1,0 +1,4 @@
+DocumentosBundle_Memoi:
+    resource: "@DocumentosBundle/Resources/config/routing/memoi.yml"
+    prefix:   /Memoi
+

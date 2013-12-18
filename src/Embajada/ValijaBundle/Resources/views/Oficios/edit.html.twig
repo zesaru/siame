@@ -61,8 +61,8 @@
                 {{ form_widget(edit_form._token) }} 
             <div class="span12">
                 <br>
-                <button class="btn btn-primary" type="submit"><i class="icon-hdd"></i> Guardar</button>
-                <a class="btn btn-inverse" href="{{ path('hremision') }}"> <i class="icon-reply"></i> Regresar</a>
+                <button class="btn btn-primary" type="submit"><i class="icon-save"></i> Guardar</button>
+                <a class="btn btn-inverse" href="{{ path('Oficios') }}"> <i class="icon-reply"></i> Regresar</a>
                 </br>
             </div>
 
@@ -73,16 +73,16 @@
 
 </form>
 
-<ul class="record_actions">
+<!-- <ul class="record_actions">
     <li>
     </li>
     <li>
-        <form action="{{ path('Oficios_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+        <form action="{{ path('Oficios_delete', { 'id': entity.id }) }}" method="post"> -->
+            {#{ form_widget(delete_form) }#}
+<!--             <button type="submit">Delete</button>
         </form>
     </li>
-</ul>
+</ul>-->
 <script>
 var max = parseInt($('#numerodias').text());
 

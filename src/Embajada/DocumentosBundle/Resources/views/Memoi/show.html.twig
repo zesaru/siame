@@ -1,0 +1,61 @@
+<h1>Memoi</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Numerodememo</th>
+            <td>{{ entity.numerodememo }}</td>
+        </tr>
+        <tr>
+            <th>Remitente</th>
+            <td>{{ entity.remitente }}</td>
+        </tr>
+        <tr>
+            <th>Destinatario</th>
+            <td>{{ entity.destinatario }}</td>
+        </tr>
+        <tr>
+            <th>Fecha</th>
+            <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Referencia</th>
+            <td>{{ entity.referencia }}</td>
+        </tr>
+        <tr>
+            <th>Cuerpo</th>
+            <td>{{ entity.cuerpo }}</td>
+        </tr>
+        <tr>
+            <th>Aprobado</th>
+            <td>{{ entity.aprobado }}</td>
+        </tr>
+        <tr>
+            <th>Clasificacion</th>
+            <td>{{ entity.clasificacion }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('Memoi') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('Memoi_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('Memoi_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
