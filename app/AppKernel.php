@@ -37,6 +37,7 @@ class AppKernel extends Kernel
             new Embajada\ValijaBundle\ValijaBundle(),
             new Inicio\InicioBundle\InicioBundle(),
             new Embajada\MemorandumBundle\MemorandumBundle(),
+            new Genemu\Bundle\FormBundle\GenemuFormBundle(),
         );
         
 

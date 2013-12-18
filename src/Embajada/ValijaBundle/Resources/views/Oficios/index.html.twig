@@ -1,0 +1,83 @@
+{% extends "::base8.html.twig" %}
+{% block body %}
+<style>
+a{
+    color: red;
+    font-size: 16px;
+}
+.boton{
+    background-color:#368EE0;
+    color: white;
+    font-weight: bold;
+    margin-top: 5em;
+    padding: 0.5em;
+    text-decoration: none; 
+}
+ul{
+    margin-top: 2em;
+}
+li{
+    list-style-type: none;
+}
+.icon-ok-sign{
+    color: green;
+    font-size: 1.4em;
+}
+table tr td .aprobado{
+    text-align: center;
+}
+</style>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box box-color box-boderred green">
+            <div class="box-title">
+                <h3><i class="icon-table"></i>Oficios</h3>
+            </div>
+                <div class="box-content nopadding">
+                    <table class="table table-hover table-nomargin table-striped dataTable dataTable-reorder">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Numero de Oficio</th>
+                                <th>Asunto</th>
+                                <th>Fecha</th>
+                                <th>Referencia</th>
+                                <th>Clasificacion</th>
+                                <th>Aprobado</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for entity in entities %}
+                            <tr>
+                                <td><a href="{{ path('Oficios_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                                <td>{{ entity.numerodeoficio }}</td>
+                                <td>{{ entity.asunto }}</td>
+                                <td>{{ entity.fecha|date('d-m-Y')}}</td>
+                                <td>{{ entity.referencia }}</td>
+                                <td>{{ entity.clasificacion }}</td>
+                                <td>{{ entity.aprobado }}</td>
+                                <td>
+
+                                            <a href="{{ path('Oficios_edit', { 'id': entity.id }) }}">editar</a>
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ul>
+    <li>
+        <a href="{{ path('Oficios_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock body %}

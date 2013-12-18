@@ -1,0 +1,42 @@
+    <head>  
+  <style>
+body{
+    margin: 0;
+}
+li{
+    text-decoration: none;
+}
+    .sangria {  
+        text-indent: 50px; 
+    }
+    p{
+        font-family: Arial;
+        font-size: 11;
+    }
+    #piedepagina{
+    position:relativa;
+    top:200px;
+    left: 50px;
+    width: 300px;
+
+    }
+
+  </style>  
+</head> 
+    <figure>
+        <img src="{{ pdf_image('NotasBundle:logoembajadaes.jpg') }}" width="140" height="85">
+     <figure>
+            
+            <p style="text-align:right;"><strong>Tokio, {{ entity.fecha|fecha ('long','none','es')}}</strong></p><p></p>
+            {% if entity.clasificacion|upper =='ABIERTO' %}
+                <p>Of. "RE" No 5-18-A/{{ entity.numerodeoficio }} ({{ entity.destino }})<br>{{ entity.asunto }}</p>
+            {% else %}
+                <p>Of. "RE" No 5-18-YY/{{ entity.numerodeoficio }} ({{ entity.destino }})<br>{{ entity.asunto }}</p>
+            {% endif %}
+            <p>Ref {{ entity.referencia }}</p>
+            <p>{{ entity.clasificacion }}</p>
+
+            <p>{{ entity.cuerpo| raw }}</p>
+
+
+

@@ -1,0 +1,34 @@
+Oficios:
+    pattern:  /
+    defaults: { _controller: "ValijaBundle:Oficios:index" }
+
+Oficios_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ValijaBundle:Oficios:show" }
+
+Oficios_pdf:
+    pattern:  /{id}/pdf
+    defaults: { _controller: "ValijaBundle:Oficios:pdf" }
+
+Oficios_new:
+    pattern:  /new
+    defaults: { _controller: "ValijaBundle:Oficios:new" }
+
+Oficios_create:
+    pattern:  /create
+    defaults: { _controller: "ValijaBundle:Oficios:create" }
+    requirements: { _method: post }
+
+Oficios_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ValijaBundle:Oficios:edit" }
+
+Oficios_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ValijaBundle:Oficios:update" }
+    requirements: { _method: post }
+
+Oficios_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ValijaBundle:Oficios:delete" }
+    requirements: { _method: post }

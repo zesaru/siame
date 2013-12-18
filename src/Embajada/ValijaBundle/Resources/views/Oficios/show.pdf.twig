@@ -1,0 +1,43 @@
+<h1>Oficios</h1>
+<pdf>
+    <dynamic-page>
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Numerodeoficio</th>
+            <td>{{ entity.numerodeoficio }}</td>
+        </tr>
+        <tr>
+            <th>Asunto</th>
+            <td>{{ entity.asunto }}</td>
+        </tr>
+        <tr>
+            <th>Fecha</th>
+            <td>{{ entity.fecha|date('d/m/Y') }}</td>
+        </tr>
+        <tr>
+            <th>Referencia</th>
+            <td>{{ entity.referencia }}</td>
+        </tr>
+        <tr>
+            <th>Clasificacion</th>
+            <td>{{ entity.clasificacion }}</td>
+        </tr>
+        <tr>
+            <th>Aprobado</th>
+            <td>{{ entity.aprobado }}</td>
+        </tr>
+        <tr>
+            <th>Anexos</th>
+            <td>{{ entity.anexos }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+</dynamic-page>
+</pdf>

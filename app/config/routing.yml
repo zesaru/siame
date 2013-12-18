@@ -81,3 +81,7 @@ EventosBundle_evento:
 ValijaBundle_hremision:
     resource: "@ValijaBundle/Resources/config/routing/hremision.yml"
     prefix:   /hremision
+
+ValijaBundle_Oficios:
+    resource: "@ValijaBundle/Resources/config/routing/oficios.yml"
+    prefix:   /Oficios

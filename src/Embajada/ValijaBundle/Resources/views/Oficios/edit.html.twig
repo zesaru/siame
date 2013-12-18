@@ -1,0 +1,104 @@
+{% extends "::base8.html.twig" %}
+{% block body %}
+<!-- CKEditor -->
+    <script src="{{ asset('bundles/notas/js/plugins/ckeditor/ckeditor.js') }}"></script>
+<div class="row-row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3>
+                    <i class="icon-list"></i>Editar
+                </h3>
+            </div>
+        <div>
+        <div class="box-content">
+            <form action="{{ path('Oficios_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+            <div >
+                <div class="span2">
+                    {{ form_errors  (edit_form.numerodeoficio) }}
+                    {{ form_label  (edit_form.numerodeoficio, 'Numero de Oficio') }}
+                    {{ form_widget (edit_form.numerodeoficio, { 'attr': {
+                        'class':"input-small",}}
+                            )}}
+                </div>
+                <div class="span3">
+                    {{ form_errors  (edit_form.referencia) }}
+                    {{ form_label  (edit_form.referencia) }}
+                    {{ form_widget (edit_form.referencia) }}
+                </div>
+                <div class="span3">
+                    {{ form_errors  (edit_form.destino) }}
+                    {{ form_label  (edit_form.destino) }}
+                    {{ form_widget (edit_form.destino) }}
+                </div>
+                <div class="span3">
+                    {{ form_errors  (edit_form.clasificacion) }}
+                    {{ form_label  (edit_form.clasificacion) }}
+                    {{ form_widget (edit_form.clasificacion) }}
+                </div>
+            </div>
+            <div>
+                <div class="span9">
+                    {{ form_errors  (edit_form.asunto) }}
+                    {{ form_label  (edit_form.asunto, 'Asunto') }}
+                    {{ form_widget (edit_form.asunto, { 'attr': {
+                        'class':"input-block-level",}}
+                            )}}
+                </div>
+                <div class="span3">
+                    {{ form_errors  (edit_form.fecha) }}
+                    {{ form_label  (edit_form.fecha) }}
+                    {{ form_widget (edit_form.fecha, { 'attr': {'class':"input-small datepick",}}
+                        )}}
+                </div>
+            </div>
+            <div class="span12">
+                {{ form_errors  (edit_form.cuerpo) }}
+                {{ form_label  (edit_form.cuerpo, ' ') }}
+                {{ form_widget (edit_form.cuerpo )}}
+            </div>
+            {#{ form_widget(edit_form) }#}
+                {{ form_widget(edit_form._token) }} 
+            <div class="span12">
+                <br>
+                <button class="btn btn-primary" type="submit"><i class="icon-hdd"></i> Guardar</button>
+                <a class="btn btn-inverse" href="{{ path('hremision') }}"> <i class="icon-reply"></i> Regresar</a>
+                </br>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</form>
+
+<ul class="record_actions">
+    <li>
+    </li>
+    <li>
+        <form action="{{ path('Oficios_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+<script>
+var max = parseInt($('#numerodias').text());
+
+$(function() 
+{ 
+    $('#embajada_orhbundle_oficiostype_fecha').attr("max",max);
+
+    CKEDITOR.replace( 'embajada_valijabundle_oficiostype_cuerpo', {
+        toolbarGroups: [        
+            { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },           
+            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+            { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ] },
+            { name: 'tools', items: [ 'Maximize' ] },
+        ]
+    });
+    });
+
+ </script>
+{% endblock body %}

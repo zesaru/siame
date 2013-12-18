@@ -1,0 +1,106 @@
+{% extends "::base8.html.twig" %}
+{% block body %}
+<!-- CKEditor -->
+	<script src="{{ asset('bundles/notas/js/plugins/ckeditor/ckeditor.js') }}"></script>
+<style type='text/css'>
+a{
+    color: red;
+    font-size: 16px;
+}
+.boton{
+    background-color:#368EE0;
+    color: white;
+    font-weight: bold;
+    margin-top: 5em;
+    padding: 0.5em;
+    text-decoration: none; 
+}
+ul{
+    margin-top: 2em;
+}
+li{
+    list-style-type: none;
+}
+</style>
+<div class="row-row-fluid">
+	<div class="span12">
+		<div class="box">
+			<div class="box-title">
+				<h3><i class="icon-list"></i>Crear Oficios</h3>
+			</div>
+		</div>
+		<div class="box-content">
+			<form action="{{ path('Oficios_create') }}" method="post" {{ form_enctype(form) }}>
+    		{{ form_errors(form) }}
+    		<div>
+	    		<div class="span2">
+	    			{{ form_errors  (form.numerodeoficio) }}
+	    			{{ form_label  (form.numerodeoficio, 'Numero de Oficio') }}
+	    			{{ form_widget (form.numerodeoficio, { 'attr': {
+	                    'class':"input-small",}}
+	                        )}}
+	            </div>
+	            <div class="span3">
+	                {{ form_errors  (form.referencia) }}
+	    			{{ form_label  (form.referencia) }}
+	    			{{ form_widget (form.referencia) }}
+	    		</div>
+	            <div class="span3">
+	                {{ form_errors  (form.destino) }}
+	    			{{ form_label  (form.destino) }}
+	    			{{ form_widget (form.destino) }}
+	    		</div>
+	            <div class="span3">
+	                {{ form_errors  (form.clasificacion) }}
+	    			{{ form_label  (form.clasificacion) }}
+	    			{{ form_widget (form.clasificacion) }}
+	    		</div>
+	    	</div>
+    		<div class="span12">
+    			{{ form_errors  (form.asunto) }}
+    			{{ form_label  (form.asunto, 'Asunto') }}
+    			{{ form_widget (form.asunto, { 'attr': {
+                    'class':"input-block-level",}}
+                        )}}
+            </div>
+    		<div class="span12">
+    			{{ form_errors  (form.cuerpo) }}
+    			{{ form_label  (form.cuerpo, ' ') }}
+    			{{ form_widget (form.cuerpo )}}
+            </div>
+            {{ form_widget(form._token) }}	
+            <div class="span">
+            <p>
+        		<button type="submit">Create</button>
+    		</p>
+            </div>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="span12">
+	<ul class="record_actions">
+	    <li>
+	        <a href="{{ path('Oficios') }}">
+	            Back to the list
+	        </a>
+	    </li>
+	</ul>
+</div>
+<script type="text/javascript">
+
+$(function() { 
+	CKEDITOR.replace( 'embajada_valijabundle_oficiostype_cuerpo', {
+	toolbarGroups: [		// Displays document group with its two subgroups.
+	 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label																// Line break - next group will be placed in new line.
+	 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+	{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ] },
+		
+	{ name: 'tools', items: [ 'Maximize' ] },
+		]// NOTE: Remember to leave 'toolbar' property with the default value (null).
+	});
+	});
+
+ </script>
+
+{% endblock body %}
