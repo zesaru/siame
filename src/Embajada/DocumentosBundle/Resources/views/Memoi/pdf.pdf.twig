@@ -1,0 +1,92 @@
+<head>  
+<style>
+table{
+    font-size: 11px;
+}
+body{
+    margin: 0;
+
+}
+li{
+    text-decoration: none;
+}
+    .sangria {  
+        text-indent: 50px; 
+    }
+    p{
+        font-family: Arial;
+        font-size: 11;
+    }
+    #piedepagina{
+    position:relativa;
+    top:200px;
+    left: 50px;
+    width: 300px;
+
+    }
+#cuerpo{
+    min-height: 450px;
+}
+
+  </style>  
+</head> 
+    <figure>
+        <img src="{{ pdf_image('NotasBundle:logoembajadaes.jpg') }}" width="140" height="85">
+     <figure>
+<p></p>
+<p style="text-align:center"><u><strong>MEMORANDUM No {{ entity.numerodememo }} - {{ entity.fecha|date('Y')}}</strong></u></p>
+<p></p>
+<table>
+        <tr>
+            <td height="25px" width="50px"></td>
+            <td height="25px" width="100px">DEL</td>
+            <td height="25px" width="20px">:</td>
+            <td width="400px">{{ entity.remitente|upper}}</td>
+            
+        </tr>
+        <tr> 
+            <td height="25px" width="50px"></td>
+            <td height="25px" >A</td>
+            <td >:</td>
+            {% if (entity.destinatario=='OTROS' ) %}
+            <td >{{ entity.dindividuales}}</td>
+            {% else %}
+            <td >{{ entity.destinatario}}</td>
+            {% endif %}
+        </tr>
+        <tr> 
+            <td height="25px" width="50px"></td>
+            <td height="25px" width="100px">ASUNTO</td>
+            <td width="20px">:</td>
+            <td width="400px">{{ entity.asunto}}</td>
+            
+        </tr>
+        <tr> 
+            <td height="25px" width="50px"></td>
+            <td height="25px">FECHA</td>
+            <td >:</td>
+            <td >{{ entity.fecha|date('d/m/Y')}}</td>
+        </tr>
+       
+    </table> 
+<p></p>       
+<hr>        
+            
+<table>
+        <tr>
+            <td>
+                <p>
+                    {{ entity.cuerpo| raw }}
+                </p>
+            </td>
+        </tr>
+</table>
+{% if (entity.cuerpo|length>200)  %}
+<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+{% elseif entity.cuerpo|length>500 %}
+<p></p><p></p><p></p><p></p><p></p><p>
+{% else %}
+<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+{% endif %}
+<p align="center">Elard Escala<br>Embajador del Perú</p>

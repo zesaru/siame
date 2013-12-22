@@ -76,7 +76,11 @@ class MemoiController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
+            $usuario = $this->getUser();
+            $entity->setUcreado($usuario);
+            $entity -> setfecha(new \DateTime());
             $em = $this->getDoctrine()->getManager();
+            //$this->get('session')->getFlashBag()->add('notice', 'Sus cambios han sido guardados !'.$desti);
             $em->persist($entity);
             $em->flush();
 
@@ -89,6 +93,49 @@ class MemoiController extends Controller
         ));
     }
 
+    //CREAR PDF
+    public function pdfAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('DocumentosBundle:Memoi')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Memoi entity.');
+        }
+
+        $response = $this->render('DocumentosBundle:Memoi:pdf.pdf.twig', array(
+            'entity'      => $entity,
+           ));
+        //elimina la molesta cabecera 
+        $html = $response->getContent();
+        $pdf = $this->container->get("white_october.tcpdf")->create();
+        $pdf->SetAuthor('Cesar Murillo');
+        $pdf->SetTitle('Oficios');
+        // set default font subsetting mode
+        $pdf->setFontSubsetting(true);
+       // $pdf->
+        $pdf->SetPrintHeader(false);
+        $pdf->SetPrintFooter(false);
+        //set margins
+        $pdf->SetMargins(20, 13, 15);
+        // Add a page
+        // This method has several options, check the source code documentation for more information.
+        $pdf->AddPage();
+        
+        // set core font
+        $pdf->SetFont('helvetica', '', 10);
+
+        // output the HTML content
+        $pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true);
+
+        $pdf->Ln();
+
+        // reset pointer to the last page
+        $pdf->lastPage();
+        
+        $pdf->Output('Memorandum.pdf', 'I');
+    }
     /**
      * Displays a form to edit an existing Memoi entity.
      *
@@ -102,7 +149,6 @@ class MemoiController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Memoi entity.');
         }
-
         $editForm = $this->createForm(new MemoiType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
@@ -132,10 +178,13 @@ class MemoiController extends Controller
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
+            $usuario = $this->getUser();
+            $entity->setUcreado($usuario);
+            $entity -> setfecha(new \DateTime());
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('Memoi_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('Memoi'));
         }
 
         return $this->render('DocumentosBundle:Memoi:edit.html.twig', array(

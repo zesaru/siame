@@ -225,6 +225,8 @@ public function showAction($id)
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
+            $usuario = $this->getUser();
+            $entity->setUcreado($usuario);
             $em->persist($entity);
             $em->flush();
 

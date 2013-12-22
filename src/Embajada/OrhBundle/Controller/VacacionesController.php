@@ -27,6 +27,20 @@ class VacacionesController extends Controller
             'entities' => $entities,
         ));
     }
+    /**
+     * Lists all Vacaciones entities.
+     *
+     */
+    public function listarUsuariosAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('OrhBundle:Vacaciones')->listarUsuarios();
+
+        return $this->render('OrhBundle:Vacaciones:listar.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
 
     /**
      * Lists all Vacaciones entities.

@@ -31,7 +31,16 @@ class VacacionesRepository extends EntityRepository
             JOIN v.ucreado u
             ');
           return $query->getResult(); 
-        
+    }
+    public function listarUsuarios()
+    {
+        $em = $this->getEntityManager();
+          $query = $em->createQuery('
+            select u.id, u. name, u.apellidos
+            from UserBundle:User u
+            order By u.apellidos
+            ');
+          return $query->getResult();    
         
     }
 

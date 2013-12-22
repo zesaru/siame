@@ -70,12 +70,20 @@ class Memoi
      */
     private $aprobado;
 
+
     /**
      * @var string
      *
      * @ORM\Column(name="clasificacion", type="string", length=255)
      */
     private $clasificacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dindividuales", type="string", length=255)
+     */
+    private $dindividuales;
 
     /**
      * @var string
@@ -287,6 +295,30 @@ class Memoi
     {
         return $this->clasificacion;
     }
+
+    /**
+     * Set dindividuales
+     *
+     * @param string $dindividuales
+     * @return Memoi
+     */
+    public function setDindividuales($dindividuales)
+    {
+        $this->dindividuales = $dindividuales;
+
+        return $this;
+    }
+
+    /**
+     * Get dindividuales
+     *
+     * @return string 
+     */
+    public function getDindividuales()
+    {
+        return $this->dindividuales;
+    }
+
    /**
      * Set ucreado
      *

@@ -6,6 +6,10 @@ Memoi_show:
     pattern:  /{id}/show
     defaults: { _controller: "DocumentosBundle:Memoi:show" }
 
+Memoi_pdf:
+    pattern:  /{id}/pdf
+    defaults: { _controller: "DocumentosBundle:Memoi:pdf" }
+
 Memoi_new:
     pattern:  /new
     defaults: { _controller: "DocumentosBundle:Memoi:new" }

@@ -1,10 +1,16 @@
 {% extends "::base8.html.twig" %}
 {% block body %}
+<style type="text/css">
+a{
+    color: red;
+    font-size: 16px;
+}
+</style>
 <div class="row-fluid">
     <div class="span12">
         <div class="box box-color box-bordered green">
             <div class="box-title">
-                <h3><a class="btn btn-success" href="{{ path('Memoi_new') }}"><i class="icon-plus-sign"></i>Agregar Memorandum Internos</a>  </h3>
+                <h3><a class="btn btn-success" href="{{ path('Memoi_new') }}"><i class="icon-plus-sign"></i>Agregar Memorandum </a></h3>
             </div>
         </div>
         <div class="box-content nopadding">
@@ -12,32 +18,32 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Numerodememo</th>
+                        <th>No</th>
                         <th>Remitente</th>
+                        <th>Asunto</th>
                         <th>Destinatario</th>
                         <th>Fecha</th>
-                        <th>Referencia</th>
-                        <th>Cuerpo</th>
-                        <th>Aprobado</th>
-                        <th>Clasificacion</th>
-                        <th>Actions</th>
+                        <th style="text-align:center">Aprobado</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for entity in entities %}
                     <tr>
-                        <td><a href="{{ path('Memoi_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td><a href="{{ path('Memoi_pdf', { 'id': entity.id }) }}"><i class="icon-file"></i></a></td>
                         <td>{{ entity.numerodememo }}</td>
                         <td>{{ entity.remitente }}</td>
+                        <td>{{ entity.asunto }}</td>
+                        {% if (entity.destinatario=='OTROS' ) %}
+                             <td>{{ entity.dindividuales }}</td>
+                        {% else %}
                         <td>{{ entity.destinatario }}</td>
-                        <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{{ entity.referencia }}</td>
-                        <td>{{ entity.cuerpo }}</td>
-                        <td>{{ entity.aprobado }}</td>
-                        <td>{{ entity.clasificacion }}</td>
+                        {% endif %}
+                        <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y') }}{% endif %}</td>
+                        <td style="text-align:center"><i class="icon-time"></i> {{ entity.aprobado }}</td>
                         <td>
-
-                                    <a href="{{ path('Memoi_edit', { 'id': entity.id }) }}">edit</a></td>
+                            <a href="{{ path('Memoi_edit', { 'id': entity.id }) }}">editar</a>
+                        </td>
                 {% endfor %}
                 </tbody>
             </table>

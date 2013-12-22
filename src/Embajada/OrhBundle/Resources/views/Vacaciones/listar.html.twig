@@ -1,0 +1,7 @@
+<label for "usuariosr">  .....  </label>
+<select name="usuariosr" id="usuariosr" multiple="multiple" class="chosen-select">
+	{% for entity in entities %}
+    	<option value="{{ entity.name }} {{entity.apellidos}}">{{ entity.name }} {{entity.apellidos}}
+    	</option>
+	{% endfor %}
+</select>

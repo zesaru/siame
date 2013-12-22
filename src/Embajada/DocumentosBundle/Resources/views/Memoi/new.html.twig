@@ -12,27 +12,41 @@
 			<form action="{{ path('Memoi_create') }}" method="post" {{ form_enctype(form) }}>
 			{{ form_errors(form) }}
     		<div>
-	    		<div class="span2">
+	    		<div class="span1">
 	    			{{ form_errors  (form.numerodememo) }}
-	    			{{ form_label  (form.numerodememo, 'Numero de Memo') }}
+	    			{{ form_label  (form.numerodememo, 'Numero') }}
 	    			{{ form_widget (form.numerodememo, { 'attr': {
-	                    'class':"input-small",}}
+                    'class':"input-block-level",}}
 	                        )}}
 	            </div>
-	            <div class="span3">
+	            <div class="span2">
 	                {{ form_errors  (form.remitente) }}
 	    			{{ form_label  (form.remitente) }}
-	    			{{ form_widget (form.remitente) }}
+	    			{{ form_widget (form.remitente , { 'attr': {
+                    'class':"input-block-level",}}
+	                    	)}}
 	    		</div>
-	            <div class="span3">
+	            <div class="span2">
 	                {{ form_errors  (form.destinatario) }}
 	    			{{ form_label  (form.destinatario) }}
-	    			{{ form_widget (form.destinatario) }}
+	    			{{ form_widget (form.destinatario, { 'attr': {
+                    'class':"input-medium",}}
+                        )}}
 	    		</div>
-	            <div class="span3">
+                <div id="invisible" class="span5">
+                	{{ form_errors  (form.dindividuales) }}
+	    			{{ form_label  (form.dindividuales) }}
+	    			{{ form_widget (form.dindividuales, { 'attr': {
+                    'placeholder':"Escriba un nombre",
+                				}}
+                        	)}}
+                </div>
+	            <div class="span1">
 	                {{ form_errors  (form.clasificacion) }}
 	    			{{ form_label  (form.clasificacion) }}
-	    			{{ form_widget (form.clasificacion) }}
+	    			{{ form_widget (form.clasificacion, { 'attr': {
+                    'class':"input-medium",}}
+	    				)}}
 	    		</div>
 	    	</div>
     		<div class="span12">
@@ -42,9 +56,15 @@
                     'class':"input-block-level",}}
                         )}}
             </div>
+    		<div class="span12">
+    			{{ form_errors  (form.cuerpo) }}
+    			{{ form_label  (form.cuerpo, '') }}
+    			{{ form_widget (form.cuerpo )}}
+            </div>
+            {{ form_widget(form._token) }}
             <div class="span12">
             <br>
-        		<button class="btn btn-primary"type="submit"><i class="icon-save"></i> Guardar</button>
+        		<button id="guardar" class="btn btn-primary" type="submit"><i class="icon-save"></i> Guardar</button>
         		<a class="btn btn-inverse" href="{{ path('Memoi') }}"><i class="icon-reply"></i>
 	             Regresar
 	        	</a>
@@ -58,17 +78,31 @@
 <script type="text/javascript">
 
 $(function() { 
+	$('#invisible').css('display' , 'none');
+	$('#embajada_documentosbundle_memoitype_dindividuales').prop('required','');
 	CKEDITOR.replace( 'embajada_documentosbundle_memoitype_cuerpo', {
-	toolbarGroups: [		// Displays document group with its two subgroups.
-	 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label																// Line break - next group will be placed in new line.
-	 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-	{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ] },
-		
-	{ name: 'tools', items: [ 'Maximize' ] },
-		]// NOTE: Remember to leave 'toolbar' property with the default value (null).
+	toolbarGroups: [
+	 	{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			
+	 	{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ] },
+		{ name: 'tools', items: [ 'Maximize' ] },
+		]
 	});
-	});
+
+
+});
+
+$( "#embajada_documentosbundle_memoitype_destinatario" ).change(function() {
+	var i = $(this).val();
+	if (i=='OTROS'){
+  		//alert( "Handler for .change() called."+i );
+  		$('#invisible').fadeIn( "slow" );
+  		$('#embajada_documentosbundle_memoitype_dindividuales').prop('required','true');
+  	}
+  	else{
+  		$('#invisible').css('display' , 'none');
+  	}	
+});
 
  </script>
-
 {% endblock body %}
