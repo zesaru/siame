@@ -218,7 +218,6 @@ class VacacionesController extends Controller
         return $this->render('OrhBundle:Vacaciones:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -229,24 +228,18 @@ class VacacionesController extends Controller
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('OrhBundle:Vacaciones')->find($id);
-
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Vacaciones entity.');
         }
-
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new VacacionesType(), $entity);
         $editForm->bind($request);
-
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
-
             return $this->redirect($this->generateUrl('vacaciones_edit', array('id' => $id)));
         }
-
         return $this->render('OrhBundle:Vacaciones:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
@@ -270,7 +263,6 @@ class VacacionesController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Vacaciones entity.');
             }
-
             $em->remove($entity);
             $em->flush();
         }

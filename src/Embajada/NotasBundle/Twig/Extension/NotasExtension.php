@@ -109,14 +109,20 @@ class NotasExtension extends \Twig_Extension
         return $vfecha;
     }
 
-    public function restarDias($value, $end)
+    public function restarDias($value, $numero)
     {
-        $start_ts = strtotime($value);
+        ///$start_ts = strtotime($value);
         //$end_ts = strtotime($end);
         //$diff = $end_ts - $start_ts;
         //return round($diff / 86400); 
-        $rfecha = $end;
-        return $rfecha;
+        ///$rfecha = $end;
+        ///return $rfecha;
+        $valor=$value;
+        $partes=explode("/",$valor);//lo combierto en arreglo para poder sumar
+        $dia=mktime(0,0,0,$partes[1],$partes[2]+$numero,$partes[0]);
+        $rfecha = date("Y/m/d",$dia);   
+
+        return $rfecha;     
     }
 
     public function getName()

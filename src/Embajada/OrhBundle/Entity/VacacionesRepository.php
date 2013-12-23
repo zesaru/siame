@@ -1,6 +1,7 @@
 <?php
 //src/Embajada/OrhBundle/Entitiy/VacacionesRepository.php
 //, DATE_DIFF(v.fechadeinicio, v.fechadefin) as diferencia
+//where v.fechadeinicio >= :fecha
 namespace Embajada\OrhBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
@@ -12,12 +13,14 @@ class VacacionesRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
           $query = $em->createQuery('
-            select v.fechadeinicio ,u.name , u.apellidos, DATE_DIFF(v.fechadefin, v.fechadeinicio) numDias
+            select v.aprobado, v.fechadeinicio ,u.name , u.apellidos, DATE_DIFF(v.fechadefin, v.fechadeinicio) numDias
             from OrhBundle:Vacaciones v 
             JOIN v.ucreado u
-            where v.fechadeinicio >= :fecha
+            where  v.fechadefin between :fechai and :fechaf
             ');
-          $query->setParameter('fecha', new \DateTime('today'));
+          $query->setParameter('fechai', new \DateTime('-10days'));
+          $query->setParameter('fechaf', new \DateTime('40days'));
+          //CURRENT_DATE()
           return $query->getResult(); 
         
         

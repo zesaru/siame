@@ -27,7 +27,8 @@
         "friendsofsymfony/jsrouting-bundle": "~1.1",
         "leg/googlecharts-bundle": "*",
         "yepsua/smartwig-bundle": "dev-master",
-        "genemu/form-bundle": "2.1.*"
+        "genemu/form-bundle": "2.1.*",
+        "friendsofsymfony/jsrouting-bundle": "@stable"
     },
     "scripts": {
         "post-install-cmd": [

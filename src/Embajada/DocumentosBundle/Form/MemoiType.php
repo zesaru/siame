@@ -11,17 +11,17 @@ class MemoiType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('numerodememo','text',array('required'=> false, 'read_only'=> true))
+            ->add('numerodememo','text')
             ->add('remitente', 'choice', array(
                 'choices' => array('Embajador del Peru' => 'Embajador del Peru', 
                 'Jefe de Cancilleria' => 'Jefe de Cancilleria')
             ))
             ->add('destinatario', 'choice', array(
-                'choices' => array('Todo el Personal' => 'Todo el Personal',
-                    'Todo el Personal' => 'Todo el Personal', 
-                    'todo el Personal Diplomatico' => 'Diplomaticos',
-                    'todo el Personal Administrativo' => 'Administrativo',
-                    'todo el Personal Servicio' => 'Servicio',
+                'choices' => array('CONSULADOS GENERALES, DIPLOMATICOS Y PERSONAL ADMINISTRATIVO' => 'Todos D, A, CONSULADOS',
+                    'TODO EL PERSONAL DIPLOMATICO Y ADMINISTRATIVO' => 'Todo el Personal D y A', 
+                    'TODO LOS FUNCIONARIOS' => 'Diplomaticos',
+                    'TODO EL PERSONAL ADMINISTRATIVO' => 'Administrativo',
+                    'TODO EL PERSONAL DE SERVICIO' => 'Servicio',
                     'A LOS CONSULADOS GENERALES' => 'Consulados',
                     'CONSULADO GENERAL EN TOKIO' => 'Tokio',
                     'CONSULADO GENERAL EN NAGOYA' => 'Nagoya',

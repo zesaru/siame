@@ -36,6 +36,13 @@ class Vacaciones
     private $cantidad;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="aprobado", type="integer", nullable=true)
+     */
+    private $aprobado;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="fechadeinicio", type="date", nullable=false)
@@ -66,7 +73,7 @@ class Vacaciones
     /**
      * @var string
      *
-     * @ORM\Column(name="observaciones", type="string", length=255, nullable=true)
+     * @ORM\Column(name="observaciones", type="text",  nullable=true)
      */
     private $observaciones;
 
@@ -126,6 +133,29 @@ class Vacaciones
     public function getCantidad()
     {
         return $this->cantidad;
+    }
+
+    /**
+     * Set aprobado
+     *
+     * @param integer $aprobado
+     * @return Vacaciones
+     */
+    public function setAprobado($aprobado)
+    {
+        $this->aprobado = $aprobado;
+    
+        return $this;
+    }
+
+    /**
+     * Get aprobado
+     *
+     * @return integer 
+     */
+    public function getAprobado()
+    {
+        return $this->aprobado;
     }
 
     /**

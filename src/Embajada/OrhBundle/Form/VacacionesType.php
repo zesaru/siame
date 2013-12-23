@@ -11,8 +11,12 @@ class VacacionesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechadesolitud')
+            ->add('fechadesolitud','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy'
+            ))
             ->add('cantidad')
+            ->add('aprobado', 'choice', array(
+                'choices' => array('1' => 'Aprobar', '2' => 'Denegar')
+            ))
             ->add('fechadeinicio','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy'
             ))
             ->add('fechadefin','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy'
