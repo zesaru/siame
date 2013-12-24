@@ -1,0 +1,30 @@
+Libros:
+    pattern:  /
+    defaults: { _controller: "InventarioBundle:Libros:index" }
+
+Libros_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InventarioBundle:Libros:show" }
+
+Libros_new:
+    pattern:  /new
+    defaults: { _controller: "InventarioBundle:Libros:new" }
+
+Libros_create:
+    pattern:  /create
+    defaults: { _controller: "InventarioBundle:Libros:create" }
+    requirements: { _method: post }
+
+Libros_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InventarioBundle:Libros:edit" }
+
+Libros_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InventarioBundle:Libros:update" }
+    requirements: { _method: post }
+
+Libros_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InventarioBundle:Libros:delete" }
+    requirements: { _method: post }

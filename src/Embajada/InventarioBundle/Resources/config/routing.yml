@@ -1,3 +1,3 @@
-inventario_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: InventarioBundle:Default:index }
+InventarioBundle_Libros:
+    resource: "@InventarioBundle/Resources/config/routing/libros.yml"
+    prefix:   /Libros

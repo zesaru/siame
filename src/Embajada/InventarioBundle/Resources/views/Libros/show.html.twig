@@ -1,0 +1,56 @@
+{% extends "::base8.html.twig" %}
+{% block body %}
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box box-color box-bordered green">
+            <div class="box-title">
+                <h3><i class="icon-th-list"></i>Detalle de Libro</a></h3>
+            </div>
+        </div>
+        <div class="box-content nopadding">
+            <table class="table table-nomargin dataTable">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ entity.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Titulo</th>
+                        <td>{{ entity.titulo }}</td>
+                    </tr>
+                    <tr>
+                        <th>Volumen</th>
+                        <td>{{ entity.volumen }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tomo</th>
+                        <td>{{ entity.tomo }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fechadepublicacion</th>
+                        <td>{% if entity.fechadepublicacion %}{{ entity.fechadepublicacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Autor</th>
+                        <td>{{ entity.autor }}</td>
+                    </tr>
+                    <tr>
+                        <th>Ubicacion</th>
+                        <td>{{ entity.ubicacion }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="span12" style='text-align:center'>
+            <br>
+                <a class="btn btn-inverse" href="{{ path('Libros') }}"><i class="icon-reply"></i>
+                    Regresar
+                </a>
+                <a class="btn btn-primary" href="{{ path('Libros_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i>
+                    Editar
+                </a>
+            </br>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

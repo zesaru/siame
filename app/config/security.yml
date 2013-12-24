@@ -27,6 +27,9 @@ security:
         - { path: ^/notascd/, role: ROLE_USER }
         - { path: ^/vacaciones/, role: ROLE_USER }
         - { path: ^/hremision/, role: ROLE_USER }
+        - { path: ^/Memoi/, role: ROLE_USER }
+        - { path: ^/Libros/, role: ROLE_USER }
+        - { path: ^/Oficios/, role: ROLE_USER }
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
