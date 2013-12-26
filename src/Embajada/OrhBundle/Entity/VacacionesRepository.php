@@ -68,4 +68,15 @@ class VacacionesRepository extends EntityRepository
           $query->setParameter('id', $usuario);
           $query->setParameter('num',$numvac);
     }
+   
+//Este query es para command de aprobarvacaciones
+   public function aprobarvacaciones()
+    {
+        $em = $this->getEntityManager();
+          $query = $em->createQuery('
+            select v.fechadesolitud 
+            from OrhBundle:Vacaciones v
+            ');
+          return $query->getScalarResult(); 
+    }
 }

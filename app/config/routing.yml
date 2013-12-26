@@ -85,3 +85,6 @@ ValijaBundle_hremision:
 ValijaBundle_Oficios:
     resource: "@ValijaBundle/Resources/config/routing/oficios.yml"
     prefix:   /Oficios
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

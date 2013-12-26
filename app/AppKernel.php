@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
             
             new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
             new Ps\PdfBundle\PsPdfBundle(),
@@ -29,10 +30,12 @@ class AppKernel extends Kernel
             new Embajada\NotasBundle\NotasBundle(),
             new Embajada\UserBundle\UserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
             new Embajada\InventarioBundle\InventarioBundle(),
             new Embajada\OrhBundle\OrhBundle(),
             new Embajada\EventosBundle\EventosBundle(),
-
+            new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
             new Leg\GoogleChartsBundle\LegGoogleChartsBundle(),
             new Embajada\ValijaBundle\ValijaBundle(),
             new Inicio\InicioBundle\InicioBundle(),

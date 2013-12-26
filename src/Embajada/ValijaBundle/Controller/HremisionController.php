@@ -207,6 +207,22 @@ public function showAction($id)
     }
 
     /**
+     * Aprueba una hoja de remision llamando al repositorio.
+     *
+     */
+    public function aprobarAction($numnota)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('ValijaBundle:Hremision')->Aprobar($numnota);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Hremision entity.'.$entity);
+        }
+        $em->flush();
+        //return $this->redirect($this->generateUrl('hremision'));
+
+    }
+    /**
      * Edits an existing Hremision entity.
      *
      */

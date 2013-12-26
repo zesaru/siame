@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Hremision
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Embajada\ValijaBundle\Entity\HremisionRepository")
  */
 class Hremision
 {

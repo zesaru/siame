@@ -23,12 +23,3 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: embajada_user_registration }
-
-    sonata.embajada.admin.inventario:
-        class: Embajada\InventarioBundle\Admin\InventarioAdmin
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Inventario', label: Bienes }
-        arguments:
-            - null
-            - Embajada\InventarioBundle\Entity\Bien
-            - InventarioBundle:Admin
