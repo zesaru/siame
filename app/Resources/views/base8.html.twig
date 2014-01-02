@@ -72,30 +72,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
-                        <i class="icon-th-large"></i>
-                        <span>Memorandum</span>
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="">Al Personal</a>
-                        </li>
-                        <li>
-                            <a href="">A los Consulados</a>
-                        </li>
-                        <li>
-                            <a href="">Mensajes</a>
-                        </li>
-                        <li>
-                            <a href="">Correspondencia</a>
-                        </li>
-                        <li>
-                            <a href="">Cesar</a>
-                        </li>
-                    </ul>
-                </li>
+
                 <li >
                     <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
                         <i class="icon-table"></i>
@@ -103,7 +80,7 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class='active'>
+                        <li>
                             <a href="{{ path('personal') }}">Empleados</a>
                         </li>
                         <li>
@@ -111,6 +88,9 @@
                         </li>
                         <li>
                             <a href="{{path('vacaciones_vista')}}">Vista General</a>
+                        </li>
+                        <li>
+                            <a href="{{path('vacaciones_new')}}">Solicitar Vacaciones</a>
                         </li>
                     </ul>
                 </li>
@@ -138,7 +118,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="">Libros</a>
+                            <a href="{{ path('Libros') }}">Libros</a>
                         </li>
                         <li>
                             <a href="">Inventario</a>

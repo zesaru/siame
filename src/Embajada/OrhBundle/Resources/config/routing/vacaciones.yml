@@ -10,6 +10,10 @@ vacaciones_show:
     pattern:  /{id}/show
     defaults: { _controller: "OrhBundle:Vacaciones:show" }
 
+vacaciones_mos:
+    pattern:  /{id}/mos
+    defaults: { _controller: "OrhBundle:Vacaciones:mos" }
+
 vacaciones_new:
     pattern:  /new
     defaults: { _controller: "OrhBundle:Vacaciones:new" }

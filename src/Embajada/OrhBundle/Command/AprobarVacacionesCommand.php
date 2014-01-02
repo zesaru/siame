@@ -37,16 +37,17 @@ EOT
 			$contenedor = $this->getContainer();
 			$em = $contenedor->get('doctrine')->getEntityManager();
 			// Obtener el listado de fechas de solicitud de vacaciones
-			$vacaciones = $em->getRepository('OrhBundle:Vacaciones')->aprobarvacaciones();
+			$vacaciones = $em->getRepository('OrhBundle:Vacaciones')->fechasaprobarvacaciones();
 			$fechas = array_map('current', $vacaciones);
 			for ($i=0; $i <count($fechas) ; $i++) { 
 				$fecha = date_create($fechas[$i]);
-				$hoy = new \DateTime();
+				$hoy = new \DateTime('-3days');
 
 				if ($fecha<= $hoy) {
 					$output->writeln('Es menor ...'.$hoy->format('Y-m-d H:i:s'));
 				} else {
-					$output->writeln('Es mayor ...'.$fecha->format('Y-m-d H:i:s'));
+					$aprobado = $em->getRepository('OrhBundle:Vacaciones')->aprobarvacaciones();
+					$output->writeln('Es mayor ...'.$aprobado);
 				}
 				
 				

@@ -341,11 +341,12 @@ $(document).ready(function() {
 	if($('.dataTable').length > 0){
 		$('.dataTable').each(function(){
 			var opt = {
+				"iDisplayLength": 100,
 				"sPaginationType": "full_numbers",
 				"oLanguage":{
-					"sSearch": "<span>Search:</span> ",
+					"sSearch": "<span>Buscar:</span> ",
 					"sInfo": "Showing <span>_START_</span> to <span>_END_</span> of <span>_TOTAL_</span> entries",
-					"sLengthMenu": "_MENU_ <span>entries per page</span>"
+					"sLengthMenu": "_MENU_ <span>registros por pagina</span>"
 				}
 			};
 			if($(this).hasClass("dataTable-noheader")){
@@ -397,7 +398,7 @@ $(document).ready(function() {
 				opt.sAjaxSource = "js/plugins/datatable/demo.txt";
 			}
 			var oTable = $(this).dataTable(opt);
-			$('.dataTables_filter input').attr("placeholder", "Search here...");
+			$('.dataTables_filter input').attr("placeholder", "Buscar...");
 			$(".dataTables_length select").wrap("<div class='input-mini'></div>").chosen({
 				disable_search_threshold: 9999999
 			});

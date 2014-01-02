@@ -75,7 +75,24 @@ class VacacionesController extends Controller
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
+    /**
+     * Lista las vacaciones por usuario.
+     *
+     */
+    public function mosAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
 
+        $vacaciones = $em->getRepository('OrhBundle:Vacaciones')->listarvacacionesporusuario($id);
+
+        if (!$vacaciones) {
+            throw $this->createNotFoundException('Unable to find Vacaciones entity.');
+        }
+        //ld($vacaciones);
+        return $this->render('OrhBundle:Vacaciones:mostrar.html.twig', array(
+            'vacaciones'      => $vacaciones,
+            ));
+    }
     /**
      * Displays a form to create a new Vacaciones entity.
      *
@@ -205,7 +222,6 @@ class VacacionesController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('OrhBundle:Vacaciones')->find($id);
 
         if (!$entity) {

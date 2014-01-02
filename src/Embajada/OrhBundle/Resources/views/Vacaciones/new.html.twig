@@ -68,28 +68,25 @@ li{
                 <div>
                     {{ form_widget(form._token) }}
                 </div>
-                    <p>
-                        <button type="submit">Guardar</button>
-                    </p>
-
-                </form>
-                <ul class="record_actions">
-                    <li>
-                        <a href="{{ path('hremision') }}">
-                            Back to the list
-                        </a>
-                    </li>
-                </ul>
+              <div class="span12">
+            <br>
+                <button id="guardar" class="btn btn-primary" type="submit"><i class="icon-save"></i> Guardar</button>
+                <a class="btn btn-inverse" href="{{ path('vacaciones') }}"><i class="icon-reply"></i>
+                 Regresar
+                </a>
+            </br>
+            </div>
+            {#{ form_widget(form) }#}
+            </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    var max = parseInt($('#numerodias').text());
-    $(function(){
-        $('#embajada_orhbundle_vacacionestype_cantidad').attr("max",max);
-       
+var max = parseInt($('#numerodias').text());
+$(function(){
+    $('#embajada_orhbundle_vacacionestype_cantidad').attr("max",max);
 });
 </script>
 {% endblock body %}

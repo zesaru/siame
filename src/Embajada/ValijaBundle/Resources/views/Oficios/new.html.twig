@@ -1,7 +1,7 @@
 {% extends "::base8.html.twig" %}
 {% block body %}
 <!-- CKEditor -->
-	<script src="{{ asset('bundles/notas/js/plugins/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('bundles/notas/js/plugins/ckeditor/ckeditor.js') }}"></script>
 <div class="row-row-fluid">
 	<div class="span12">
 		<div class="box">
@@ -13,27 +13,33 @@
 			<form action="{{ path('Oficios_create') }}" method="post" {{ form_enctype(form) }}>
     		{{ form_errors(form) }}
     		<div>
-	    		<div class="span2">
+	    		<div class="span1">
 	    			{{ form_errors  (form.numerodeoficio) }}
-	    			{{ form_label  (form.numerodeoficio, 'Numero de Oficio') }}
+	    			{{ form_label  (form.numerodeoficio, 'No Oficio') }}
 	    			{{ form_widget (form.numerodeoficio, { 'attr': {
-	                    'class':"input-small",}}
+	                    'class':"input-block-level",}}
 	                        )}}
 	            </div>
-	            <div class="span3">
+	            <div class="span5">
 	                {{ form_errors  (form.referencia) }}
 	    			{{ form_label  (form.referencia) }}
-	    			{{ form_widget (form.referencia) }}
+	    			{{ form_widget (form.referencia, { 'attr': {
+	                    'class':"input-block-level",}}
+	                        )}}
 	    		</div>
-	            <div class="span3">
+	            <div class="span2">
 	                {{ form_errors  (form.destino) }}
 	    			{{ form_label  (form.destino) }}
-	    			{{ form_widget (form.destino) }}
+	    			{{ form_widget (form.destino, { 'attr': {
+	                    'class':"input-block-level",}}
+	                        )}}
 	    		</div>
-	            <div class="span3">
+	            <div class="span2">
 	                {{ form_errors  (form.clasificacion) }}
 	    			{{ form_label  (form.clasificacion) }}
-	    			{{ form_widget (form.clasificacion) }}
+	    			{{ form_widget (form.clasificacion, { 'attr': {
+	                    'class':"input-block-level",}}
+	                        )}}
 	    		</div>
 	    	</div>
     		<div class="span12">

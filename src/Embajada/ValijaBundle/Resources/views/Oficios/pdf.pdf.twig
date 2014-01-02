@@ -7,7 +7,8 @@ li{
     text-decoration: none;
 }
     .sangria {  
-        text-indent: 50px; 
+        text-indent: 50px;
+        text-align: justify;
     }
     p{
         font-family: Arial;
@@ -29,14 +30,47 @@ li{
             
             <p style="text-align:right;"><strong>Tokio, {{ entity.fecha|fecha ('long','none','es')}}</strong></p><p></p>
             {% if entity.clasificacion|upper =='ABIERTO' %}
-                <p>Of. "RE" No 5-18-A/{{ entity.numerodeoficio }} ({{ entity.destino }})<br>{{ entity.asunto }}</p>
+                <table style="width:185px">
+                    <tr>
+                        <td>
+                    <p>Oficio Nro 5-18-A/{{ entity.numerodeoficio }} ({{ entity.destino }})<hr>{{ entity.asunto }}.<hr>Ref {{ entity.referencia }}</p>
+                        </td>
+                    </tr>
+                </table>
             {% else %}
-                <p>Of. "RE" No 5-18-YY/{{ entity.numerodeoficio }} ({{ entity.destino }})<br>{{ entity.asunto }}</p>
+                <table style="width:185px">
+                    <tr>
+                        <td>
+                    <p>Oficio Nro 5-18-YY/{{ entity.numerodeoficio }} ({{ entity.destino }})<hr>{{ entity.asunto }}.<hr>Ref {{ entity.referencia }}</p>
+                        </td>
+                    </tr>
+                </table>
             {% endif %}
-            <p>Ref {{ entity.referencia }}</p>
-            <p>{{ entity.clasificacion }}</p>
+            <p></p>
+            <table >
+                <tr>
+                    <td style="width:100px">
+                    </td>                    
+                    <td>
+                        <p><strong>Señora<br>Ministra de Estado en el<br>Despacho de Relaciones Exteriores<br>Lima
+                            </strong>
+                        </p>
+                    </td>
+                </tr>                
+                <tr>
+                    <td style="width:100px">
+                    </td>
+                    <td style="width:375px">
+                    <p class="sangria">{{ entity.cuerpo| raw }}</p>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <p style="text-align:center">Dios guarde a usted</p>
+            <br>
+            <br>
+            <p style="text-align:center">Elard Escala<br>Embajador</p>            
 
-            <p>{{ entity.cuerpo| raw }}</p>
 
 
 
