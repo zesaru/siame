@@ -24,9 +24,13 @@ class LibrosController extends Controller
 
         $entities = $em->getRepository('InventarioBundle:Libros')->findAll();
 
-        return $this->render('InventarioBundle:Libros:index.html.twig', array(
+        $respuesta = $this->render('InventarioBundle:Libros:index.html.twig', array(
             'entities' => $entities,
         ));
+
+        $respuesta->setSharedMaxAge(600);
+
+        return $respuesta;
     }
 
     /**

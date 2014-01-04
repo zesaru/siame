@@ -24,7 +24,8 @@ class VacacionesType extends AbstractType
             ->add('comentario')
             ->add('fechadeaprobacion')
             ->add('observaciones')
-            //->add('personal')
+            ->add('uaprobado')
+            ->add('ucreado')
         ;
 
     }

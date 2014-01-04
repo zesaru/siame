@@ -43,7 +43,7 @@ EOT
 				$fecha = date_create($fechas[$i]);
 				$hoy = new \DateTime('-3days');
 
-				if ($fecha<= $hoy) {
+				if ($fecha>= $hoy) {
 					$output->writeln('Es menor ...'.$hoy->format('Y-m-d H:i:s'));
 				} else {
 					$aprobado = $em->getRepository('OrhBundle:Vacaciones')->aprobarvacaciones();

@@ -67,13 +67,23 @@ class VacacionesRepository extends EntityRepository
           $query->setParameter('id', $usuario);
           $query->setParameter('num',$numvac);
     }
-   
+//devuelve las vacaciones despues que han sido rechasadas
+   public function devolvervacaciones($usuario, $numvac)
+    {
+        $em = $this->getEntityManager();
+          $query = $em->createQuery('
+            update UserBundle:User u
+            set u.numerodediasdevacaciones = 20
+            where u.id = :id');
+          $query->setParameter('id', $usuario);
+          $query->setParameter('num',$numvac);
+    }   
 //Este query es para command de aprobarvacaciones
    public function fechasaprobarvacaciones()
     {
         $em = $this->getEntityManager();
           $query = $em->createQuery('
-            select v.fechadesolitud, 
+            select v.fechadesolitud
             from OrhBundle:Vacaciones v
             ');
           return $query->getScalarResult(); 
@@ -91,15 +101,17 @@ class VacacionesRepository extends EntityRepository
           $query->setParameter('id',$id);
           return $query->getResult(); 
     }
+
    public function aprobarvacaciones()
     {
         $em = $this->getEntityManager();
           $query = $em->createQuery('
             update OrhBundle:Vacaciones v 
-            set v.aprobado=1
-            where v.fechadesolitud<=:hoy and v.aprobado is null
+            set v.aprobado=1 , v.fechadeaprobacion=:hoy , v.uaprobado=7
+            where v.fechadesolitud<=:hoymenos3 and v.aprobado is null
             ');
-          $query->setParameter('hoy', new \DateTime('-3days'));
+          $query->setParameter('hoymenos3', new \DateTime('-3days'));
+          $query->setParameter('hoy', new \DateTime());
             
           return $query->getSingleScalarResult(); 
     }

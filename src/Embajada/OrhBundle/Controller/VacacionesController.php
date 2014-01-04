@@ -230,7 +230,7 @@ class VacacionesController extends Controller
 
         $editForm = $this->createForm(new VacacionesType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
-
+        ld($entity);
         return $this->render('OrhBundle:Vacaciones:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
@@ -251,10 +251,29 @@ class VacacionesController extends Controller
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new VacacionesType(), $entity);
         $editForm->bind($request);
+
         if ($editForm->isValid()) {
+            $usuario = $this->getUser();
+            $entity->setUaprobado($usuario);
+            $entity -> setFechadeaprobacion(new \DateTime());
+            //recuperas el valor si es aprobado o denegado
+            $estado= $entity->getAprobado();
+            //pasa el objeto usuario a solicitante
+            $solicitante= $entity->getUcreado();
+            //recuperas el id del solicitante
+            $iduser = $solicitante->getId();
+            //recuperas la cantidad del usuario
+            $cantidad= $entity->getCantidad();
+            //recuperas del objeto solicitante el numero actual de vacaciones
+            $cantidadanterior=$solicitante->getNumerodediasdevacaciones();
+
+            //preguntamos si es 1 aprobado o 2 denegado
+            if ($estado==2) {
+                $solicitante->setNumerodediasdevacaciones($cantidadanterior+$cantidad);
+            }
             $em->persist($entity);
             $em->flush();
-            return $this->redirect($this->generateUrl('vacaciones_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('vacaciones'));
         }
         return $this->render('OrhBundle:Vacaciones:edit.html.twig', array(
             'entity'      => $entity,

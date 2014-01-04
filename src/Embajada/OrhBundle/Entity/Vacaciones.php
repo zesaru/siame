@@ -87,6 +87,15 @@ class Vacaciones
      */
     private $ucreado;
 
+    /**
+     * @var \FosUser
+     *
+     * @ORM\ManyToOne(targetEntity="Embajada\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="uaprobado", referencedColumnName="id")
+     * })
+     */
+    private $uaprobado;
 
 
     /**
@@ -304,6 +313,27 @@ class Vacaciones
     {
         return $this->ucreado;
     }
+    /**
+     * Set uaprobado
+     *
+     * @param \Embajada\UserBundle\Entity\User $uaprobado
+     * @return Notascd
+     */
+    public function setUaprobado(\Embajada\UserBundle\Entity\User $uaprobado = null)
+    {
+        $this->uaprobado = $uaprobado;
+    
+        return $this;
+    }
 
+    /**
+     * Get uaprobado
+     *
+     * @return \Embajada\UserBundle\Entity\User 
+     */
+    public function getUaprobado()
+    {
+        return $this->uaprobado;
+    }
 
 }
