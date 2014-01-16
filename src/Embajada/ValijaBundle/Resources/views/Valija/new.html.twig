@@ -1,0 +1,45 @@
+{% extends "::base8.html.twig" %}
+{% block body %}
+
+<div class="row-row-fluid">
+	<div class="span12">
+		<div class="box">
+			<div class="box-title">
+				<h3><i class="icon-list"></i>Crear Valija</h3>
+			</div>
+		</div>
+		<div class="box-content">
+		<form action="{{ path('valija_create') }}" method="post" {{ form_enctype(form) }}>
+		   
+
+
+	                {{ form_errors  (form.numerodevalija) }}
+	    			{{ form_label  (form.numerodevalija) }}
+	    			{{ form_widget (form.numerodevalija)}}
+	    			{# Atributos
+	    			, { 'attr': {
+	                    'class':"input-block-level",}}
+	                ui-spinner ui-widget ui-widget-content ui-corner-all
+	                'class':"input-small datepick",
+	                ,'date', array('widget' => 'single_text','format' => 'dd/MM/yyyy'
+            ))
+	                #}
+
+
+	                        
+             {{ form_widget(form) }}
+            {{ form_widget(form._token) }}	
+            <div class="span12">
+            <br>
+        		<button class="btn btn-primary"type="submit"><i class="icon-save"></i> Guardar</button>
+        		<a class="btn btn-inverse" href="{{ path('valija') }}"><i class="icon-reply"></i>
+	             Regresar
+	        	</a>
+    		</br>
+            </div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock body %}
+

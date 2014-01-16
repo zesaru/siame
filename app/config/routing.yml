@@ -88,3 +88,9 @@ ValijaBundle_Oficios:
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+hremision_aprobar:
+    pattern:  /{id}/aprobar
+    defaults: { _controller: "ValijaBundle:Hremision:aprobar" }
+    options:
+        expose: true

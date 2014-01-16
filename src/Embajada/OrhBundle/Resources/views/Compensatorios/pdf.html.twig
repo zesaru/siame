@@ -1,0 +1,91 @@
+<html>  
+<head>  
+  <style>  
+    table{
+    font-size: 11px;
+    }
+    .tabulaciones{
+        padding: 5px;
+        vertical-align: middle;;
+    }
+    .margensuperior{
+        padding-top: 10px;
+    }
+    .sangria {  
+        text-indent: 50px; 
+    }
+    .sangriad {  
+    text-indent: 60px; 
+    }
+    p{
+        font-family: Arial;
+        font-size: 11;
+    }
+  </style>  
+</head>  
+<body>
+    <table border="0">
+        <tr>
+            <td colspan="3" height="20">          
+                <img src="{{ pdf_image('NotasBundle:logoembajadaes.jpg') }}" width="140" height="85"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" height="20">
+            <p><strong>FORMATO Nº 02</strong></p>
+            <p align="center"><strong>SOLICITUD REGISTRO DE DIAS COMPENSATORIOS</strong></p>
+            </td>
+        </tr>
+        <p></p>
+        <tr>
+            <td height="25px" width="50px"></td>
+            <td width="100px">AL</td>
+            <td width="20px">:</td>
+            <td width="400">JEFE DE CANCILLERIA</td>
+        </tr>
+        <tr>
+            <td height="25px" width="50px"></td>
+            <td width="100px">DE</td>
+            <td width="20px">:</td>
+            <td>{{ entity.ucreado.name|upper}} {{ entity.ucreado.apellidos|upper}}</td>
+        </tr>
+        <tr>
+            <td height="25px" width="50px"></td>
+            <td width="100px">FECHA</td>
+            <td width="20px">:</td>
+            <td>{{ entity.fechadesolicitud|fecha ('long','none','es')|upper }}</td>
+        </tr>
+    </table>
+    <p></p>
+    <p></p>
+    <hr>
+    <p></p>
+    <table>
+        <tr>
+            <td align="justify">De conformidad con los Memoranda Circulares Nº 04/2012 y Nº 01/2013, es grato dirigirme a usted, a fin de solicitar el registro de  {{ entity.diasdecompensatorio }} 
+            {% if entity.diasdecompensatorio==1 %}día compensatorio
+            {% else %}días compensatorios
+            {% endif %}
+            ,correspondientes a los siguientes eventos requeridos por la Embajada:
+            </td>
+        </tr>
+    </table>
+    <p></p>
+    <table border="1px" class="tabulaciones">
+        <tr>
+            <td width="75px" align="center" class="margensuperior">Fecha</td>
+            <td width="220px">Actividad</td>
+            <td width="40px">Hora Inicio</td>
+            <td width="52px">Hora de Termino</td>
+            <td width="120px">Autoridad que solicito requerimiento</td>
+        </tr>
+        <tr>
+            <td>{% if entity.fechadeevento1 %}{{ entity.fechadeevento1|date('Y-m-d') }}{% endif %}</td>
+            <td>{{entity.actividad1}}</td>
+            <td>{% if entity.horadeinicio %}{{ entity.horadeinicio|date('H:m') }}{% endif %}</td>
+            <td>{% if entity.horadefin1 %}{{ entity.horadefin1|date('H:m') }}{% endif %}</td>
+            <td>Embajador</td>
+        </tr>
+    </table>
+</body>
+</html>

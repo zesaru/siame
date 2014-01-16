@@ -1,0 +1,61 @@
+{% extends "::base8.html.twig" %}
+{% block body %}
+<style>
+a{
+    color: red;
+    font-size: 16px;
+}
+.icon-ok-sign{
+    color: green;
+    font-size: 12px;
+
+}
+table tr td .aprobado{
+    text-align: center;
+}
+</style>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box box-color box-bordered green">
+            <div class="box-title">
+                <h3><a class="btn btn-success" href="{{ path('compensatorios_new') }}"><i class="icon-plus-sign"></i>Solicitar Registro de dias u horas de Compensatorio </a></h3>
+            </div>
+        </div>
+        <div class="box-content nopadding">
+            <table class="table table-hover table-nomargin table-striped dataTable dataTable-reorder">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Diasdecompensatorio</th>
+                        <th>Fechadesolicitud</th>
+                        <th>Fechadeaprobado</th>
+                        <th>Estado</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('compensatorios_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.diasdecompensatorio }}</td>
+                        <td>{% if entity.fechadesolicitud %}{{ entity.fechadesolicitud|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if entity.fechadeaprobado %}{{ entity.fechadeaprobado|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ entity.estado }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('compensatorios_show', { 'id': entity.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('compensatorios_edit', { 'id': entity.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock body %}

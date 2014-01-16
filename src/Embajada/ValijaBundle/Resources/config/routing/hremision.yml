@@ -6,10 +6,6 @@ hremision_show:
     pattern:  /{id}/show
     defaults: { _controller: "ValijaBundle:Hremision:show" }
 
-hremision_aprobar:
-    pattern:  /{numnota}/aprobar
-    defaults: { _controller: "ValijaBundle:Hremision:aprobar" }
-
 hremision_etiquetas:
     pattern:  /{id}/etiquetas
     defaults: { _controller: "ValijaBundle:Hremision:etiquetas" }

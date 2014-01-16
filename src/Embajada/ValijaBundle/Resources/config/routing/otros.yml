@@ -1,0 +1,30 @@
+otros:
+    pattern:  /
+    defaults: { _controller: "ValijaBundle:Otros:index" }
+
+otros_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ValijaBundle:Otros:show" }
+
+otros_new:
+    pattern:  /new
+    defaults: { _controller: "ValijaBundle:Otros:new" }
+
+otros_create:
+    pattern:  /create
+    defaults: { _controller: "ValijaBundle:Otros:create" }
+    requirements: { _method: post }
+
+otros_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ValijaBundle:Otros:edit" }
+
+otros_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ValijaBundle:Otros:update" }
+    requirements: { _method: post }
+
+otros_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ValijaBundle:Otros:delete" }
+    requirements: { _method: post }

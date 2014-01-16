@@ -1,40 +1,74 @@
 {#% extends "::base8.html.twig" %#}
-{% block body %}
 <style>
 body{
     font-family: Arial;
-    margin-top: 10px;
+    font-size: 12px;
+}
+table{
+    
+    
+    width: 260px;
 }
 p{
-    font-size: 11px;
+    margin: 0;
 }
-.contenedor{
-
+.centrado{
+    font-size: 16px;
+    text-align: center;
 }
-.etiqueta{
-
-    height:80px;
-    margin: 4em;
-    display: inline-block;
+.espacio{
+    font-size: 5px;
+}
+.dospixeles{
+    font-size: 2.1px;
 }
 .etiqueta:nth-child(even){
         float:rigth;
-    }
-.numerodehoja{
-    text-align: center;
-
 }
 
 </style>
-<table>
-{% for hojaderemision in hojaderemision %}
-    <tr class="etiqueta">
-        <td>EMBAJADA DEL PERÚ EN JAPÓN<br><br>
-        H.R. 5-18-A/{{ hojaderemision.numero }}{{ hojaderemision.destino }}<br><br>
-        Ministerio de Relaciones Exteriores<br>
-        Jr. Lampa 353 Lima1 - Perú</td>
-   </tr>
-{% endfor %}
-</table>
+<body>
+    {% for hojaderemision in hojaderemision %}
+    <table>
+        <tr>
+            <td><p class="espacio"> </p></td>
+        </tr>        
+        <tr>
+            <td><p class="espacio"> </p></td>
+        </tr>        
+        <tr>
+            <td><p style="font-size:14px"><strong>EMBAJADA DEL PERÚ EN JAPÓN</strong></p></td>
+        </tr>
+        <tr>
+            <td><p class="espacio"> </p></td>
+        </tr>
+        <tr>
+            <td><p class="espacio"> </p></td>
+        </tr>
+        <tr>
+            <td class="centrado"><p>H.R. 5-18-A/{{ hojaderemision.numero }} ({{ hojaderemision.destino }})</p>
+            </td>
+            <br>
+       </tr>
 
-{% endblock body %}
+       <tr>
+            <td><p font-size="13px" style="color:white">Ministerio de Relaciones Exteriores</p>
+            </td>
+       </tr>       
+       <tr>
+            <td><p>Ministerio de Relaciones Exteriores</p>
+            </td>
+       </tr>
+       <tr>
+            <td>Jr. Lampa 353 Lima1 - Perú
+            </td>
+        </tr>
+        <tr>
+            <td><p class="espacio"> </p></td>
+        </tr>
+        <tr>
+            <td><p class="espacio"> </p></td>
+        </tr>
+    </table>
+    {% endfor %}
+</body>

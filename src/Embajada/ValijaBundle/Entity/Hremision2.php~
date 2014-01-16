@@ -84,8 +84,15 @@ class Hremision
      */
     private $observaciones;
 
-    /** @ORM\ManyToOne(targetEntity="Embajada\ValijaBundle\Entity\Valija") */
-    private $valija;
+    /**
+     * @var \Valija
+     *
+     * @ORM\ManyToOne(targetEntity="Embajada\ValijaBundle\Entity\Valija")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="numerodevalija", referencedColumnName="id")
+     * })
+     */
+    private $numerodevalija;
 
     /**
      * @var string
@@ -336,23 +343,27 @@ class Hremision
         return $this->observaciones;
     }
 
-
-
-    public function setValija(\Embajada\ValijaBundle\Entity\Valija $valija)
+    /**
+     * Set numerodevalija
+     *
+     * @param integer $numerodevalija
+     * @return Hremision
+     */
+    public function setNumerodevalija($numerodevalija)
     {
-        $this->valija = $valija;
+        $this->numerodevalija = $numerodevalija;
     
         return $this;
     }
 
     /**
-     * Get valija
+     * Get numerodevalija
      *
      * @return integer 
      */
-    public function getValija()
+    public function getNumerodevalija()
     {
-        return $this->valija;
+        return $this->numerodevalija;
     }
 
     /**
@@ -443,5 +454,4 @@ class Hremision
     {
         return $this->peso;
     }
-
 }

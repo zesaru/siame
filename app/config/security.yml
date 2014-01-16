@@ -13,7 +13,9 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
-            logout:       true
+            logout:
+                path: fos_user_security_logout
+                target: _welcome
             anonymous:    true
             security:     true
 
@@ -30,6 +32,7 @@ security:
         - { path: ^/Memoi/, role: ROLE_USER }
         - { path: ^/Libros/, role: ROLE_USER }
         - { path: ^/Oficios/, role: ROLE_USER }
+        - { path: ^/compensatorios/, role: ROLE_USER }
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER

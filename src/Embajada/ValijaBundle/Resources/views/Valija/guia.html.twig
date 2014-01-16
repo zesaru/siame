@@ -1,0 +1,107 @@
+<html>
+<head>
+	<title>Guia de Valija</title>
+<style type="text/css">
+table{
+	font-size: 8px;
+	padding: 2px;
+}
+.superior{
+	font-size: 10px;
+}
+</style>
+</head>
+<body>
+<table>
+	<tr>
+		<td width="200px"><img src="{{ pdf_image('NotasBundle:logoembajadaes.jpg') }}" width="120" height="70"></td>
+		<td width="140px"></td>
+		<td width="99px"></td>
+		<td width="60px"></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><p class="superior"><strong>FECHA DE ENVIO : </strong></p></td>
+		<td border="0.50"><p class="superior" style="text-align:right;"><strong>{{ entity.fecha|date('d/m/Y')}}</strong></p>
+		</td >
+	</tr>
+</table>
+<p></p>
+<p align="center"><h3><strong>GUIA DE VALIJA DIPLOMATICA No. 0{{entity.numerodevalija}} - {{entity.fecha|date('Y')}}</strong></h3></p>
+<table>
+	<tr>
+		<td><p class="superior">PARA: MINISTERIO DE RELACIONES EXTERIORES</p></td>
+		<td></td>
+	</tr>
+</table>
+<p></p>
+{% set i=0 %}
+{% set pt=0 %}
+<table width="500" border="0.75">
+<tr>
+	<td width="20" align="center">No.</td>
+	<td width="125" align="center">DESTINATARIO</td>
+	<td width="175" align="center">CONTENIDO</td>
+	<td width="110" align="center">REMITENTE</td>
+	<td width="45" align="center">CANTIDAD</td>
+	<td width="30" align="center">PESO</td>
+</tr>
+{% for hojaderemision in hojaderemision %}
+	{% set i=i+1 %}
+	{% set pt=pt+hojaderemision.peso %}
+	<tr>
+		<td width="20" align="center">{{ i }}</td>
+		<td>Dir. Documentacion </td>
+		<td> H. R. No. 5-18-A/{{hojaderemision.numero}} ({{hojaderemision.destino}})</td>
+		<td> Embajada</td>
+		<td align="center">1</td>
+		<td align="center">{{hojaderemision.peso}}</td>
+	</tr>
+{% endfor %}
+{% for oficios in oficios %}
+	{% set i=i+1 %}
+	{% set pt=pt+oficios.peso %}
+	<tr>
+		<td width="20" align="center">{{ i }}</td>
+		<td>Dir. Documentacion </td>
+		<td> OFICIO No. 5-18-A/{{oficios.numerodeoficio}} ({{oficios.destino}})</td>
+		<td > Embajada</td>
+		<td align="center">1</td>
+		<td align="center">{{oficios.peso}}</td>
+	</tr>
+{% endfor %}
+{% for otros in otros %}
+	{% set i=i+1 %}
+	{% set pt=pt+otros.peso %}
+	<tr>
+		<td width="20" align="center">{{ i }}</td>
+		<td >{{otros.destinatario}}</td>
+		<td>{{otros.contenido}}</td>
+		<td > {{otros.remitente}}</td>
+		<td align="center">1</td>
+		<td align="center">{{otros.peso}}</td>
+	</tr>
+{% endfor %}
+</table>
+<p></p>
+<hr>
+<table class="superior">
+	<tr>
+		<td><strong>TOTAL ITEMS : ({{ 	i }})</strong></td>
+		<td></td>
+		<td><strong>PESO TOTAL ITEMS : {{ pt| number_format(3,'.','.') }}Kgrs.</strong></td>
+	</tr>
+</table>
+
+<p></p><p></p><p></p>
+<p></p><p></p><p></p>
+<p align="center">Elard Escala <br>Embajador	</p>
+</body>
+</html>

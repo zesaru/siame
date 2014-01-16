@@ -23,7 +23,7 @@ class NotasController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $query = $em->createQuery(
-    'SELECT n FROM NotasBundle:Notas n ORDER BY n.numerodenota ASC');
+    'SELECT n FROM NotasBundle:Notas n ORDER BY n.fecha ASC');
 
         //$entities = $em->getRepository('NotasBundle:Notas')->findAll();
         $entities = $query->getResult();

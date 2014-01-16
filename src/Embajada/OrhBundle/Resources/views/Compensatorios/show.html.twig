@@ -1,0 +1,102 @@
+<h1>Compensatorios</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Diasdecompensatorio</th>
+            <td>{{ entity.diasdecompensatorio }}</td>
+        </tr>
+        <tr>
+            <th>Fechadesolicitud</th>
+            <td>{{ entity.fechadesolicitud|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Fechadeaprobado</th>
+            <td>{% if entity.fechadeaprobado %}{{ entity.fechadeaprobado|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Estado</th>
+            <td>{{ entity.estado }}</td>
+        </tr>
+        <tr>
+            <th>Observaciones</th>
+            <td>{{ entity.observaciones }}</td>
+        </tr>
+        <tr>
+            <th>Fechadeevento1</th>
+            <td>{{ entity.fechadeevento1|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Fechadeevento2</th>
+            <td>{{ entity.fechadeevento2|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Fechadeevento3</th>
+            <td>{{ entity.fechadeevento3|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Fechadeevento4</th>
+            <td>{{ entity.fechadeevento4|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Actividad1</th>
+            <td>{{ entity.actividad1 }}</td>
+        </tr>
+        <tr>
+            <th>Actividad2</th>
+            <td>{{ entity.actividad2 }}</td>
+        </tr>
+        <tr>
+            <th>Actividad3</th>
+            <td>{{ entity.actividad3 }}</td>
+        </tr>
+        <tr>
+            <th>Actividad4</th>
+            <td>{{ entity.actividad4 }}</td>
+        </tr>
+        <tr>
+            <th>Horadeinicio</th>
+            <td>{{ entity.horadeinicio|date('H:i:s')}}</td>
+        </tr>
+        <tr>
+            <th>Horadeinicio2</th>
+            <td>{{ entity.horadeinicio2|date('H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Horadeinicio3</th>
+            <td>{{ entity.horadeinicio3|date('H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Horadeinicio4</th>
+            <td>{{ entity.horadeinicio4|date('H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Horadefin1</th>
+            <td>{{ entity.horadefin1|date('H:i:s')  }}</td>
+        </tr>
+        <tr>
+            <th>Horadefin2</th>
+            <td>{{ entity.horadefin2|date('H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Horadefin3</th>
+            <td>{{ entity.horadefin3|date('H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Horadefin4</th>
+            <td>{{ entity.horadefin4|date('H:i:s') }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('compensatorios') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>

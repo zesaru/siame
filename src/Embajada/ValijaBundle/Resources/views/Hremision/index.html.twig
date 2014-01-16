@@ -5,14 +5,6 @@ a{
     color: red;
     font-size: 16px;
 }
-.boton{
-    background-color:#368EE0;
-    color: white;
-    font-weight: bold;
-    margin-top: 5em;
-    padding: 0.5em;
-    text-decoration: none; 
-}
 ul{
     margin-top: 2em;
 }
@@ -27,13 +19,14 @@ table tr td .aprobado{
     text-align: center;
 }
 </style>
+<script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script> 
                 <div class="row-fluid">
                     <div class="span12">
                         <div class="box box-color box-bordered green">
                             <div class="box-title">
                                 <h3>
-                                    <i class="icon-table"></i>
-                                    Hojas de Remisión
+                                    <a class="btn btn-success" href="{{ path('hremision_new') }}"><i class="icon-plus-sign"></i>Agregar Hoja de Remisión </a>
                                 </h3>
                             </div>
                             <div class="box-content nopadding">
@@ -41,13 +34,13 @@ table tr td .aprobado{
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Numero</th>
+                                        <th>Número</th>
                                         <th>Destino</th>
                                         <th>Asunto</th>
                                         <th>Fecha</th>
                                         <th>Aprobado</th>
                                         <th>Gestor</th>
-                                        <th>Actions</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,8 +53,8 @@ table tr td .aprobado{
                                         <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d') }}{% endif %}</td>
                                         {% if entity.estado==1 %}
                                         <td style="text-align:center"><i class="icon-ok-sign"></i></td>
-                                        {%else%}
-                                        <td style="text-align:center"><i class="icon-time"></i></td>
+                                        {% else %}
+                                        <td style="text-align:center"><a href="#" onclick="(estasSeguro({{ entity.id }}))"><i class="icon-time"></i></a></td>
                                         {% endif %}
                                         <td>{{ entity.ucreado }}</td>
                                         <td>
@@ -75,15 +68,16 @@ table tr td .aprobado{
                         </div>    
                     </div>        
                 </div>
-<ul>
-    <li>
-        <a class="boton" href="{{ path('hremision_new') }}">
-            
-            Crear Hoja de Remision
-            
-        </a>
+    <script type="text/javascript"> 
+    //<![CDATA[   
 
-    </li>
-</ul>
-
+    // Sacar un dialogo de confirmacion y redireccionar al borrado, si procede. 
+    function estasSeguro(id){
+    var url_borrar = Routing.generate('hremision_aprobar',{ "id": id }); 
+        //alert(url_borrar); 
+        if (confirm("Seguro que deseas aprobar esta Hoja de Remisión")){ 
+            window.location = url_borrar; 
+        }
+    }   //]]> 
+    </script>                
 {% endblock body %}

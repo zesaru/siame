@@ -23,8 +23,11 @@ class HremisionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ValijaBundle:Hremision')->findAll();
+        $consulta = $em->createQuery('SELECT h, u from ValijaBundle:Hremision h 
+            JOIN h.ucreado u ORDER BY h.id DESC');
 
+        $entities = $consulta->getResult();
+        //ld($entities);
         return $this->render('ValijaBundle:Hremision:index.html.twig', array(
             'entities' => $entities,
         ));
@@ -34,7 +37,7 @@ class HremisionController extends Controller
      * Finds and displays a Hremision entity.
      *
      */
-public function showAction($id)
+    public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('ValijaBundle:Hremision')->find($id);
@@ -42,6 +45,9 @@ public function showAction($id)
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Biblioteca entity.');
         }
+        //nombredearchivo
+        $numero = $entity->getNumero();
+        //ld($numero);
         $response = $this->render('ValijaBundle:Hremision:impresion.html.twig', array(
             'entity'      => $entity,
            ));
@@ -49,7 +55,7 @@ public function showAction($id)
         $html = $response->getContent();
         $pdf = $this->container->get("white_october.tcpdf")->create();
         $pdf->SetAuthor('Cesar Murillo');
-        $pdf->SetTitle('Notas');
+        $pdf->SetTitle('Hojas de  Remisión');
         // set default font subsetting mode
         $pdf->setFontSubsetting(true);
        // $pdf->
@@ -67,7 +73,8 @@ public function showAction($id)
         $pdf->Ln();
         // reset pointer to the last page
         $pdf->lastPage();
-        $pdf->Output('hojasderemision.pdf', 'I');
+
+        $pdf->Output('hojasderemision'.$numero.'.pdf', 'I');
     }        
          
 
@@ -75,7 +82,7 @@ public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $hojaderemision = $em->getRepository('ValijaBundle:Hremision')->findByNumerodevalija($id);
+        $hojaderemision = $em->getRepository('ValijaBundle:Hremision')->findByValija($id);
 
         if (!$hojaderemision) {
             throw $this->createNotFoundException('Unable to find Hremision entity.');
@@ -83,7 +90,7 @@ public function showAction($id)
 
         $response = $this->render('ValijaBundle:Hremision:etiquetas.html.twig', array(
             'hojaderemision'      => $hojaderemision,       ));
-                //elimina la molesta cabecera 
+        //elimina la molesta cabecera 
         $html = $response->getContent();
         $pdf = $this->container->get("white_october.tcpdf")->create();
         $pdf->SetAuthor('Cesar Murillo');
@@ -94,7 +101,7 @@ public function showAction($id)
         $pdf->SetPrintHeader(false);
         $pdf->SetPrintFooter(false);
         //set margins
-        $pdf->SetMargins(17,5,10);
+        $pdf->SetMargins(16,23,4);
         // Add a page
         // This method has several options, check the source code documentation for more information.
         $pdf->AddPage();
@@ -202,7 +209,7 @@ public function showAction($id)
         return $this->render('ValijaBundle:Hremision:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            //'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -210,16 +217,16 @@ public function showAction($id)
      * Aprueba una hoja de remision llamando al repositorio.
      *
      */
-    public function aprobarAction($numnota)
+    public function aprobarAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('ValijaBundle:Hremision')->Aprobar($numnota);
+        $entity = $em->getRepository('ValijaBundle:Hremision')->Aprobar($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Hremision entity.'.$entity);
         }
         $em->flush();
-        //return $this->redirect($this->generateUrl('hremision'));
+        return $this->redirect($this->generateUrl('hremision'));
 
     }
     /**
@@ -236,7 +243,6 @@ public function showAction($id)
             throw $this->createNotFoundException('Unable to find Hremision entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new HremisionType(), $entity);
         $editForm->bind($request);
 
@@ -251,7 +257,7 @@ public function showAction($id)
 
         return $this->render('ValijaBundle:Hremision:edit.html.twig', array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            //'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

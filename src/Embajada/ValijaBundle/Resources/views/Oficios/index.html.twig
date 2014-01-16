@@ -53,7 +53,7 @@ table tr td .aprobado{
                         <tbody>
                         {% for entity in entities %}
                             <tr>
-                                <td><a href="{{ path('Oficios_pdf', { 'id': entity.id }) }}"><i class="icon-file"></i></a></td>
+                                <td><a href="{{ path('Oficios_pdf', { 'id': entity.id }) }}"  target="_blank"><i class="icon-file"></i></a></td>
                                 <td>{{ entity.numerodeoficio }}</td>
                                 <td>{{ entity.asunto }}</td>
                                 <td>{{ entity.fecha|date('d-m-Y')}}</td>

@@ -222,6 +222,7 @@ class VacacionesController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+
         $entity = $em->getRepository('OrhBundle:Vacaciones')->find($id);
 
         if (!$entity) {

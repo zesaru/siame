@@ -1,3 +1,11 @@
+ValijaBundle_valija:
+        resource: "@ValijaBundle/Resources/config/routing/valija.yml"
+        prefix:   /valija
+
 valija_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: ValijaBundle:Default:index }
+
+ValijaBundle_otros:
+    resource: "@ValijaBundle/Resources/config/routing/otros.yml"
+    prefix:   /otros

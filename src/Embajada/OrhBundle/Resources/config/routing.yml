@@ -1,3 +1,7 @@
 orh_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: OrhBundle:Default:index }
+
+OrhBundle_compensatorios:
+    resource: "@OrhBundle/Resources/config/routing/compensatorios.yml"
+    prefix:   /compensatorios

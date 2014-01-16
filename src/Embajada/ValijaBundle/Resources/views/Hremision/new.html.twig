@@ -15,28 +15,43 @@ textarea{
 			</div>
 			<div class="box-content">
 				<form class="form-horizontal form-column" action="{{ path('hremision_create') }}" method="post" {{ 	form_enctype(form) }}>
-				<div class="span6">
+				<div>
+					<div class="span1">
 
 					    {{ form_errors (form.numero) }} 
 						{{ form_label (form.numero) }}  
-						{{ form_widget (form.numero, { 'attr': {'class':"input-small",}}
-						)}}
+						{{ form_widget (form.numero, { 'attr': {
+	                    'class':"input-block-level",}}
+	                        )}}
+					</div>
+					<div class="span2">
 					    {{ form_errors (form.destino) }} 
 						{{ form_label (form.destino) }}  
-						{{ form_widget (form.destino, { 'attr': {'class':"input-medium",}}
-						)}}
-				</div>
-				<div class="span6">
+						{{ form_widget (form.destino, { 'attr': {
+	                    'class':"input-block-level",}}
+	                        )}}
+					</div>
+					<div class="span2">
 
 					    {{ form_errors (form.fecha) }} 
 						{{ form_label (form.fecha) }}  
-						{{ form_widget (form.fecha, { 'attr': {'class':"input-medium datepick",}}
+						{{ form_widget (form.fecha, { 'attr': {'class':"input-block-level datepick",}}
 						)}}
+					</div>		
+					<div class="span2">
 
 					    {{ form_errors (form.ferencia) }} 
 						{{ form_label (form.ferencia,'Referencia') }}  
-						{{ form_widget (form.ferencia, { 'attr': {'class':"input-medium",}}
+						{{ form_widget (form.ferencia, { 'attr': {'class':"input-block-level",}}
 						)}}
+					</div>
+					<div class="span2">
+
+					    {{ form_errors (form.peso) }} 
+						{{ form_label (form.peso,'Peso') }}  
+						{{ form_widget (form.peso, { 'attr': {'class':"input-block-level",}}
+						)}}
+					</div>					
 				</div>
 				<div class="span12">
 						{{ form_errors (form.asunto) }} 
@@ -44,7 +59,7 @@ textarea{
 						{{ form_widget (form.asunto, 
 							{ 'attr': 
 								{
-								'class':"input-xxlarge",
+								'class':"input-block-level",
 
 								}}
 						)}}
@@ -71,21 +86,16 @@ textarea{
 							{{ form_label (form.observaciones) }}  
 							{{ form_widget (form.observaciones)}}
 							{{ form_widget(form._token) }}				
-				
-				    <p>
-				        <button type="submit">Guardar</button>
-				    </p>
-
-				</form>
-				<ul class="record_actions">
-				    <li>
-				        <a href="{{ path('hremision') }}">
-				            Back to the list
-				        </a>
-				    </li>
-				</ul>
 				</div>
-			</div>
+	            <div class="span12">
+		            <br>
+		        		<button class="btn btn-primary"type="submit"><i class="icon-save"></i> Guardar</button>
+		        		<a class="btn btn-inverse" href="{{ path('hremision') }}"><i class="icon-reply"></i>
+			             Regresar
+			        	</a>
+		    		</br>
+	            </div>
+			</form>
 		</div>
 	</div>
 </div>

@@ -1,55 +1,66 @@
-    <head>  
-  <style>
+<head>  
+<style>
 body{
     margin: 0;
 }
-li{
-    text-decoration: none;
+.sangria {  
+    text-indent: 50px;
+    text-align: justify;
+}    
+.encabezado{
+    text-indent:1px;
 }
-    .sangria {  
-        text-indent: 50px;
-        text-align: justify;
-    }
-    p{
-        font-family: Arial;
-        font-size: 11;
-    }
-    #piedepagina{
-    position:relativa;
-    top:200px;
-    left: 50px;
-    width: 300px;
+.year{
+    font-size: 8px;
+    text-align: center;
+}    
+p{
+    font-family: Arial;
+    font-size: 11;
+}
+li{
+    text-indent:1px;
+}
+</style>  
+</head>
+<body>
+<table width="680px">
+    <tr>
+        <td width="150px"><img src="{{ pdf_image('NotasBundle:logoembajadaes.jpg') }}" width="140" height="85"></td> 
+        <td align="center">
+            <p class="year"></p>
+            <p class="year"><strong>“AÑO DE LA PROMOCIÓN DE LA INDUSTRIA RESPONSABLE Y DEL COMPROMISO CLIMÁTICO”</strong></p>
+        </td>
+    </tr>
+</table>        
+{% if entity.clasificacion|upper =='ABIERTO' %}
+<table width="610px">
+    <tr>
+        <td style="width:180px">
+            <p style="text-align:left;">Oficio Nro 5-18-A/{{ entity.numerodeoficio }} ({{ entity.destino }})<hr>{{ entity.asunto }}.<hr>Ref {{ entity.referencia }}</p>
+        </td>
+        <td>
 
-    }
-
-  </style>  
-</head> 
-    <figure>
-        <img src="{{ pdf_image('NotasBundle:logoembajadaes.jpg') }}" width="140" height="85">
-     <figure>
-            
-            <p style="text-align:right;"><strong>Tokio, {{ entity.fecha|fecha ('long','none','es')}}</strong></p><p></p>
-            {% if entity.clasificacion|upper =='ABIERTO' %}
-                <table style="width:185px">
-                    <tr>
-                        <td>
-                    <p>Oficio Nro 5-18-A/{{ entity.numerodeoficio }} ({{ entity.destino }})<hr>{{ entity.asunto }}.<hr>Ref {{ entity.referencia }}</p>
-                        </td>
-                    </tr>
-                </table>
-            {% else %}
-                <table style="width:185px">
-                    <tr>
-                        <td>
-                    <p>Oficio Nro 5-18-YY/{{ entity.numerodeoficio }} ({{ entity.destino }})<hr>{{ entity.asunto }}.<hr>Ref {{ entity.referencia }}</p>
-                        </td>
-                    </tr>
-                </table>
-            {% endif %}
+        <p style="text-align:right;"><strong>Tokio, {{ entity.fecha|fecha ('long','none','es')}}</strong></p>
+        </td>
+    </tr>
+</table>
+    {% else %}
+<table>
+    <tr>
+        <td style="width:180px">
+            <p style="text-align:left;">Oficio Nro 5-18-YY/{{ entity.numerodeoficio }} ({{ entity.destino }})<hr>{{ entity.asunto }}.<hr>Ref {{ entity.referencia }}</p>
+        </td>
+        <td>
+        <p style="text-align:right;"><strong>Tokio, {{ entity.fecha|fecha ('long','none','es')}}</strong></p>
+        </td>
+    </tr>
+</table>
+    {% endif %}
             <p></p>
             <table >
                 <tr>
-                    <td style="width:100px">
+                    <td style="width:110px">
                     </td>                    
                     <td>
                         <p><strong>Señora<br>Ministra de Estado en el<br>Despacho de Relaciones Exteriores<br>Lima
@@ -58,7 +69,7 @@ li{
                     </td>
                 </tr>                
                 <tr>
-                    <td style="width:100px">
+                    <td style="width:110px">
                     </td>
                     <td style="width:375px">
                     <p class="sangria">{{ entity.cuerpo| raw }}</p>
@@ -66,11 +77,13 @@ li{
                 </tr>
             </table>
             <br>
-            <p style="text-align:center">Dios guarde a usted</p>
-            <br>
-            <br>
-            <p style="text-align:center">Elard Escala<br>Embajador</p>            
-
+            <p style="text-align:center">Dios guarde a usted <br> S. M.  </p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p style="text-align:center">Elard Escala<br>Embajador</p>          
+</body>
 
 
 

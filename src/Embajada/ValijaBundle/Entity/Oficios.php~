@@ -86,16 +86,6 @@ class Oficios
     private $cuerpo;
 
     /**
-     * @var \Valija
-     *
-     * @ORM\ManyToOne(targetEntity="Embajada\ValijaBundle\Entity\Valija")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="numerodevalija", referencedColumnName="id")
-     * })
-     */
-    private $numerodevalija;
-
-    /**
      * @var \FosUser
      *
      * @ORM\ManyToOne(targetEntity="Embajada\UserBundle\Entity\User")
@@ -104,14 +94,6 @@ class Oficios
      * })
      */
     private $ucreado;
-
-    /**
-     * @var decimal
-     *
-     * @ORM\Column(name="peso", type="decimal", scale=3, nullable=true)
-     */
-    private $peso;
-    
     /**
      * Get id
      *
@@ -347,48 +329,5 @@ class Oficios
     public function getUcreado()
     {
         return $this->ucreado;
-    }
-
-    /**
-     * Set numerodevalija
-     *
-     * @param integer $numerodevalija
-     * @return Hremision
-     */
-    public function setNumerodevalija($numerodevalija)
-    {
-        $this->numerodevalija = $numerodevalija;
-    
-        return $this;
-    }
-
-    /**
-     * Get numerodevalija
-     *
-     * @return integer 
-     */
-    public function getNumerodevalija()
-    {
-        return $this->numerodevalija;
-    }
-
-    /**
-     * Set peso
-     *
-     * @param decimal $peso
-     */
-    public function setPeso($peso)
-    {
-        $this->peso = $peso;
-    }
-
-    /**
-     * Get peso
-     *
-     * @return decimal
-     */
-    public function getPeso()
-    {
-        return $this->peso;
     }
 }

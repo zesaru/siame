@@ -142,10 +142,10 @@ $(document).ready(function() {
 	// timepicker
 	if($('.timepick').length > 0){
 		$('.timepick').timepicker({
-			defaultTime: 'current',
-			minuteStep: 1,
+			//minuteStep: 30,
 			disableFocus: true,
-			template: 'dropdown'
+			template: 'dropdown',
+			showMeridian:false
 		});
 	}
 	// colorpicker

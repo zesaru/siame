@@ -21,10 +21,10 @@ class HremisionType extends AbstractType
             ->add('sumilla')
             ->add('origen')
             ->add('observaciones','textarea',array('required'=> false))
-            ->add('numerodevalija')
             ->add('direccion')
             ->add('estado')
             ->add('ucreado')
+            ->add('peso','text',array('required'=> false))
         ;
     }
 
