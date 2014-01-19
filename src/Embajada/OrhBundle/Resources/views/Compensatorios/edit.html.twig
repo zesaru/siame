@@ -1,26 +1,168 @@
 {% extends "::base8.html.twig" %}
 {% block body %}
-<style>
-</style>
+<!-- Timepicker -->
+<script src="{{ asset('bundles/notas/js/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
+<div class="row-row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-list"></i>Editar</h3>
+            </div>
+        </div>
+        <div class="box-content">
+            <form action="{{ path('compensatorios_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
 
-<form action="{{ path('compensatorios_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
-    <p>
-        <button type="submit">Edit</button>
-    </p>
-</form>
+            {{ form_errors  (edit_form.diasdecompensatorio) }}
+            {{ form_label  (edit_form.diasdecompensatorio, "Dias a solicitar") }}
+            {{ form_widget (edit_form.diasdecompensatorio, { 'attr': 
+                {'min':"1",
+                 'max':"4"}} )}}
+        <div>
+            <div class="span2">
+            {{ form_errors  (edit_form.fechadeevento1) }}
+            {{ form_label  (edit_form.fechadeevento1, "Fecha del Evento") }}
+            {{ form_widget (edit_form.fechadeevento1, { 'attr': {'class':"input-block-level datepick"}} )}}
+            </div>
+            <div class='span4'>
+            {{ form_errors  (edit_form.actividad1) }}
+            {{ form_label  (edit_form.actividad1, "Evento") }}
+            {{ form_widget (edit_form.actividad1, { 'attr': {'class':"input-block-level"}} )}}
+            </div>
+            <div class='span2'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadeinicio) }}
+                {{ form_label  (edit_form.horadeinicio, "Hora de Inicio") }}
+                {{ form_widget (edit_form.horadeinicio, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+            <div class='span2'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadefin1) }}
+                {{ form_label  (edit_form.horadefin1, "Hora de Fin") }}
+                {{ form_widget (edit_form.horadefin1, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+            <div>
+                <div class='span1'>
+                {{ form_errors  (edit_form.cantidaddehoras1) }}
+                {{ form_label  (edit_form.cantidaddehoras1, "Horas") }}
+                {{ form_widget (edit_form.cantidaddehoras1, { 'attr': {'class':"input-block-level"}} )}}
+                </div>
+            </div>
+        </div>
+         <div class="2">
+            <div class="span2">
+            {{ form_errors  (edit_form.fechadeevento2) }}
+            {{ form_label  (edit_form.fechadeevento2, "Fecha del Evento") }}
+            {{ form_widget (edit_form.fechadeevento2, { 'attr': {'class':"input-block-level datepick"}} )}}
+            </div>
+            <div class='span4'>
+            {{ form_errors  (edit_form.actividad2) }}
+            {{ form_label  (edit_form.actividad2, "Evento") }}
+            {{ form_widget (edit_form.actividad2, { 'attr': {'class':"input-block-level"}} )}}
+            </div>
+            <div class='span2'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadeinicio2) }}
+                {{ form_label  (edit_form.horadeinicio2, "Hora de Inicio") }}
+                {{ form_widget (edit_form.horadeinicio2, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+            <div class='span1'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadefin2) }}
+                {{ form_label  (edit_form.horadefin2, "Hora de Fin") }}
+                {{ form_widget (edit_form.horadefin2, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+                <div class='span1'>
+                {{ form_errors  (edit_form.cantidaddehoras2) }}
+                {{ form_label  (edit_form.cantidaddehoras2, "Horas") }}
+                {{ form_widget (edit_form.cantidaddehoras2, { 'attr': {'class':"input-block-level"}} )}}
+                </div>
+            </div>
+        </div>
+        <div class="3">
+            <div class="span2">
+            {{ form_errors  (edit_form.fechadeevento3) }}
+            {{ form_label  (edit_form.fechadeevento3, "Fecha del Evento") }}
+            {{ form_widget (edit_form.fechadeevento3, { 'attr': {'class':"input-block-level datepick"}} )}}
+            </div>
+            <div class='span4'>
+            {{ form_errors  (edit_form.actividad3) }}
+            {{ form_label  (edit_form.actividad3, "Evento") }}
+            {{ form_widget (edit_form.actividad3, { 'attr': {'class':"input-block-level"}} )}}
+            </div>
+            <div class='span2'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadeinicio3) }}
+                {{ form_label  (edit_form.horadeinicio3, "Hora de Inicio") }}
+                {{ form_widget (edit_form.horadeinicio3, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+            <div class='span1'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadefin3) }}
+                {{ form_label  (edit_form.horadefin3, "Hora de Fin") }}
+                {{ form_widget (edit_form.horadefin3, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+            <div>
+                <div class='span1'>
+                {{ form_errors  (edit_form.cantidaddehoras3) }}
+                {{ form_label  (edit_form.cantidaddehoras3, "Horas") }}
+                {{ form_widget (edit_form.cantidaddehoras3, { 'attr': {'class':"input-block-level"}} )}}
+                </div>
+            </div>
+        </div>   
+        <div class="4">
+            <div class="span2">
+            {{ form_errors  (edit_form.fechadeevento4) }}
+            {{ form_label  (edit_form.fechadeevento4, "Fecha del Evento") }}
+            {{ form_widget (edit_form.fechadeevento4, { 'attr': {'class':"input-block-level datepick"}} )}}
+            </div>
+            <div class='span4'>
+            {{ form_errors  (edit_form.actividad4) }}
+            {{ form_label  (edit_form.actividad4, "Evento") }}
+            {{ form_widget (edit_form.actividad4, { 'attr': {'class':"input-block-level"}} )}}
+            </div>
+            <div class='span2'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadeinicio4) }}
+                {{ form_label  (edit_form.horadeinicio4, "Hora de Inicio") }}
+                {{ form_widget (edit_form.horadeinicio4, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+            <div class='span1'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadefin4) }}
+                {{ form_label  (edit_form.horadefin4, "Hora de Fin") }}
+                {{ form_widget (edit_form.horadefin4, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+            <div>
+                <div class='span1'>
+                {{ form_errors  (edit_form.cantidaddehoras4) }}
+                {{ form_label  (edit_form.cantidaddehoras4, "Horas") }}
+                {{ form_widget (edit_form.cantidaddehoras4, { 'attr': {'class':"input-block-level"}} )}}
+                </div>
+            </div>
+        </div>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('compensatorios') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('compensatorios_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+
+                            
+            {#{ form_widget(edit_form) }#}
+            {{ form_widget(edit_form._token) }}    
+            <div class="span12">
+            <br>
+                <button class="btn btn-primary"type="submit"><i class="icon-save"></i> Guardar</button>
+                <a class="btn btn-inverse" href="{{ path('compensatorios') }}"><i class="icon-reply"></i>
+                 Regresar
+                </a>
+            </br>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock body %}

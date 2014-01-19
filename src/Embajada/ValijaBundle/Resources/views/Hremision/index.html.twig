@@ -46,7 +46,7 @@ table tr td .aprobado{
                                 <tbody>
                                 {% for entity in entities %}
                                     <tr>
-                                         <td><a href="{{ path('hremision_show', { 'id': entity.id }) }}"><i class="icon-file"></i></td></a>
+                                         <td><a href="{{ path('hremision_show', { 'id': entity.id }) }}" target="_blank"><i class="icon-file"></i></a></td>
                                         <td>{{ entity.numero }}</td>
                                         <td>{{ entity.destino }}</td>
                                         <td>{{ entity.asunto|upper  }}</td>

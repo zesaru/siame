@@ -22,6 +22,10 @@
                     {{ form_errors  (edit_form.numerodevalija) }}
                     {{ form_label  (edit_form.numerodevalija) }}
                     {{ form_widget (edit_form.numerodevalija) }}
+                    
+                    {{ form_errors  (edit_form.pdf) }}
+                    {{ form_label  (edit_form.pdf) }}
+                    {{ form_widget (edit_form.pdf) }}
                     {# Atributos
                     , { 'attr': {
                         'class':"input-block-level",}}
@@ -33,8 +37,8 @@
 
 
                             
-            {#{ form_widget(edit_form) }#}
-            {{ form_widget(edit_form._token) }}    
+            {{ form_rest(edit_form) }}
+            {#{ form_widget(edit_form._token) }#}    
             <div class="span12">
             <br>
                 <button class="btn btn-primary"type="submit"><i class="icon-save"></i> Guardar</button>

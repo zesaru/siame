@@ -24,7 +24,8 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-
+    globals:
+        directorio_imagenes: '/uploads/guias/'
 
 # Assetic Configuration
 assetic:
@@ -89,3 +90,6 @@ knp_snappy:
         enabled:    true
         binary:     /usr/bin/wkhtmltoimage
         options:    []
+
+parameters:
+    embajada.directorio.pdf: %kernel.root_dir%/../web/uploads/guias/

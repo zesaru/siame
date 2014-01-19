@@ -3,6 +3,8 @@
 namespace Embajada\ValijaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Valija
@@ -55,6 +57,32 @@ class Valija
      * @ORM\Column(name="peso", type="decimal", nullable=true)
      */
     private $peso;
+
+    /**
+    * @ORM\Column(type="string")
+    *
+    * 
+    */
+    private $pdf;
+
+    /**
+    * Sube el directorio directorio que se indica y
+    * guardando en la entidad la ruta de la foto
+    *
+    * @param string $directorioDestino Ruta completa del directorio al que se sube el pdf
+    */
+    public function subirPdf($directorioDestino)
+    {
+        if (null===$this->pdf) {
+            return;
+        }
+
+        $nombreArchivoPdf = uniqid('guia-').'-1.'.$this->pdf->guessExtension();
+
+        $this->pdf->move($directorioDestino, $nombreArchivoPdf);
+
+        $this->setPdf($nombreArchivoPdf);
+    }
 
     /**
      * Get id
@@ -179,5 +207,25 @@ class Valija
     public function getPeso()
     {
         return $this->peso;
+    }
+
+    /**
+    * Set pdf
+    *
+    * @param string $pdf
+    */
+        public function setPdf($pdf)
+        {
+            $this->pdf = $pdf;
+        }
+
+    /**
+    * Get pdf
+    *
+    * @return string
+    */
+    public function getPdf()
+    {
+        return $this->pdf;
     }
 }

@@ -158,10 +158,6 @@
 {% block body %}{% endblock %}            
 
 
-                    
-{% block javascript %}
-{% endblock %}
-
     <!-- Nice Scroll -->
     <script src="{{ asset('bundles/notas/js/plugins/nicescroll/jquery.nicescroll.min.js')}}"></script>
     <!-- jQuery UI -->
@@ -188,13 +184,12 @@
     <script src="{{ asset('bundles/notas/js/plugins/datatable/jquery.dataTables.columnFilter.js')}}"></script>
     <!-- Datepicker -->
     <script src="{{ asset('bundles/notas/js/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
-    <!-- Timepicker -->
-    <script src="{{ asset('bundles/notas/js/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
     <!-- Theme framework -->
     <script src="{{ asset('bundles/notas/js/eakroko.js')}}"></script>
     <!-- Theme scripts -->
     <script src="{{ asset('bundles/notas/js/application.js')}}"></script>
 
-
+{% block javascript %}
+{% endblock %}
 </body>
 </html>

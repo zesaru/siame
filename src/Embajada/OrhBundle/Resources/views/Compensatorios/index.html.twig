@@ -3,7 +3,6 @@
 <style>
 a{
     color: red;
-    font-size: 16px;
 }
 .icon-ok-sign{
     color: green;
@@ -26,6 +25,7 @@ table tr td .aprobado{
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Nombre</th>
                         <th>Diasdecompensatorio</th>
                         <th>Fechadesolicitud</th>
                         <th>Fechadeaprobado</th>
@@ -36,20 +36,14 @@ table tr td .aprobado{
                 <tbody>
                 {% for entity in entities %}
                     <tr>
-                        <td><a href="{{ path('compensatorios_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td style="font-size:20px"><a target="_blank" href="{{ path('compensatorios_pdf', { 'id': entity.id }) }}"><i class="icon-file"></i></a></td>
+                        <td>{{entity.ucreado.name}} {{entity.ucreado.apellidos}}</td>
                         <td>{{ entity.diasdecompensatorio }}</td>
                         <td>{% if entity.fechadesolicitud %}{{ entity.fechadesolicitud|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{% if entity.fechadeaprobado %}{{ entity.fechadeaprobado|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{{ entity.estado }}</td>
                         <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('compensatorios_show', { 'id': entity.id }) }}">show</a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('compensatorios_edit', { 'id': entity.id }) }}">edit</a>
-                                </li>
-                            </ul>
+                            <a href="{{ path('compensatorios_edit', { 'id': entity.id }) }}">editar</a>
                         </td>
                     </tr>
                 {% endfor %}

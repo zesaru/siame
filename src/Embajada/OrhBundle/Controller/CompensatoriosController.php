@@ -22,7 +22,10 @@ class CompensatoriosController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('OrhBundle:Compensatorios')->findAll();
+        $consulta = $em->createQuery('SELECT o, u from OrhBundle:Compensatorios o 
+            JOIN o.ucreado u ORDER BY o.id DESC');
+
+        $entities = $consulta->getResult();
 
         return $this->render('OrhBundle:Compensatorios:index.html.twig', array(
             'entities' => $entities,
@@ -127,29 +130,7 @@ class CompensatoriosController extends Controller
 
             $usuario = $this->getUser();
 
-            $horadeinicio=$entity->getHoradeinicio();
-            $entity->setHoradeinicio(new \DateTime($horadeinicio));
-
-            $horadeinicio2=$entity->getHoradeinicio2();
-            $entity->setHoradeinicio2(new \DateTime($horadeinicio2));
-
-            $horadeinicio3=$entity->getHoradeinicio3();
-            $entity->setHoradeinicio3(new \DateTime($horadeinicio3));
-
-            $horadeinicio4=$entity->getHoradeinicio4();
-            $entity->setHoradeinicio4(new \DateTime($horadeinicio4)); 
-
-            $horadefin1=$entity->getHoradefin1();
-            $entity->setHoradefin1(new \DateTime($horadefin1)); 
-
-            $horadefin2=$entity->getHoradefin2();
-            $entity->setHoradefin2(new \DateTime($horadefin2)); 
-
-            $horadefin3=$entity->getHoradefin3();
-            $entity->setHoradefin3(new \DateTime($horadefin3)); 
-
-            $horadefin4=$entity->getHoradefin4();
-            $entity->setHoradefin4(new \DateTime($horadefin4)); 
+ 
             
             $entity->setUcreado($usuario);
 
@@ -158,7 +139,23 @@ class CompensatoriosController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('compensatorios_show', array('id' => $entity->getId())));
+
+           $email=$usuario."@embperujapan.org";
+            $mensaje = \Swift_Message::newInstance()
+                ->setSubject('Solicitud de Registo de Compensatorios')
+                ->setFrom('vacaciones@embperujapan.org', "Solicitud de Registo de Compensatorios")
+                //->setTo('msantivanez@embperujapan.org','Jefe de Cancillería')
+                //->setBcc('eescala@embperujapan.org','Embajador')
+                ->setTo($email)
+                ->setBody(
+                $this->renderView('OrhBundle:Compensatorios:email.html.twig', array(
+            'entity' => $entity,
+
+            'id' => $entity->getId())),'text/html');     
+                $this->get('mailer')->send($mensaje);
+                
+            return $this->redirect($this->generateUrl('compensatorios_show', 
+                array('id' => $entity->getId())));
         }
 
         return $this->render('OrhBundle:Compensatorios:new.html.twig', array(

@@ -1,5 +1,7 @@
 {% extends "::base8.html.twig" %}
 {% block body %}
+<!-- Timepicker -->
+<script src="{{ asset('bundles/notas/js/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
 <div class="row-row-fluid">
 	<div class="span12">
 		<div class="box">
@@ -163,31 +165,41 @@
 	</div>
 </div>
 <script>
+
+// se inicia despuesde haber cargado el dom
 $(function() {
 
+	$('body').on('mousedown click mouseup', function(){ 
+  	var inicio1= ($('#embajada_orhbundle_compensatoriostype_horadefin1').val()).substring(0,2);
+  	var fin1 = ($('#embajada_orhbundle_compensatoriostype_horadeinicio').val()).substring(0,2);
+	var horas = inicio1-fin1
+	$('#embajada_orhbundle_compensatoriostype_cantidaddehoras1').val(horas);
+
+	var inicio2= ($('#embajada_orhbundle_compensatoriostype_horadefin2').val()).substring(0,2);
+  	var fin2 = ($('#embajada_orhbundle_compensatoriostype_horadeinicio2').val()).substring(0,2);
+	var horas2 = inicio2-fin2
+	$('#embajada_orhbundle_compensatoriostype_cantidaddehoras2').val(horas2);	
+
+	var inicio3= ($('#embajada_orhbundle_compensatoriostype_horadefin3').val()).substring(0,2);
+  	var fin3 = ($('#embajada_orhbundle_compensatoriostype_horadeinicio3').val()).substring(0,2);
+	var horas3 = inicio3-fin3
+	$('#embajada_orhbundle_compensatoriostype_cantidaddehoras3').val(horas3);
+
+	var inicio4= ($('#embajada_orhbundle_compensatoriostype_horadefin4').val()).substring(0,2);
+  	var fin4 = ($('#embajada_orhbundle_compensatoriostype_horadeinicio4').val()).substring(0,2);
+	var horas4 = inicio4-fin4
+	$('#embajada_orhbundle_compensatoriostype_cantidaddehoras4').val(horas4);
+	});
+
+	//oculta los div 2 , 3 y 4 
 	function ocultar () {
 		$('.2').css('display','none');
 		$('.3').css('display','none');
 		$('.4').css('display','none');
 	};
 
-	function mostrar (cantidad) {
-		if (cantidad==2) {
-
-		};
-	}
-	ocultar();
-  	$('.timepick').val('00:00');
-  	$('#embajada_orhbundle_compensatoriostype_horadeinicio').val('09:00');
-  	$('#embajada_orhbundle_compensatoriostype_horadefin1').val('17:00');
-
-  	var inicio1= ($('#embajada_orhbundle_compensatoriostype_horadefin1').val()).substring(0,2);
-  	var fin1 = ($('#embajada_orhbundle_compensatoriostype_horadeinicio').val()).substring(0,2);
-	var horas = inicio1-fin1
-	$('#embajada_orhbundle_compensatoriostype_cantidaddehoras1').val(horas);
- 	 //si cambia
-  	$('#embajada_orhbundle_compensatoriostype_diasdecompensatorio').change(function() {
-  		var cantidad = $('#embajada_orhbundle_compensatoriostype_diasdecompensatorio').val();
+	function sumarymostrar() {
+		var cantidad = $('#embajada_orhbundle_compensatoriostype_diasdecompensatorio').val();
   		ocultar();
   		if (cantidad==2) {
   			$('.'+cantidad).fadeIn();
@@ -201,37 +213,45 @@ $(function() {
   		if (cantidad==3) {
   			$('.2').fadeIn();
   			$('.'+cantidad).fadeIn();
+  			$('#embajada_orhbundle_compensatoriostype_horadeinicio'+cantidad).val('09:00');
+  			$('#embajada_orhbundle_compensatoriostype_horadefin3').val('17:00');
+		  	var inicio3= ($('#embajada_orhbundle_compensatoriostype_horadefin3').val()).substring(0,2);
+		  	var fin3 = ($('#embajada_orhbundle_compensatoriostype_horadeinicio3').val()).substring(0,2);
+			var horas3 = inicio3-fin3
+			$('#embajada_orhbundle_compensatoriostype_cantidaddehoras3').val(horas3);
   		};
   		if (cantidad==4) {
   			$('.2').fadeIn();
   			$('.3').fadeIn();
   			$('.'+cantidad).fadeIn();
+  			$('#embajada_orhbundle_compensatoriostype_horadeinicio'+cantidad).val('09:00');
+  			$('#embajada_orhbundle_compensatoriostype_horadefin4').val('17:00');
+		  	var inicio4= ($('#embajada_orhbundle_compensatoriostype_horadefin4').val()).substring(0,2);
+		  	var fin4 = ($('#embajada_orhbundle_compensatoriostype_horadeinicio4').val()).substring(0,2);
+			var horas4 = inicio4-fin4
+			$('#embajada_orhbundle_compensatoriostype_cantidaddehoras4').val(horas4);
   		};
+	};
 
+	ocultar();
 
+  	$('.timepick').val('00:00');
+  	$('#embajada_orhbundle_compensatoriostype_horadeinicio').val('09:00');
+  	$('#embajada_orhbundle_compensatoriostype_horadefin1').val('17:00');
+
+  	var inicio1= ($('#embajada_orhbundle_compensatoriostype_horadefin1').val()).substring(0,2);
+  	var fin1 = ($('#embajada_orhbundle_compensatoriostype_horadeinicio').val()).substring(0,2);
+	var horas = inicio1-fin1
+	$('#embajada_orhbundle_compensatoriostype_cantidaddehoras1').val(horas);
+
+  	$('#embajada_orhbundle_compensatoriostype_diasdecompensatorio').change(function() {
+  		sumarymostrar();
 	});
-  	$('#embajada_orhbundle_compensatoriostype_diasdecompensatorio').keypress(function() {
-  		var cantidad = $('#embajada_orhbundle_compensatoriostype_diasdecompensatorio').val();
-  		if (cantidad<=4 && cantidad>=1) {
-	  		ocultar();
-	  		if (cantidad==2) {
-	  			$('.'+cantidad).fadeIn();
-	  		};
-	  		if (cantidad==3) {
-	  			$('.2').fadeIn();
-	  			$('.'+cantidad).fadeIn();
-	  		};
-	  		if (cantidad==4) {
-	  			$('.2').fadeIn();
-	  			$('.3').fadeIn();
-	  			$('.'+cantidad).fadeIn();
-	  		};
-  		};
+  	$('#embajada_orhbundle_compensatoriostype_diasdecompensatorio').keydown(function() {
+  		sumarymostrar();
 	});
-
-
 });
 </script>
-{% endblock body %}
 
+{% endblock body %}
 

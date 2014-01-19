@@ -16,6 +16,7 @@ class ValijaType extends AbstractType
             ->add('observaciones')
             ->add('cantidaddeitems')
             ->add('peso')
+            ->add('pdf', 'file', array('required' => false))
         ;
     }
 

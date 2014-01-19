@@ -8,6 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Embajada\ValijaBundle\Entity\Valija;
 use Embajada\ValijaBundle\Form\ValijaType;
 
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Filesystem\Filesystem;
+
 /**
  * Valija controller.
  *
@@ -124,11 +127,14 @@ class ValijaController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
+
+            $entity->subirPdf($this->container->getParameter('embajada.directorio.pdf'));
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('valija_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('valija'));
         }
 
         return $this->render('ValijaBundle:Valija:new.html.twig', array(
@@ -150,7 +156,8 @@ class ValijaController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Valija entity.');
         }
-
+        // el formulario necesita un objeto de tipo File, no la ruta de la foto
+        $entity->setPdf(new File($entity->getPdf(), false));
         $editForm = $this->createForm(new ValijaType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
@@ -174,12 +181,30 @@ class ValijaController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Valija entity.');
         }
+        $pdfOriginal = $entity->getPdf();
+        $entity->setPdf(new File($pdfOriginal, false));
+        //ld($pdfOriginal);
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new ValijaType(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
+
+            if (null == $entity->getPdf()) {
+                    // el usuario no ha modificado elpdf original
+                    $entity->setPdf($pdfOriginal);
+            } else {
+                // el usuario ha modificado la foto: copiar la foto subida y
+                // guardar la nueva ruta
+                $entity->subirPdf($this->container->getParameter('embajada.directorio.pdf'));
+
+                // borrar la foto anterior
+                if (!empty($fotoOriginal)) {
+                    $fs = new Filesystem();
+                    $fs->remove($this->container->getParameter('embajada.directorio.pdf').$pdfOriginal);
+                }
+            }
             $em->persist($entity);
             $em->flush();
 
