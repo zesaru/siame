@@ -14,7 +14,8 @@ class CompensatoriosType extends AbstractType
             ->add('diasdecompensatorio')
             ->add('fechadesolicitud')
             ->add('fechadeaprobado')
-            ->add('estado')
+            ->add('estado', 'choice', array(
+                'choices' => array('1' => 'Aprobar', '2' => 'Denegar')))
             ->add('observaciones')
             ->add('fechadeevento1','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy','required'  => false,
             ))
@@ -43,6 +44,11 @@ class CompensatoriosType extends AbstractType
             ->add('cantidaddehoras4', 'text', array('required'  => false,))
             ->add('ucreado')
             ->add('uaprobado')
+            ->add('cantidaddia1')
+            ->add('cantidaddia2')
+            ->add('cantidaddia3')
+            ->add('cantidaddia4')
+
         ;
     }
 

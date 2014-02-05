@@ -1,73 +1,65 @@
-{% extends "NotasBundle::layout_admin.html.twig" %}
-
-{% block title %}Listado de Notas {% endblock %}
-{% block pageid 'admin' %}
-
-{% block header %}
-  <h1 class="grid_6 alpha">Administracion</h1>
-
-  <nav class="grid_10 omega">
-  <ul>
-
-
-
-  </ul>
-  </nav>
-{% endblock %}
-
-
+{% extends "::base8.html.twig" %}
 {% block body %}
-          
-<div>
- 
-    <a href="{{ path('notas_new') }}">
-    Crear
-    </a>
-    
+<style>
+a{
+    color: red;
+}
+.icon-ok-sign{
+    color: green;
+    font-size: 12px;
 
-</div>
-{% for flashMessage in app.session.flashbag.get('notice') %}
-    <div class="flash-notice">
-        {{ flashMessage }}
+}
+table tr td .aprobado{
+    text-align: center;
+}
+</style>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box box-color box-bordered green">
+            <div class="box-title">
+                <h3><a class="btn btn-success" href="{{ path('notas_new') }}"><i class="icon-plus-sign"></i>Agregar Nota Diplomatica </a></h3>
+            </div>
+        </div>
+        <div class="box-content nopadding">
+            <table class="table table-hover table-nomargin table-striped dataTable dataTable-reorder">
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="flash-notice">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Numerodenota</th>
+                    <th>Sumilla</th>
+                    <th>Fecha</th>
+                    <th>Idioma</th>
+                    <th>Aprobado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('notas_show', { 'id': entity.id }) }}"><img src="{{ asset('/Siame/web/bundles/notas/images/icons/page_white_acrobat.png')}}"></a></td>
+                <td>Nº 5-18-M/{{ entity.numerodenota }}-{% if entity.fecha %}{{ entity.fecha|date('Y') }}{% endif %}</td>
+                <td>{{ entity.sumilla|upper }}</td>
+                <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y') }}{% endif %}</td>
+                <td>{{ entity.idioma }}</td>
+                {% if  entity.aprobado %}
+                
+                <td><img src="{{ asset('/Siame/web/bundles/notas/images/icons/accept.png') }}"  /></td>
+                {% else %}
+                <td>Por aprobar</td>
+                {% endif %}
+                <td>
+
+                            <a href="{{ path('notas_edit', { 'id': entity.id }) }}">editar</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        </div>
     </div>
-{% endfor %}
-<table class="records_list">
-    <thead>
-        <tr>
-            <th></th>
-            <th>Numerodenota</th>
-            <th>Sumilla</th>
-            <th>Fecha</th>
-            <th>Idioma</th>
-            <th>Aprobado</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('notas_show', { 'id': entity.id }) }}"><img src="{{ asset('/Siame/web/bundles/notas/images/icons/page_white_acrobat.png')}}"></a></td>
-            <td>{{ entity.numerodenota }}</td>
-            <td>{{ entity.sumilla|upper }}</td>
-            <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y') }}{% endif %}</td>
-            <td>{{ entity.idioma }}</td>
-            {% if  entity.aprobado %}
-            
-            <td><img src="{{ asset('/Siame/web/bundles/notas/images/icons/accept.png') }}"  /></td>
-            {% else %}
-            <td>Por aprobar</td>
-            {% endif %}
-            <td>
-
-                        <a href="{{ path('notas_edit', { 'id': entity.id }) }}">editar</a>
-
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
-
-
-    
-{% endblock %}
+</div>
+{% endblock body %}

@@ -1,0 +1,92 @@
+{% extends "::base8.html.twig" %}
+{% block body %}
+<style>
+a{
+    color: red;
+}
+.icon-ok-sign{
+    color: green;
+    font-size: 12px;
+
+}
+table tr td .aprobado{
+    text-align: center;
+}
+</style>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box box-color box-bordered green">
+            <div class="box-title">
+                <h3><a class="btn btn-success" href="{{ path('eventos_new') }}"><i class="icon-plus-sign"></i>Agregar Evento </a></h3>
+            </div>
+        </div>
+        <div class="box-content nopadding">
+            <table class="table table-hover table-nomargin table-striped dataTable dataTable-reorder">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Lugar</th>
+                        <th>Funcionarioencargado</th>
+                        <th>Numerodeasistentes</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Epli</th>
+                        <th>Eiti</th>
+                        <th>Ecyi</th>
+                        <th>Err</th>
+                        <th>Pfuncionarios</th>
+                        <th>Padministrativos</th>
+                        <th>Tipodeusoauditorio</th>
+                        <th>Numerodesillas</th>
+                        <th>Numerodemesas</th>
+                        <th>Tipo</th>
+                        <th>Mozos</th>
+                        <th>Otrosmozos</th>
+                        <th>Empresasdemozos</th>
+                        <th>Nombrepersonaldeapoyo</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('eventos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.nombre }}</td>
+                        <td>{{ entity.lugar }}</td>
+                        <td>{{ entity.funcionarioencargado }}</td>
+                        <td>{{ entity.numerodeasistentes }}</td>
+                        <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y') }}{% endif %}</td>
+                        <td>{% if entity.fecha %}{{ entity.hora|date('H:i') }}{% endif %}</td>
+                        <td>{{ entity.epli }}</td>
+                        <td>{{ entity.eiti }}</td>
+                        <td>{{ entity.ecyi }}</td>
+                        <td>{{ entity.err }}</td>
+                        <td>{{ entity.pfuncionarios }}</td>
+                        <td>{{ entity.padministrativos }}</td>
+                        <td>{{ entity.tipodeusoauditorio }}</td>
+                        <td>{{ entity.numerodesillas }}</td>
+                        <td>{{ entity.numerodemesas }}</td>
+                        <td>{{ entity.tipo }}</td>
+                        <td>{{ entity.mozos }}</td>
+                        <td>{{ entity.otrosmozos }}</td>
+                        <td>{{ entity.empresasdemozos }}</td>
+                        <td>{{ entity.nombrepersonaldeapoyo }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('eventos_show', { 'id': entity.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('eventos_edit', { 'id': entity.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock body %}

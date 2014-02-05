@@ -1,3 +1,8 @@
 eventos_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: EventosBundle:Default:index }
+
+EventosBundle_eventos:
+    resource: "@EventosBundle/Resources/config/routing/eventos.yml"
+    prefix:   /eventos
+

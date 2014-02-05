@@ -78,6 +78,13 @@ class Compensatorios
     private $estado;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="estado2", type="integer", nullable=true)
+     */
+    private $estado2;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="observaciones", type="text",nullable=true)
@@ -112,6 +119,12 @@ class Compensatorios
      */
     private $fechadeevento4;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="personaacargo", type="string", length=140)
+     */
+    private $personaacargo;
     /**
      * @var string
      *
@@ -197,6 +210,35 @@ class Compensatorios
     private $horadefin4;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="cantidaddia1", type="integer",nullable=true)
+     */
+    private $cantidaddia1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cantidaddia2", type="integer",nullable=true)
+     */
+    private $cantidaddia2;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cantidaddia3", type="integer",nullable=true)
+     */
+    private $cantidaddia3;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cantidaddia4", type="integer",nullable=true)
+     */
+    private $cantidaddia4;
+
+
+    /**
      * @var \FosUser
      *
      * @ORM\ManyToOne(targetEntity="Embajada\UserBundle\Entity\User")
@@ -216,6 +258,47 @@ class Compensatorios
      */
     private $uaprobado;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechacompensatorio1", type="date", nullable=true)
+     */
+    private $fechacompensatorio1;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechacompensatorio2", type="date", nullable=true)
+     */
+    private $fechacompensatorio2;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechacompensatorio3", type="date", nullable=true)
+     */
+    private $fechacompensatorio3;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechacompensatorio4", type="date", nullable=true)
+     */
+    private $fechacompensatorio4;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechadesolicitud2", type="datetime", nullable=true)
+     */
+    private $fechadesolicitud2;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechadeaprobacion2", type="datetime", nullable=true)
+     */
+    private $fechadeaprobacion2;
 
     /**
      * Get id
@@ -411,6 +494,29 @@ class Compensatorios
     }
 
     /**
+     * Set estado2
+     *
+     * @param integer $estado2
+     * @return Compensatorios
+     */
+    public function setEstado2($estado2)
+    {
+        $this->estado2 = $estado2;
+
+        return $this;
+    }
+
+    /**
+     * Get estado2
+     *
+     * @return integer 
+     */
+    public function getEstado2()
+    {
+        return $this->estado2;
+    }
+
+    /**
      * Set observaciones
      *
      * @param string $observaciones
@@ -523,6 +629,29 @@ class Compensatorios
     public function getFechadeevento4()
     {
         return $this->fechadeevento4;
+    }
+
+    /**
+     * Set personaacargo
+     *
+     * @param string $personaacargo
+     * @return Compensatorios
+     */
+    public function setPersonaacargo($personaacargo)
+    {
+        $this->personaacargo = $personaacargo;
+
+        return $this;
+    }
+
+    /**
+     * Get personaacargo
+     *
+     * @return string 
+     */
+    public function getPersonaacargo()
+    {
+        return $this->personaacargo;
     }
 
     /**
@@ -845,4 +974,187 @@ class Compensatorios
         return $this->uaprobado;
     }
 
+    /**
+     * Set cantidaddia1
+     *
+     * @param integer $cantidaddia1
+     * @return Compensatorios
+     */
+    public function setCantidaddia1($cantidaddia1)
+    {
+        $this->cantidaddia1 = $cantidaddia1;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidaddia1
+     *
+     * @return integer 
+     */
+    public function getCantidaddia1()
+    {
+        return $this->cantidaddia1;
+    }
+
+    /**
+     * Set cantidaddia2
+     *
+     * @param integer $cantidaddia2
+     * @return Compensatorios
+     */
+    public function setCantidaddia2($cantidaddia2)
+    {
+        $this->cantidaddia2 = $cantidaddia2;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidadia2
+     *
+     * @return integer 
+     */
+    public function getCantidaddia2()
+    {
+        return $this->cantidaddia2;
+    }
+
+    /**
+     * Set cantidaddia3
+     *
+     * @param integer $cantidaddia3
+     * @return Compensatorios
+     */
+    public function setCantidaddia3($cantidaddia3)
+    {
+        $this->cantidaddia = $cantidaddia3;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidaddia3
+     *
+     * @return integer 
+     */
+    public function getCantidaddia3()
+    {
+        return $this->cantidaddia3;
+    }
+
+    /**
+     * Set cantidaddia4
+     *
+     * @param integer $cantidaddia4
+     * @return Compensatorios
+     */
+    public function setCantidaddia4($cantidaddia4)
+    {
+        $this->cantidaddia4 = $cantidaddia4;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidaddia4
+     *
+     * @return integer 
+     */
+    public function getCantidaddia4()
+    {
+        return $this->cantidaddia4;
+    }
+
+    /**
+     * Set fechacompensatorio1
+     *
+     * @param \DateTime $fechacompensatorio1
+     * @return Compensatorios
+     */
+    public function setFechacompensatorio1($fechacompensatorio1)
+    {
+        $this->fechacompensatorio1 = $fechacompensatorio1;
+
+        return $this;
+    }
+
+    /**
+     * Get fechacompensatorio1
+     *
+     * @return \DateTime 
+     */
+    public function getFechacompensatorio1()
+    {
+        return $this->fechacompensatorio1;
+    }
+
+   /**
+     * Set fechacompensatorio2
+     *
+     * @param \DateTime $fechacompensatorio2
+     * @return Compensatorios
+     */
+    public function setFechacompensatorio2($fechacompensatorio2)
+    {
+        $this->fechacompensatorio2 = $fechacompensatorio2;
+
+        return $this;
+    }
+
+    /**
+     * Get fechacompensatorio2
+     *
+     * @return \DateTime 
+     */
+    public function getFechacompensatorio2()
+    {
+        return $this->fechacompensatorio2;
+    }
+
+   /**
+     * Set fechacompensatorio3
+     *
+     * @param \DateTime $fechacompensatorio3
+     * @return Compensatorios
+     */
+    public function setFechacompensatorio3($fechacompensatorio3)
+    {
+        $this->fechacompensatorio3 = $fechacompensatorio3;
+
+        return $this;
+    }
+
+    /**
+     * Get fechacompensatorio3
+     *
+     * @return \DateTime 
+     */
+    public function getFechacompensatorio3()
+    {
+        return $this->fechacompensatorio3;
+    }  
+
+    /**
+     * Set fechacompensatorio4
+     *
+     * @param \DateTime $fechacompensatorio4
+     * @return Compensatorios
+     */
+    public function setFechacompensatorio4($fechacompensatorio4)
+    {
+        $this->fechacompensatorio4 = $fechacompensatorio4;
+
+        return $this;
+    }
+
+    /**
+     * Get fechacompensatorio4
+     *
+     * @return \DateTime 
+     */
+    public function getFechacompensatorio4()
+    {
+        return $this->fechacompensatorio4;
+    }   
 }

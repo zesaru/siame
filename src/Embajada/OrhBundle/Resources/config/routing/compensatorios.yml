@@ -28,7 +28,20 @@ compensatorios_update:
     defaults: { _controller: "OrhBundle:Compensatorios:update" }
     requirements: { _method: post }
 
+compensatorios_actualizarregistro:
+    pattern:  /{id}/actualizarregistro
+    defaults: { _controller: "OrhBundle:Compensatorios:actualizarregistro" }
+    requirements: { _method: post }
+
 compensatorios_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "OrhBundle:Compensatorios:delete" }
     requirements: { _method: post }
+
+compensatorios_aprobarregistro:
+    pattern:  /{id}/aprobarregistro
+    defaults: { _controller: "OrhBundle:Compensatorios:aprobarregistro" }
+
+compensatorios_solicitarcompensatorio:
+    pattern:  /{id}/solicitarcompensatorio
+    defaults: { _controller: "OrhBundle:Compensatorios:solicitarcompensatorio" }

@@ -1,128 +1,111 @@
-<html>
-<head>  
-  <style>
-  #contenedor{
-         
-        margin-left: 100px;  
-        width: 1000px; 
-                      
+{% extends "::base8.html.twig" %}
+{% block body %}
+<!-- CKEditor -->
+<script src="{{ asset('bundles/notas/js/plugins/ckeditor/ckeditor.js') }}"></script>
+<div class="row-row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-list"></i>Editar</h3>
+            </div>
+        </div>
+        <div class="box-content">
+        {% if entity.aprobado==0 %} 
+            <form action="{{ path('notas_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+            {{ form_errors(edit_form) }}
+            <div class="span12" style="margin-left:0">
+                <div class="span2">
+                    {{ form_errors (edit_form.idioma) }} 
+                    {{ form_label (edit_form.idioma) }}  
+                    {{ form_widget(edit_form.idioma, { 'attr': {
+                        'class':'input-block-level',}}
+                    )}} 
+                </div>  
+                <div class="span5">
+                     {{ form_errors (edit_form.sumilla) }} 
+                     {{ form_label (edit_form.sumilla) }}  
+                     {{ form_widget (edit_form.sumilla, { 'attr': {
+                    'class':'input-block-level',
+                    }}
+                     )}}
+
+                </div> 
+            </div>
+            <div class="span12" style="margin-left:0">
+                <div class="span7">
+                    {{ form_errors(edit_form.cuerpo) }}
+                    {{ form_widget (edit_form.cuerpo, { 'attr': {
+                    'class':'input-block-level',
+                    'rows':20,
+                    }}
+                    )}}
+                </div>        
+                <div class="span4">
+                    {{ form_label(edit_form.destinatario) }}
+                    {{ form_errors(edit_form.destinatario) }}
+                    {{ form_widget (edit_form.destinatario, { 'attr': {
+                    'class'  :'input-block-level',
+                    'rows'  :5
+                    }}
+
+                    )}}
+                </div>
+                <div class="span4">
+                    {{ form_label(edit_form.observaciones) }}
+                    {{ form_errors(edit_form.observaciones) }}
+                    {{ form_widget (edit_form.observaciones, { 'attr': {
+                    'class'  :'input-block-level',
+                    'rows'  :5
+                    }}
+
+                    )}}
+                </div>
+                <div class="span4">
+                    {{ form_label(edit_form.aprobado, 'Aprobado') }}
+                    {{ form_errors(edit_form.aprobado) }}
+                    {% if is_granted("ROLE_ADMIN") %}
+                                    
+                       {{ form_widget(edit_form.aprobado) }}
                      
-    }
-    #izquierda{
-        float: left;
-        margin:auto;  
-        width: 300px; 
-                     
-                      
-    }
-    #derecha{
-        float: right;
-        margin:auto;  
-        width: 300px; 
-                      
-                      
-    }
-    #piedepagina{
-        position:absolute;
-        top:600;
-        right: 0;
-        width: 300px;
-        
-        }
-    </style>
+                    {% else %} 
+                        {{ form_widget(edit_form.aprobado, { 'attr': {
+                            'disabled':true,}}
+                        ) }}
+                    {% endif %}    
+                    
+                </div> 
+                <div style="display:none">
+                    {{ form_rest(edit_form)}}
+                </div>
+                    
+                    {# Atributos
+                    , { 'attr': {
+                        'class':"input-block-level",}}
+                    ui-spinner ui-widget ui-widget-content ui-corner-all
+                    'class':"input-small datepick",
+                    ,'date', array('widget' => 'single_text','format' => 'dd/MM/yyyy'
+            ))
+                    #}
 
-</head>
-<body>
 
-{% if entity.aprobado==0 %} 
-<h1> Editar Notas</h1>
-<div id="contenedor">
-<form action="{{ path('notas_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_errors(edit_form) }}
-    <div id="izquierda">
-    {{form_row(edit_form.idioma)}}    
-        <div>
-        {{ form_errors(edit_form.numerodenota) }}
-            Nota N 5-18-M/{{ form_widget (edit_form.numerodenota, { 'attr': {
-                'size'      :3,
-                'maxlength' :3,
-                }}
-
-            )}}-2013
-        </div>
-        <div>
-         {{ form_errors (edit_form.sumilla) }} 
-         {{ form_label (edit_form.sumilla) }}  
-         {{ form_widget (edit_form.sumilla, { 'attr': {
-        'size'      :60,
-        }}
-         )}}
-
-        </div> 
-        <div>
-            {{ form_errors(edit_form.cuerpo) }}
-            {{ form_widget (edit_form.cuerpo, { 'attr': {
-            'cols'  :70,
-            'rows'  :30
-            }}
-
-            )}}
-        </div>        
-    </div>
-    <div id="derecha">
-        <div>
-            {{ form_label(edit_form.destinatario) }}
-            {{ form_errors(edit_form.destinatario) }}
-            {{ form_widget (edit_form.destinatario, { 'attr': {
-            'cols'  :50,
-            'rows'  :5
-            }}
-
-            )}}
-        </div>
-        <div>
-            {{ form_label(edit_form.observaciones) }}
-            {{ form_errors(edit_form.observaciones) }}
-            {{ form_widget (edit_form.observaciones, { 'attr': {
-            'cols'  :50,
-            'rows'  :5
-            }}
-
-            )}}
-        </div>
-        <div>
-            {{ form_label(edit_form.aprobado, 'Aprobado') }}
-            {{ form_errors(edit_form.aprobado) }}
-            {% if is_granted("ROLE_ADMIN") %}
                             
-               {{ form_widget(edit_form.aprobado) }}
-             
-            {% else %} 
-                {{ form_widget(edit_form.aprobado, { 'attr': {
-                    'disabled':true,}}
-                ) }}
-            {% endif %}    
             
-        </div> 
-
-    {{ form_rest(edit_form)}}
-    <div>      
-    <p>
-        <button type="submit">Guardar</button>
-    </p>
-
-</form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('notas') }}">
-            Back to the list
-        </a>
-    </li>
-
-</ul>
-</div>          
+            {{ form_widget(edit_form._token) }}    
+            <div class="span12">
+            <br>
+                <button class="btn btn-primary"type="submit"><i class="icon-save"></i> Guardar</button>
+                <a class="btn btn-inverse" href="{{ path('Oficios') }}"><i class="icon-reply"></i>
+                 Regresar
+                </a>
+            </br>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% else %}
 Esta Nota Diplom&aacute;tica no se puede modificar
 
 {% endif %}
+{% endblock body %}
+          

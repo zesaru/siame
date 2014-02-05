@@ -1,137 +1,107 @@
-<html>
-<head>  
-  <style>
-  #contenedor{
-         
-        margin-left: 100px;  
-        width: 1000px; 
-                      
-                     
-    }
-    #izquierda{
-        float: left;
-        margin:auto;  
-        width: 300px; 
-                     
-                      
-    }
-    #derecha{
-        float: right;
-        margin:auto;  
-        width: 300px; 
-                      
-                      
-    }
-    #piedepagina{
-        position:absolute;
-        top:600;
-        right: 0;
-        width: 300px;
-        
-        }
-    </style>
-
-</head>
-<body>
-<div id="contenedor">
-<form action="{{ path('notas_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_errors(form) }}
-     
-            <div id="izquierda">
-                <div>
+{% extends "::base8.html.twig" %}
+{% block body %}
+<!-- CKEditor -->
+<script src="{{ asset('bundles/notas/js/plugins/ckeditor/ckeditor.js') }}"></script>
+<div class="row-row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-list"></i>Crear Notas Diplomaticas</h3>
+            </div>
+        </div>
+        <div class="box-content">
+            <form action="{{ path('notas_create') }}" method="post" {{ form_enctype(form) }}>
+            {{ form_errors(form) }}
+            <!-- pegarloquese necesita -->
+            <div class="span12" style="margin-left:0">
+                <div class="span2">
                     <label for="destinatario">Destinatario</label>
-                    <select required name="destinatario" id="destinatario">
+                    <select required name="destinatario" id="destinatario" class="input-block-level">
                         <option value="">Elije un destinatario</option>
                         <option value="pro">Protocol Office</option>
                         <option value="dga">Dir. Gral. de A.L.</option>
                         <option value="dpc">Dirección de Política Consular</option>
                         <option value="oce">Division de Oceanos</option>
                         <option value="otr">Otros Destinatarios</option>
-                    </select>                       
-                {{form_row(form.idioma)}}
-                    
-
- 
-                </div>    
-                <div>
-                 {{ form_errors (form.sumilla) }} 
-                 {{ form_label (form.sumilla) }}  
-                 {{ form_widget (form.sumilla, { 'attr': {
-                'size'      :60,
-                }}
-                 )}}
-                    
-                </div>    
-                <div>    
-                {{ form_errors(form.numerodenota) }}
-            Nota N 5-18-M/{{ form_widget (form.numerodenota, { 'attr': {
-                'size'      :3,
-                'maxlength' :3,
-                }}
-
-            )}}-2014
+                    </select>  
                 </div>
-                <div>
+                <div class="span2">
+                    {{form_row(form.idioma, { 'attr': {
+                        'class':"input-block-level",}}
+                    )}}
+                </div>
+                <div class="span2">
+                    {{ form_errors (form.fecha) }} 
+                    {{ form_label (form.fecha) }}
+                    {{form_widget(form.fecha, { 'attr': {
+                        'class':"input-small datepick",}}
+                    )}}
+                </div>
+                <div class="span5">
+                     {{ form_errors (form.sumilla) }} 
+                     {{ form_label (form.sumilla) }}  
+                     {{ form_widget (form.sumilla, { 'attr': {
+                    'class':"input-block-level",
+                    }}
+                     )}}
+                </div>
+            </div>
+            <div class="span12" style="margin-left:0">
+                <div class="span7">
+                    {{ form_label(form.cuerpo) }}
                     {{ form_errors(form.cuerpo) }}
                     {{ form_widget (form.cuerpo, { 'attr': {
-                    'cols'  :70,
-                    'rows'  :40
+                        'class':"input-block-level",
+                        'rows':20,
                     }}
 
                     )}}
                 </div>
-                
-            </div>
-            <div id="derecha">
-                <div>
+                <div class="span4">
                     {{ form_label(form.destinatario) }}
                     {{ form_errors(form.destinatario) }}
                     {{ form_widget (form.destinatario, { 'attr': {
-                    'cols'  :50,
+                    'class':"input-block-level",
                     'rows'  :5
                     }}
 
                     )}}
                 </div>
-                <div>
+                <div class="span4">
                     {{ form_label(form.observaciones) }}
                     {{ form_errors(form.observaciones) }}
                     {{ form_widget (form.observaciones, { 'attr': {
-                    'cols'  :50,
+                    'class':"input-block-level",
                     'rows'  :5
                     }}
 
                     )}}
                 </div>
-                <div>
-                    {{ form_label(form.aprobado) }}
-                    {{ form_errors(form.aprobado) }}
-                    {{ form_widget(form.aprobado, { 'attr': {
-                    'disabled'  :false,          
-                    }}
-                    ) }}
-                </div>  
-                  
-            {{ form_rest(form)}}
-            <div>
-                <button type="submit">Generar</button>
             </div>
-            </div>
-        
-        
+                    {# Atributos
+                    , { 'attr': {
+                        'class':"input-block-level",}}
+                    ui-spinner ui-widget ui-widget-content ui-corner-all
+                    'class':"input-small datepick",
+                    ,'date', array('widget' => 'single_text','format' => 'dd/MM/yyyy'
+            ))
+                    #}
 
-        
-</form>
-            <div>        
 
-            <ul class="record_actions">
-                <li>
-                    <a href="{{ path('notas') }}">
-                        regresar
-                    </a>
-                </li>
-            </ul>
+                            
+            
+            {{ form_widget(form._token) }}    
+            <div class="span12">
+            <br>
+                <button class="btn btn-primary"type="submit"><i class="icon-save"></i> Guardar</button>
+                <a class="btn btn-inverse" href="{{ path('notas') }}"><i class="icon-reply"></i>
+                 Regresar
+                </a>
+            </br>
             </div>
+            </form>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
 var lista = document.getElementById('embajada_notasbundle_notastype_idioma');
@@ -222,7 +192,5 @@ else {
         }
 
 }}
-
-    </script>
-</body>
-</html>
+</script>
+{% endblock body %}

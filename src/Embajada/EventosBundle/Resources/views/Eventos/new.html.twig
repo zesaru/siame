@@ -1,0 +1,194 @@
+{% extends "::base8.html.twig" %}
+{% block body %}
+<!-- CKEditor -->
+<script src="{{ asset('bundles/notas/js/plugins/ckeditor/ckeditor.js') }}"></script>
+<div class="row-row-fluid">
+	<div class="span12">
+		<div class="box">
+			<div class="box-title">
+				<h3><i class="icon-list"></i>Crear Evento</h3>
+			</div>
+		</div>
+		<div class="box-content nopadding">
+			<!-- pegarloquese necesita -->
+			<form action="{{ path('eventos_create') }}" method="post" {{ form_enctype(form) }}>
+    			<div class="row-fluid">
+    				<div class="box box-bordered">
+	    				<div class="box-title">
+	    					<h5>DATOS PRINCIPALES</h5>
+	    				</div>
+    				<div class="box-content">
+						<div class="span3">
+		                {{ form_errors  (form.nombre) }}
+		    			{{ form_label  (form.nombre) }}
+		    			{{ form_widget (form.nombre, { 'attr': {
+		                    'class':"input-block-level",}}
+		                    )}}
+		    			</div>
+		    			<div class="span2">
+		                {{ form_errors  (form.fecha) }}
+		    			{{ form_label  (form.fecha) }}
+		    			{{ form_widget (form.fecha, { 'attr': {
+		                    'class':"input-block-level datepick",}}
+		                 )}}
+		                 </div>
+		    			<div style="width:108px" class="span2">
+		                {{ form_errors  (form.hora) }}
+		    			{{ form_label  (form.hora) }}
+		    			{{ form_widget (form.hora, { 'attr': {
+		                    'class':"input-block-level",}}
+		                    ) }}
+		                 </div>
+		                 <div class="span2">
+		                {{ form_errors  (form.lugar) }}
+		    			{{ form_label  (form.lugar) }}
+		    			{{ form_widget (form.lugar, { 'attr': {
+		                    'class':"input-block-level",}}
+		                 )}}
+		                 </div>
+		                 <div class="span1">
+		                {{ form_errors  (form.funcionarioencargado) }}
+		    			{{ form_label  (form.funcionarioencargado) }}
+		    			{{ form_widget (form.funcionarioencargado, { 'attr': {
+		                    'class':"input-block-level",}}
+		                 )}}
+		                 </div>
+		                 <div style="width:200px" class="span2">
+		                {{ form_errors  (form.tipo) }}
+		    			{{ form_label  (form.tipo) }}
+		    			{{ form_widget (form.tipo, { 'attr': {
+		                    'class':"input-block-level",}}
+		                 )}}
+		                 </div>		                 
+	                 </div>
+	                 </div>
+	            </div>
+	            {# LISTA DE INVITADOS, INVITACIONES, ENVIOS , HOJA DE RESPUESTAS#}
+
+	            <div class="row-fluid">
+    				<div class="box box-bordered">
+	    				<div class="box-title">
+	    					<h5>LISTA DE INVITADOS, INVITACIONES, ENVIOS , HOJA DE RESPUESTAS</h5>
+	    				</div>
+    					<div class="box-content">
+			            	<div class="span3">
+			            	{{ form_errors  (form.epli) }}
+			    			{{ form_label  (form.epli) }}
+			    			{{ form_widget (form.epli, { 'attr': {
+			                    'class':"input-block-level",}}
+			                 )}}
+			            	</div>
+			            	<div class="span3">
+			            	{{ form_errors  (form.eiti) }}
+			    			{{ form_label  (form.eiti) }}
+			    			{{ form_widget (form.eiti, { 'attr': {
+			                    'class':"input-block-level",}}
+			                 )}}
+			            	</div>
+			            	<div class="span3">
+			            	{{ form_errors  (form.ecyi) }}
+			    			{{ form_label  (form.ecyi) }}
+			    			{{ form_widget (form.ecyi, { 'attr': {
+			                    'class':"input-block-level",}}
+			                 )}}
+			            	</div>
+			            	<div class="span2">
+			            	{{ form_errors  (form.err) }}
+			    			{{ form_label  (form.err) }}
+			    			{{ form_widget (form.err, { 'attr': {
+			                    'class':"input-block-level",}}
+			                 )}}
+			            	</div>
+		            	</div>
+		            </div>
+	            </div>
+	            <div class="row-fluid">
+		            <div class="span6">
+	            		<div class="box box-bordered">
+	            			<div class="box-title">
+	            				<h5>PARTICIPANTES</h5>
+	            			</div>
+	            			<div class="box-content">
+			            		<div class="span2">
+				                {{ form_errors  (form.numerodeasistentes) }}
+				    			{{ form_label  (form.numerodeasistentes) }}
+				    			{{ form_widget (form.numerodeasistentes, { 'attr': {
+				                    'class':"input-block-level",}}
+				                 )}}
+				                 </div>
+				            	<div class="span4">
+					            	{{ form_errors  (form.pfuncionarios) }}
+					    			{{ form_label  (form.pfuncionarios) }}
+					    			{{ form_widget (form.pfuncionarios, { 'attr': {
+					                    'class':"input-block-level",}}
+					                 )}}
+				            	</div>
+				            	<div class="span6">
+					            	{{ form_errors  (form.padministrativos) }}
+					    			{{ form_label  (form.padministrativos) }}
+					    			{{ form_widget (form.padministrativos, { 'attr': {
+					                    'class':"input-block-level",}}
+					                 )}}
+				            	</div>
+			            	</div>
+			            </div>
+			        </div>
+			        <div class="span6">
+			        	<div class="box box-bordered">
+	            			<div class="box-title">
+	            				<h5>AUDITORIO</h5>
+	            			</div>
+	            			<div class="box-content">
+				            	<div class="span6">
+					            	{{ form_errors  (form.tipodeusoauditorio) }}
+					    			{{ form_label  (form.tipodeusoauditorio) }}
+					    			{{ form_widget (form.tipodeusoauditorio, { 'attr': {
+					                    'class':"input-block-level",}}
+					                 )}}
+				            	</div>
+				            	<div class="span3">
+					            	{{ form_errors  (form.numerodesillas) }}
+					    			{{ form_label  (form.numerodesillas) }}
+					    			{{ form_widget (form.numerodesillas, { 'attr': {
+					                    'class':"input-block-level",}}
+					                 )}}
+				            	</div>
+				            	<div class="span3">
+					            	{{ form_errors  (form.numerodemesas) }}
+					    			{{ form_label  (form.numerodemesas) }}
+					    			{{ form_widget (form.numerodemesas, { 'attr': {
+					                    'class':"input-block-level",}}
+					                 )}}
+				            	</div>
+				            </div>
+			        	</div>
+			        </div>
+			    </div>
+	    			{# AtributosEpli
+
+	    			, { 'attr': {
+	                    'class':"input-block-level",}}
+	                ui-spinner ui-widget ui-widget-content ui-corner-all
+	                'class':"input-small datepick",
+	                ,'date', array('widget' => 'single_text','format' => 'dd/MM/yyyy'
+            ))
+	                #}
+
+
+	                        
+            {{ form_rest (form)}}
+            {{ form_widget(form._token) }}	
+            <div class="span12">
+            <br>
+        		<button class="btn btn-primary"type="submit"><i class="icon-save"></i> Guardar</button>
+        		<a class="btn btn-inverse" href="{{ path('eventos') }}"><i class="icon-reply"></i>
+	             Regresar
+	        	</a>
+    		</br>
+            </div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock body %}
+

@@ -77,7 +77,7 @@ class CompensatoriosController extends Controller
         // reset pointer to the last page
         $pdf->lastPage();
         
-        $pdf->Output('vacaciones.pdf', 'I');
+        $pdf->Output('solicitud.pdf', 'I');
     }
 
     /**
@@ -129,11 +129,7 @@ class CompensatoriosController extends Controller
         if ($form->isValid()) {
 
             $usuario = $this->getUser();
-
- 
-            
             $entity->setUcreado($usuario);
-
             $entity -> setFechadesolicitud(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -153,7 +149,7 @@ class CompensatoriosController extends Controller
 
             'id' => $entity->getId())),'text/html');     
                 $this->get('mailer')->send($mensaje);
-                
+
             return $this->redirect($this->generateUrl('compensatorios_show', 
                 array('id' => $entity->getId())));
         }
@@ -161,6 +157,30 @@ class CompensatoriosController extends Controller
         return $this->render('OrhBundle:Compensatorios:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing Compensatorios entity.
+     *
+     */
+    public function aprobarregistroAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('OrhBundle:Compensatorios')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Compensatorios entity.');
+        }
+
+        $editForm = $this->createForm(new CompensatoriosType(), $entity);
+        //$deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('OrhBundle:Compensatorios:aprobarregistro.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            //'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -188,6 +208,53 @@ class CompensatoriosController extends Controller
         ));
     }
 
+    /**
+     * Aprueba registro de dias compensatorios.
+     *
+     */
+    public function actualizarregistroAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('OrhBundle:Compensatorios')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Compensatorios entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+        $editForm = $this->createForm(new CompensatoriosType(), $entity);
+        $editForm->bind($request);
+
+        if ($editForm->isValid()) {
+            $usuario = $this->getUser();
+            $entity->setUaprobado($usuario);
+            $entity -> setFechadeaprobado(new \DateTime());
+
+            $em->persist($entity);
+            $em->flush();
+            $email=$usuario."@embperujapan.org";
+            $mensaje = \Swift_Message::newInstance()
+                ->setSubject('Solicitud de Registo de Compensatorios')
+                ->setFrom('vacaciones@embperujapan.org', "Solicitud de Registo de Compensatorios")
+                //->setTo('msantivanez@embperujapan.org','Jefe de Cancillería')
+                //->setBcc('eescala@embperujapan.org','Embajador')
+                ->setTo($email)
+                ->setBody(
+                $this->renderView('OrhBundle:Compensatorios:emailrespuestaderegistro.html.twig', array(
+            'entity' => $entity,
+
+            'id' => $entity->getId())),'text/html');     
+                $this->get('mailer')->send($mensaje);
+            return $this->redirect($this->generateUrl('compensatorios'));
+        }
+
+        return $this->render('OrhBundle:Compensatorios:edit.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            //'delete_form' => $deleteForm->createView(),
+        ));
+    }
     /**
      * Edits an existing Compensatorios entity.
      *

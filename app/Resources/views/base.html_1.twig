@@ -1,29 +1,61 @@
-<!DOCTYPE html>
-
 <html lang="es">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>{% block title %}Sistema Informático de Administración {% endblock %} | www.embajadadelperuenjapon.org</title>
   <meta name="description" content="{% block metadesc %}{% endblock %}" />
 
-  <link href="{{ asset('bundles/notas/css/reset.css') }}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset('bundles/notas/css/960.css') }}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset('bundles/notas/css/main.css') }}" rel="stylesheet" type="text/css" />
+  <!-- Apple devices fullscreen -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Apple devices fullscreen -->
+  <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{{ asset('bundles/notas/css/bootstrap.min.css')}}">
+  <!-- Bootstrap responsive -->
+  <link rel="stylesheet" href="{{ asset('bundles/notas/css/bootstrap-responsive.min.css')}}">
+  <!-- jQuery UI -->
+  <link rel="stylesheet" href="{{ asset('bundles/notas/css/plugins/jquery-ui/smoothness/jquery-ui.css')}}">
+  <!-- chosen -->
+  <link rel="stylesheet" href="{{ asset('bundles/notas/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css')}}">
+  <link rel="stylesheet" href="{{ asset('bundles/notas/css/plugins/chosen/chosen.css')}}">
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="{{ asset('bundles/notas/css/style.css')}}">
+
+
+  <!-- jQuery -->
+  <script src="{{ asset('bundles/notas/js/jquery.min.js')}}"></script>
+  <!-- Nice Scroll -->
+  <script src="{{ asset('bundles/notas/js/plugins/nicescroll/jquery.nicescroll.min.js')}}"></script>
+  <!-- Bootstrap -->
+  <script src="{{ asset('bundles/notas/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('bundles/notas/js/eakroko.js')}}"></script>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <!-- Apple devices Homescreen icon -->
+  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png">
 
   {% block stylesheets %}{% endblock %}
 
   <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 </head>
-<body id="{% block pageid '' %}">
-  <header>
-    <div class="container_16">
-    {% block header %}{% endblock %}
-    </div>
-  </header>
-  
-  <div class="container_16">
-    {% block body %}{% endblock %}
 
+    {% block header %}{% endblock %}
+
+  
+<body class="login">
+  <div class="wrapper">
+    <h1><a href="index.html"><img src="{{ asset('img/logo-big.png') }}" alt="" class="retina-ready" height="49" width="59">SIAME</a></h1>
+    <div class="login-body">
+      <h2>INICIAR SESION</h2>
+       {% block body %}{% endblock %}
+      <div class="forget">
+        <a href="#"><span></span></a>
+      </div>
+    </div>
+  </div>
     <footer>
       {% block footer %}
         <a href="">&copy; {{ 'now' | date('Y') }} - Embassy</a>

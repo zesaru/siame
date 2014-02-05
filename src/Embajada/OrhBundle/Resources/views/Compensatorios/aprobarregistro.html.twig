@@ -1,0 +1,255 @@
+{% extends "::base8.html.twig" %}
+{% block body %}
+<!-- Timepicker -->
+<script src="{{ asset('bundles/notas/js/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
+<div class="row-row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-list"></i>Aprobar Registro de Compensatorios</h3>
+            </div>
+        </div>
+        <div class="box-content">
+            <form action="{{ path('compensatorios_actualizarregistro', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        <div class="span12">
+            <h5>El señor (a) {{entity.ucreado.name}} {{entity.ucreado.apellidos}} solicita que se apruebe 
+            {% if entity.diasdecompensatorio>1 %}
+            los siguientes {{entity.diasdecompensatorio}} registros de días 
+            {% else %}
+            su registro
+            {% endif %}
+            de compensatorio: </h5>
+        </div>
+        <div class="span12">
+            {{ form_label  (edit_form.estado, "Aprobar o Denegar Registro") }}
+            {{ form_widget (edit_form.estado) }}
+        </div>
+        <div>
+            <div class="span2">
+            {{ form_errors  (edit_form.fechadeevento1) }}
+            {{ form_label  (edit_form.fechadeevento1, "Fecha del Evento") }}
+            {{ form_widget (edit_form.fechadeevento1, { 'attr': {'class':"input-block-level datepick"}} )}}
+            </div>
+            <div class='span4'>
+            {{ form_errors  (edit_form.actividad1) }}
+            {{ form_label  (edit_form.actividad1, "Evento") }}
+            {{ form_widget (edit_form.actividad1, { 'attr': {'class':"input-block-level"}} )}}
+            </div>
+            <div class='span2'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadeinicio) }}
+                {{ form_label  (edit_form.horadeinicio, "Hora de Inicio") }}
+                {{ form_widget (edit_form.horadeinicio, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+            <div class='span2'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadefin1) }}
+                {{ form_label  (edit_form.horadefin1, "Hora de Fin") }}
+                {{ form_widget (edit_form.horadefin1, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+            <div>
+                <div class='span1'>
+                {{ form_errors  (edit_form.cantidaddehoras1) }}
+                {{ form_label  (edit_form.cantidaddehoras1, "Horas") }}
+                {{ form_widget (edit_form.cantidaddehoras1, { 'attr':
+                 {'class':"input-block-level",
+                }} )}}
+                </div>
+            </div>
+        </div>
+        {% if entity.diasdecompensatorio>=2 %}
+        <div class="2">
+            <div class="span2">
+            {{ form_errors  (edit_form.fechadeevento2) }}
+            {{ form_label  (edit_form.fechadeevento2, "Fecha del Evento") }}
+            {{ form_widget (edit_form.fechadeevento2, { 'attr':
+             {'class':"input-block-level datepick", }} )}}
+            </div>
+            <div class='span4'>
+            {{ form_errors  (edit_form.actividad2) }}
+            {{ form_label  (edit_form.actividad2, "Evento") }}
+            {{ form_widget (edit_form.actividad2, { 'attr': {'class':"input-block-level"}} )}}
+            </div>
+            <div class='span2'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadeinicio2) }}
+                {{ form_label  (edit_form.horadeinicio2, "Hora de Inicio") }}
+                {{ form_widget (edit_form.horadeinicio2, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+            <div class='span2'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadefin2) }}
+                {{ form_label  (edit_form.horadefin2, "Hora de Fin") }}
+                {{ form_widget (edit_form.horadefin2, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+                <div class='span1'>
+                {{ form_errors  (edit_form.cantidaddehoras2) }}
+                {{ form_label  (edit_form.cantidaddehoras2, "Horas") }}
+                {{ form_widget (edit_form.cantidaddehoras2, { 'attr': {'class':"input-block-level"}} )}}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if entity.diasdecompensatorio>=3 %}
+        <div class="3">
+            <div class="span2">
+            {{ form_errors  (edit_form.fechadeevento3) }}
+            {{ form_label  (edit_form.fechadeevento3, "Fecha del Evento") }}
+            {{ form_widget (edit_form.fechadeevento3, { 'attr': {'class':"input-block-level datepick"}} )}}
+            </div>
+            <div class='span4'>
+            {{ form_errors  (edit_form.actividad3) }}
+            {{ form_label  (edit_form.actividad3, "Evento") }}
+            {{ form_widget (edit_form.actividad3, { 'attr': {'class':"input-block-level"}} )}}
+            </div>
+            <div class='span2'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadeinicio3) }}
+                {{ form_label  (edit_form.horadeinicio3, "Hora de Inicio") }}
+                {{ form_widget (edit_form.horadeinicio3, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+            <div class='span2'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadefin3) }}
+                {{ form_label  (edit_form.horadefin3, "Hora de Fin") }}
+                {{ form_widget (edit_form.horadefin3, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+            <div>
+                <div class='span1'>
+                {{ form_errors  (edit_form.cantidaddehoras3) }}
+                {{ form_label  (edit_form.cantidaddehoras3, "Horas") }}
+                {{ form_widget (edit_form.cantidaddehoras3, { 'attr': {'class':"input-block-level"}} )}}
+                </div>
+            </div>
+        </div> 
+        {% endif %}
+        {% if entity.diasdecompensatorio>=4 %}  
+        <div class="4">
+            <div class="span2">
+            {{ form_errors  (edit_form.fechadeevento4) }}
+            {{ form_label  (edit_form.fechadeevento4, "Fecha del Evento") }}
+            {{ form_widget (edit_form.fechadeevento4, { 'attr': {'class':"input-block-level datepick"}} )}}
+            </div>
+            <div class='span4'>
+            {{ form_errors  (edit_form.actividad4) }}
+            {{ form_label  (edit_form.actividad4, "Evento") }}
+            {{ form_widget (edit_form.actividad4, { 'attr': {'class':"input-block-level"}} )}}
+            </div>
+            <div class='span2'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadeinicio4) }}
+                {{ form_label  (edit_form.horadeinicio4, "Hora de Inicio") }}
+                {{ form_widget (edit_form.horadeinicio4, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+            <div class='span2'>
+                <div class="bootstrap-timepicker">
+                {{ form_errors  (edit_form.horadefin4) }}
+                {{ form_label  (edit_form.horadefin4, "Hora de Fin") }}
+                {{ form_widget (edit_form.horadefin4, { 'attr': {'class':"input-block-level timepick"}} )}}
+                </div>
+            </div>
+            <div>
+                <div class='span1'>
+                {{ form_errors  (edit_form.cantidaddehoras4) }}
+                {{ form_label  (edit_form.cantidaddehoras4, "Horas") }}
+                {{ form_widget (edit_form.cantidaddehoras4, { 'attr': {'class':"input-block-level"}} )}}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div style="display:none">
+            {{ form_widget(edit_form) }}
+        </div>
+        <div class="span12">
+            {#% set i=1 %}
+            {% for i in 1..entity.diasdecompensatorio %}
+                {% entity.cantidaddehoras1 %}
+            {% endfor %#}
+        </div>      
+            
+            {{ form_widget(edit_form._token) }}    
+            <div class="span12">
+            <br>
+                <span class="aprobar">
+                <button class="btn btn-primary"type="submit"><i class="icon-save"></i> Aprobar</button>
+                </span>
+                <span class="denegar">
+                <button class="btn btn-danger"type="submit"><i class="icon-minus-sign"></i> Denegar</button>
+                </span>
+                <a class="btn btn-inverse" href="{{ path('compensatorios') }}"><i class="icon-reply"></i>
+                 Regresar
+                </a>
+            </br>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('.denegar').css('display','none');
+    $('body').on('mousedown click mouseup', function(){ 
+    var inicio1= ($('#embajada_orhbundle_compensatoriostype_horadefin1').val()).substring(0,2);
+    var fin1 = ($('#embajada_orhbundle_compensatoriostype_horadeinicio').val()).substring(0,2);
+    var horas = inicio1-fin1
+    $('#embajada_orhbundle_compensatoriostype_cantidaddehoras1').val(horas);
+    if (horas>=5) {
+        $('#embajada_orhbundle_compensatoriostype_cantidaddia1').val(1);
+    }else{
+        $('#embajada_orhbundle_compensatoriostype_cantidaddia1').val(4);
+    }
+
+    var inicio2= ($('#embajada_orhbundle_compensatoriostype_horadefin2').val()).substring(0,2);
+    var fin2 = ($('#embajada_orhbundle_compensatoriostype_horadeinicio2').val()).substring(0,2);
+    var horas2 = inicio2-fin2
+    $('#embajada_orhbundle_compensatoriostype_cantidaddehoras2').val(horas2); 
+    if (horas2>=5) {
+        $('#embajada_orhbundle_compensatoriostype_cantidaddia2').val(1);
+    }else{
+        $('#embajada_orhbundle_compensatoriostype_cantidaddia2').val(4);
+    }  
+
+    var inicio3= ($('#embajada_orhbundle_compensatoriostype_horadefin3').val()).substring(0,2);
+    var fin3 = ($('#embajada_orhbundle_compensatoriostype_horadeinicio3').val()).substring(0,2);
+    var horas3 = inicio3-fin3
+    $('#embajada_orhbundle_compensatoriostype_cantidaddehoras3').val(horas3);
+    if (hora3s>=5) {
+        $('#embajada_orhbundle_compensatoriostype_cantidaddia3').val(1);
+    }else{
+        $('#embajada_orhbundle_compensatoriostype_cantidaddia3').val(4);
+    }
+
+    var inicio4= ($('#embajada_orhbundle_compensatoriostype_horadefin4').val()).substring(0,2);
+    var fin4 = ($('#embajada_orhbundle_compensatoriostype_horadeinicio4').val()).substring(0,2);
+    var horas4 = inicio4-fin4
+    $('#embajada_orhbundle_compensatoriostype_cantidaddehoras4').val(horas4);
+    if (horas4>=5) {
+        $('#embajada_orhbundle_compensatoriostype_cantidaddia4').val(1);
+    }else{
+        $('#embajada_orhbundle_compensatoriostype_cantidaddia4').val(4);
+    }
+    });
+    
+    $('#embajada_orhbundle_compensatoriostype_estado').change(function() {
+     var estado = $('#embajada_orhbundle_compensatoriostype_estado').val();
+     console.log(estado);
+     if (estado==2) {
+        $('.aprobar').css('display','none');
+        $('.denegar').fadeIn();
+     };
+     if (estado==1) {
+        $('.denegar').css('display','none');
+        $('.aprobar').fadeIn();
+     };
+
+
+    });
+
+</script>
+{% endblock body %}

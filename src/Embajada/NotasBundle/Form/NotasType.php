@@ -14,7 +14,8 @@ class NotasType extends AbstractType
             ->add('numerodenota','text',array('required'=> false, 'read_only'=> true))
             ->add('cuerpo')
             ->add('sumilla')
-            ->add('fecha')
+            ->add('fecha','date',array('widget' => 'single_text','format' => 'dd/MM/yyyy'
+            ))
             ->add('idioma', 'choice', array(
                 'choices' => array('es' => 'Espanol', 'in' => 'Ingles'),
                 'empty_value' => 'Elige un idioma'

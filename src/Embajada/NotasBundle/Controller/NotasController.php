@@ -4,7 +4,6 @@ namespace Embajada\NotasBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Embajada\NotasBundle\Entity\Notas;
 use Embajada\NotasBundle\Form\NotasType;
 
@@ -23,9 +22,8 @@ class NotasController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $query = $em->createQuery(
-    'SELECT n FROM NotasBundle:Notas n ORDER BY n.fecha ASC');
+        'SELECT n FROM NotasBundle:Notas n ORDER BY n.fecha DESC');
 
-        //$entities = $em->getRepository('NotasBundle:Notas')->findAll();
         $entities = $query->getResult();
         return $this->render('NotasBundle:Notas:index.html.twig', array(
             'entities' => $entities,
@@ -222,6 +220,7 @@ class NotasController extends Controller
             
             $consulta = $em->getRepository('NotasBundle:Notas')->findCodigoDeNota(); 
             $notas->setNumerodenota($consulta+1);
+            $notas->setFecha(new \DateTime());
             $em->persist($notas);
 
         }
