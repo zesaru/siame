@@ -23,6 +23,10 @@ compensatorios_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "OrhBundle:Compensatorios:edit" }
 
+compensatorios_solicitar:
+    pattern:  /{id}/solicitar
+    defaults: { _controller: "OrhBundle:Compensatorios:solicitar" }
+
 compensatorios_update:
     pattern:  /{id}/update
     defaults: { _controller: "OrhBundle:Compensatorios:update" }

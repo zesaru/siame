@@ -207,6 +207,75 @@ class CompensatoriosController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    /**
+     * Displays a form to edit an existing Compensatorios entity.
+     *
+     */
+    public function solicitarAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('OrhBundle:Compensatorios')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Compensatorios entity.');
+        }
+
+        $editForm = $this->createForm(new CompensatoriosType(), $entity);
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('OrhBundle:Compensatorios:solicitar.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }    
+    /**
+     * Solicita dias compensatorios.
+     *
+     */
+    public function solicitarcompensatorioAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('OrhBundle:Compensatorios')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Compensatorios entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+        $editForm = $this->createForm(new CompensatoriosType(), $entity);
+        $editForm->bind($request);
+
+        if ($editForm->isValid()) {
+            $usuario = $this->getUser();
+            $entity->setUaprobado($usuario);
+            $entity -> setFechadesolicitud2(new \DateTime());
+
+            $em->persist($entity);
+            $em->flush();
+            $email=$usuario."@embperujapan.org";
+            $mensaje = \Swift_Message::newInstance()
+                ->setSubject('Solicitud de Registo de Compensatorios')
+                ->setFrom('vacaciones@embperujapan.org', "Solicitud de Compensatorios")                //->setTo('msantivanez@embperujapan.org','Jefe de Cancillería')
+                //->setBcc('eescala@embperujapan.org','Embajador')
+                ->setTo($email)
+                ->setBody(
+                $this->renderView('OrhBundle:Compensatorios:emailrespuestaderegistro.html.twig', array(
+            'entity' => $entity,
+
+            'id' => $entity->getId())),'text/html');     
+                $this->get('mailer')->send($mensaje);
+            return $this->redirect($this->generateUrl('compensatorios'));
+        }
+
+        return $this->render('OrhBundle:Compensatorios:edit.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            //'delete_form' => $deleteForm->createView(),
+        ));
+    }
 
     /**
      * Aprueba registro de dias compensatorios.

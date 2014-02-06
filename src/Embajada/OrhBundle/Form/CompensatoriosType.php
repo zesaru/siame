@@ -42,13 +42,28 @@ class CompensatoriosType extends AbstractType
             ->add('cantidaddehoras2', 'text', array('required'  => false,))
             ->add('cantidaddehoras3', 'text', array('required'  => false,))
             ->add('cantidaddehoras4', 'text', array('required'  => false,))
-            ->add('ucreado')
-            ->add('uaprobado')
+            //->add('ucreado')
+            //->add('uaprobado')
             ->add('cantidaddia1')
             ->add('cantidaddia2')
             ->add('cantidaddia3')
             ->add('cantidaddia4')
-
+            ->add('fechacompensatorio1','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy','required'  => false,
+            ))
+            ->add('fechacompensatorio2','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy','required'  => false,
+            ))
+            ->add('fechacompensatorio3','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy','required'  => false,
+            ))
+            ->add('fechacompensatorio4','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy','required'  => false,
+            ))
+            ->add('estado2')
+            ->add('personaacargo', 'text', array('required'  => false,))
+            ->add('turno1', 'text', array('required'  => false,))
+            ->add('turno2', 'text', array('required'  => false,))
+            ->add('turno3', 'text', array('required'  => false,))
+            ->add('turno4', 'text', array('required'  => false,))
+            //->add('fechadesolicitud2')
+            //->add('fechadeaprobacion2')
         ;
     }
 

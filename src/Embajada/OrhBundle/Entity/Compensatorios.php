@@ -125,6 +125,36 @@ class Compensatorios
      * @ORM\Column(name="personaacargo", type="string", length=140)
      */
     private $personaacargo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="turno1", type="string", length=140,nullable=true)
+     */
+    private $turno1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="turno2", type="string", length=140, nullable=true)
+     */
+    private $turno2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="turno3", type="string", length=140, nullable=true)
+     */
+    private $turno3;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="turno4", type="string", length=140, nullable=true)
+     */
+    private $turno4;
+
+
     /**
      * @var string
      *
@@ -446,6 +476,28 @@ class Compensatorios
     {
         return $this->fechadesolicitud;
     }
+    /**
+     * Set fechadesolicitud2
+     *
+     * @param \DateTime $fechadesolicitud2
+     * @return Compensatorios
+     */
+    public function setFechadesolicitud2($fechadesolicitud2)
+    {
+        $this->fechadesolicitud2 = $fechadesolicitud2;
+
+        return $this;
+    }
+
+    /**
+     * Get fechadesolicitud2
+     *
+     * @return \DateTime 
+     */
+    public function getFechadesolicitud2()
+    {
+        return $this->fechadesolicitud2;
+    }
 
     /**
      * Set fechadeaprobado
@@ -468,6 +520,29 @@ class Compensatorios
     public function getFechadeaprobado()
     {
         return $this->fechadeaprobado;
+    }
+
+        /**
+     * Set fechadeaprobacion2
+     *
+     * @param \DateTime $fechadeaprobacion2
+     * @return Compensatorios
+     */
+    public function setFechadeaprobacion2($fechadeaprobacion2)
+    {
+        $this->fechadeaprobacion2 = $fechadeaprobacion2;
+
+        return $this;
+    }
+
+    /**
+     * Get fechadeaprobacion2
+     *
+     * @return \DateTime 
+     */
+    public function getFechadeaprobacion2()
+    {
+        return $this->fechadeaprobacion2;
     }
 
     /**
@@ -652,6 +727,98 @@ class Compensatorios
     public function getPersonaacargo()
     {
         return $this->personaacargo;
+    }
+
+    /**
+     * Set turno1
+     *
+     * @param string $turno1
+     * @return Compensatorios
+     */
+    public function setTurno1($turno1)
+    {
+        $this->turno1 = $turno1;
+
+        return $this;
+    }
+
+    /**
+     * Get turno1
+     *
+     * @return string 
+     */
+    public function getTurno1()
+    {
+        return $this->turno1;
+    }
+
+    /**
+     * Set turno2
+     *
+     * @param string $turno2
+     * @return Compensatorios
+     */
+    public function setTurno2($turno2)
+    {
+        $this->turno2 = $turno2;
+
+        return $this;
+    }
+
+    /**
+     * Get turno2
+     *
+     * @return string 
+     */
+    public function getTurno2()
+    {
+        return $this->turno2;
+    }
+
+    /**
+     * Set turno3
+     *
+     * @param string $turno3
+     * @return Compensatorios
+     */
+    public function setTurno3($turno3)
+    {
+        $this->turno3 = $turno3;
+
+        return $this;
+    }
+
+    /**
+     * Get turno3
+     *
+     * @return string 
+     */
+    public function getTurno3()
+    {
+        return $this->turno3;
+    }
+
+    /**
+     * Set turno4
+     *
+     * @param string $turno4
+     * @return Compensatorios
+     */
+    public function setTurno4($turno4)
+    {
+        $this->turno4 = $turno4;
+
+        return $this;
+    }
+
+    /**
+     * Get turno4
+     *
+     * @return string 
+     */
+    public function getTurno4()
+    {
+        return $this->turno4;
     }
 
     /**
