@@ -3,8 +3,6 @@
 /*
  * (c) Cesar Murillo <namiayumis@gmail.com>
  *
- * El código fuente de la aplicación incluye un archivo llamado LICENSE
- * con toda la información sobre el copyright y la licencia.
  */
 // src/Embajada/VacacionesBundle/Command/AprobarVacacionesCommand.php
 
@@ -50,10 +48,8 @@ EOT
 					$output->writeln('Es mayor ...'.$aprobado);
 				}
 				
-				
 			}
-			
-			// ...
 		}
-
 }
+
+

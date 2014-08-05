@@ -48,22 +48,25 @@ class CompensatoriosType extends AbstractType
             ->add('cantidaddia2')
             ->add('cantidaddia3')
             ->add('cantidaddia4')
-            ->add('fechacompensatorio1','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy','required'  => false,
+            ->add('fechacompensatorio1','date', array('required'  => false,'widget' => 'single_text','format' => 'dd/MM/yyyy','required'  => false,
             ))
-            ->add('fechacompensatorio2','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy','required'  => false,
+            ->add('fechacompensatorio2','date', array('required'  => false,'widget' => 'single_text','format' => 'dd/MM/yyyy','required'  => false,
             ))
-            ->add('fechacompensatorio3','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy','required'  => false,
+            ->add('fechacompensatorio3','date', array('required'  => false,'widget' => 'single_text','format' => 'dd/MM/yyyy','required'  => false,
             ))
-            ->add('fechacompensatorio4','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy','required'  => false,
+            ->add('fechacompensatorio4','date', array('required'  => false,'widget' => 'single_text','format' => 'dd/MM/yyyy','required'  => false,
             ))
-            ->add('estado2')
+            ->add('estado2', 'choice', array(
+                'choices' => array('1' => 'Aprobar', '2' => 'Denegar')))
             ->add('personaacargo', 'text', array('required'  => false,))
-            ->add('turno1', 'text', array('required'  => false,))
-            ->add('turno2', 'text', array('required'  => false,))
-            ->add('turno3', 'text', array('required'  => false,))
-            ->add('turno4', 'text', array('required'  => false,))
+            ->add('turno1', 'choice',  array('required'  => false,'choices' => array('Mañana' => 'Mañana', 'Tarde' => 'Tarde'),'required'  => false,))
+            ->add('turno2', 'choice',  array('required'  => false,'choices' => array('Mañana' => 'Mañana', 'Tarde' => 'Tarde'),'required'  => false,))
+            ->add('turno3', 'choice',  array('required'  => false,'choices' => array('Mañana' => 'Mañana', 'Tarde' => 'Tarde'),'required'  => false,))
+            ->add('turno4', 'choice',  array('required'  => false,'choices' => array('Mañana' => 'Mañana', 'Tarde' => 'Tarde'),'required'  => false,))
             //->add('fechadesolicitud2')
             //->add('fechadeaprobacion2')
+            //'choice', array(
+            //    'choices' => array('1' => 'Aprobar', '2' => 'Denegar')
         ;
     }
 

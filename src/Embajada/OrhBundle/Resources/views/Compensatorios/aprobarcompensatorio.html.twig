@@ -1,0 +1,127 @@
+{% extends "::base8.html.twig" %}
+{% block body %}
+<!-- Timepicker -->
+<script src="{{ asset('bundles/notas/js/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
+<div class="row-row-fluid">
+    <div class="span12">
+        <div class="box">
+            <div class="box-title">
+                <h3><i class="icon-list"></i>Aprobar Compensatorio</h3>
+            </div>
+        </div>
+        {% if app.user.id<=3  %}
+        <div class="box-content">
+            <form action="{{ path('compensatorios_actualizarsolicitud', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        <div class="span12">
+            <h5>El señor (a) {{entity.ucreado.name}} {{entity.ucreado.apellidos}} solicita que se apruebe 
+            {% if entity.diasdecompensatorio>1 %}
+            los siguientes {{entity.diasdecompensatorio}}  de días 
+            {% else %}
+            su 
+            {% endif %}
+             compensatorio para el dia {{entity.fechacompensatorio1|date('d-m-Y')}}</h5>
+        </div>
+        <div class="span12">
+            {{ form_label  (edit_form.estado2, "Aprobar o Denegar Registro") }}
+            {{ form_widget (edit_form.estado2) }}
+        </div>
+    	<div class="span12">
+			<table border="1px" class="tabulaciones">
+			        <tr>
+			            <td width="75px" align="center" class="margensuperior">Fecha</td>
+			            <td width="180px">Actividad</td>
+			            <td width="40px">Hora Inicio</td>
+			            <td width="52px">Hora de Termino</td>
+			            <td width="40px">Horas</td>
+			            <td width="120px">Autoridad que solicito requerimiento</td>
+			        </tr>
+			        <tr>
+			            <td>{% if entity.fechadeevento1 %}{{ entity.fechadeevento1|date('d-m-Y') }}{% endif %}</td>
+			            <td>{{entity.actividad1}}</td>
+			            <td>{% if entity.horadeinicio %}{{ entity.horadeinicio|date('H:m') }}{% endif %}</td>
+			            <td>{% if entity.horadefin1 %}{{ entity.horadefin1|date('H:m') }}{% endif %}</td>
+			            <td align="center">{{ entity.cantidaddehoras1 }}</td>
+			            <td>Embajador</td>
+			        </tr>
+			        {% if entity.diasdecompensatorio >=2 %}
+			        <tr>
+			            <td>{% if entity.fechadeevento2 %}{{ entity.fechadeevento2|date('d-m-Y') }}{% endif %}</td>
+			            <td>{{entity.actividad2}}</td>
+			            <td>{% if entity.horadeinicio2 %}{{ entity.horadeinicio2|date('H:m') }}{% endif %}</td>
+			            <td>{% if entity.horadefin2 %}{{ entity.horadefin2|date('H:m') }}{% endif %}</td>
+			            <td align="center">{{ entity.cantidaddehoras2 }}</td>
+			            <td>Embajador</td>
+			        </tr>
+			        {% endif %}
+			        {% if entity.diasdecompensatorio >=3 %}
+			        <tr>
+			            <td>{% if entity.fechadeevento3 %}{{ entity.fechadeevento3|date('d-m-Y') }}{% endif %}</td>
+			            <td>{{entity.actividad3}}</td>
+			            <td>{% if entity.horadeinicio3 %}{{ entity.horadeinicio3|date('H:m') }}{% endif %}</td>
+			            <td>{% if entity.horadefin3 %}{{ entity.horadefin3|date('H:m') }}{% endif %}</td>
+			            <td align="center">{{ entity.cantidaddehoras3 }}</td>
+			            <td>Embajador</td>
+			        </tr>
+			        {% endif %}
+			        {% if entity.diasdecompensatorio >=4 %}
+			        <tr>
+			            <td>{% if entity.fechadeevento4 %}{{ entity.fechadeevento4|date('d-m-Y') }}{% endif %}</td>
+			            <td>{{entity.actividad4}}</td>
+			            <td>{% if entity.horadeinicio4 %}{{ entity.horadeinicio4|date('H:m') }}{% endif %}</td>
+			            <td>{% if entity.horadefin4 %}{{ entity.horadefin4|date('H:m') }}{% endif %}</td>
+			            <td align="center">{{ entity.cantidaddehoras4 }}</td>
+			            <td>Embajador</td>
+			        </tr>
+			        {% endif %}
+			        <p></p>
+			</table>
+		</div>
+        <div style="display:none">
+            {{ form_widget(edit_form) }}
+        </div>
+        <div class="span12">
+            {#% set i=1 %}
+            {% for i in 1..entity.diasdecompensatorio %}
+                {% entity.cantidaddehoras1 %}
+            {% endfor %#}
+        </div>      
+            
+            {{ form_widget(edit_form._token) }}    
+            <div class="span12">
+            <br>
+                <span class="aprobar">
+                <button class="btn btn-primary"type="submit"><i class="icon-save"></i> Aprobar</button>
+                </span>
+                <span class="denegar">
+                <button class="btn btn-danger"type="submit"><i class="icon-minus-sign"></i> Denegar</button>
+                </span>
+                <a class="btn btn-inverse" href="{{ path('compensatorios') }}"><i class="icon-reply"></i>
+                 Regresar
+                </a>
+            </br>
+            </div>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<script type="text/javascript">
+    $('.denegar').css('display','none');
+    
+    $('#embajada_orhbundle_compensatoriostype_estado2').change(function() {
+     var estado = $('#embajada_orhbundle_compensatoriostype_estado2').val();
+     console.log(estado);
+     if (estado==2) {
+        $('.aprobar').css('display','none');
+        $('.denegar').fadeIn();
+     };
+     if (estado==1) {
+        $('.denegar').css('display','none');
+        $('.aprobar').fadeIn();
+     };
+
+
+    });
+
+</script>
+{% endblock body %}

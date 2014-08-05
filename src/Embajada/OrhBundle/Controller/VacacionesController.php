@@ -192,7 +192,7 @@ class VacacionesController extends Controller
             $email=$usuario."@embperujapan.org";
             $mensaje = \Swift_Message::newInstance()
                 ->setSubject('Solicitud de Vacaciones')
-                ->setFrom('vacaciones@embperujapan.org', "NO responder a este correo")
+                ->setFrom('vacaciones@embperujapan.org', "Solicitud de Vacaciones")
                 ->setTo('msantivanez@embperujapan.org','Jefe de Cancillería')
                 ->setBcc('eescala@embperujapan.org','Embajador')
                 ->setCc($email)

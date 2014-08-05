@@ -37,18 +37,25 @@ textarea{
                         {{ form_widget (edit_form.ferencia, { 'attr': {'class':"input-medium",}}
                         )}}
                 </div>
-                <div class="span12">
-                        {{ form_errors (edit_form.asunto) }} 
-                        {{ form_label (edit_form.asunto) }}  
-                        {{ form_widget (edit_form.asunto, 
-                            { 'attr': 
-                                {
-                                'class':"input-xxlarge",
+                <div>
+                    <div class="span8">
+                            {{ form_errors (edit_form.asunto) }} 
+                            {{ form_label (edit_form.asunto) }}  
+                            {{ form_widget (edit_form.asunto, 
+                                { 'attr': 
+                                    {
+                                    'class':"input-xxlarge",
 
-                                }}
-                        )}}
+                                    }}
+                            )}}
+                    </div>
+                    <div class="span4">
+                            {{ form_errors (edit_form.peso)}}
+                            {{ form_label (edit_form.peso)}}
+                            {{ form_widget (edit_form.peso)}}
+                    </div>
                 </div>
-                <div class="span12">
+                <div >
                     <div class="span4">
                             {{ form_errors (edit_form.descripcion) }} 
                             {{ form_label (edit_form.descripcion) }}  

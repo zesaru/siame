@@ -15,12 +15,26 @@
         </tr>
 
         <tr>
-            <td colspan="2" style="font-size: 18px; padding: 1em .5em;"><br>La presente es para comunicarle que con fecha {% if entity.fechadeaprobado %}{{ entity.fechadeaprobado|date('d-m-Y') }}{% endif %} ha sido {%if entity.estado==1 %}aprobada {% else %}denegada{% endif%} su solicitud por el Jefe de Cancilleria <br>
+            <td colspan="2" style="font-size: 18px; padding: 1em .5em;"><br>La presente es para comunicarle que con fecha {% if entity.fechadeaprobado %}{{ entity.fechadeaprobado|date('d-m-Y') }}{% endif %} ha sido {%if entity.estado==1 %}aprobada {% else %}denegada{% endif%} su solicitud numero {{ entity.id }}por el Jefe de Cancilleria <br>
+            <p></p>
+            <p>Nombre del Evento {{ entity.actividad1 }}</p>
             {% if entity.estado==1 %}
             Usted tiene 10 días para hacer uso de esto(s), despues de este periodo, no podra ejercerlo.
             {% endif %}
             </td>
+
         </tr>
+        <tr>
+            <td>
+                <br>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <a href="http://172.18.28.21{{ path('compensatorios_solicitar', { 'id': entity.id }) }}" style="background:#0066FF ; border-radius: 5px; color: #FFF; font-size: 16px; padding: .5em 1em; text-decoration: none;" > Solicitar Compensatorio</a>
+            </td>
+        <tr>        
         <tr>
             <td style="padding-top: 5px;">
                 <a style="color: #000; font-size: 21px; font-weight: bold; text-decoration: none;" >

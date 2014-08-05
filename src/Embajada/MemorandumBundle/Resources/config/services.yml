@@ -1,7 +1,0 @@
-parameters:
-#    memorandum.example.class: Embajada\MemorandumBundle\Example
-
-services:
-#    memorandum.example:
-#        class: %memorandum.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

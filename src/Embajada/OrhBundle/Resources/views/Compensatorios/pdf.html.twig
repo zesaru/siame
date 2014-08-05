@@ -33,7 +33,7 @@
         <tr>
             <td colspan="3" height="20">
             <p><strong>FORMATO Nº 02</strong></p>
-            <p align="center"><strong>SOLICITUD REGISTRO DE DIAS COMPENSATORIOS</strong></p>
+            <p align="center"><strong>SOLICITUD REGISTRO DE DIAS COMPENSATORIOS ID{{entity.id}}</strong></p>
             </td>
         </tr>
         <p></p>
@@ -124,6 +124,15 @@
                 <td width="150"></td>
                 <td align="center">Firma del Solicitante</td>
                 <td width="200"></td>
+            </tr>
+            <br>
+            <br>
+            <tr>
+                <td>
+                    {% if  entity.estado == 1 %}
+                        Aprobado {{ entity.fechadeaprobado|date('d-m-Y') }}
+                    {% endif %}
+                </td>
             </tr>
         </table>
     </table>

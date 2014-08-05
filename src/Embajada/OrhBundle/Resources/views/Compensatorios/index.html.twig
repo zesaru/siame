@@ -12,6 +12,7 @@
     font-size: 20px;
 }
 </style>
+{% if 0==1 %}
 <div class="row-fluid">
     <div class="span12">
         <div class="box box-color box-bordered green">
@@ -23,42 +24,68 @@
             <table class="table table-hover table-nomargin table-striped dataTable dataTable-reorder">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>PDF</th>
                         <th>Nombre</th>
-                        <th>Nro. de registros</th>
-                        <th>Fecha de solicitud</th>
+                        <th>Registros</th>
+                        <th>Fecha de Registro</th>
                         <th>Fecha de aprobado</th>
-                        <th id="centrado">Estado</th>
+                        <th id="centrado">Estado Registro</th>
+                        <th id="centrado">Solicito Compensatorio</th>
+                        <th id="centrado">Dia que tomara Compensatorio</th>
+                        <th id="centrado">Aprobación</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
+
                 {% for entity in entities %}
-                    <tr>
-                        <td style="font-size:20px"><a class="rojo" target="_blank" href="{{ path('compensatorios_pdf', { 'id': entity.id }) }}"><i class="icon-file"></i></a></td>
-                        <td>{{entity.ucreado.name}} {{entity.ucreado.apellidos}}</td>
-                        <td>{{ entity.diasdecompensatorio }}</td>
-                        <td>{% if entity.fechadesolicitud %}{{ entity.fechadesolicitud|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{% if entity.fechadeaprobado %}{{ entity.fechadeaprobado|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td id="centrado">
-                            {% if entity.estado==2 %}
-                                <i class="icon-minus-sign"></i>
-                            {% endif %}
-                            {% if entity.estado==1 %}
-                            <i style="color:green; font-size:20px" class="icon-ok-sign"></i>
-                            {% endif %}
-                            {% if entity.estado==0 %}
-                                <i style="color:peru; font-size:20px" class="icon-time "></i>
-                            {% endif %}
-                        </td>
-                        <td>
-                            <a class="rojo" href="{{ path('compensatorios_edit', { 'id': entity.id }) }}">editar</a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td style="font-size:20px"><a class="rojo" target="_blank" href="{{ path('compensatorios_pdf', { 'id': entity.id }) }}"><i class="icon-file"></i></a></td>
+                            <td>{{entity.ucreado.name}} {{entity.ucreado.apellidos}}</td>
+                            <td>{{ entity.diasdecompensatorio }}</td>
+                            <td>{% if entity.fechadesolicitud %}{{ entity.fechadesolicitud|date('d-m-Y H:i:s') }}{% endif %}</td>
+                            <td>{% if entity.fechadeaprobado %}{{ entity.fechadeaprobado|date('d-m-Y H:i:s') }}{% endif %}</td>
+                            <td id="centrado">
+                                {% if entity.estado==2 %}
+                                    <i class="icon-minus-sign"></i>
+                                {% endif %}
+                                {% if entity.estado==1 %}
+                                <i style="color:green; font-size:20px" class="icon-ok-sign"></i>
+                                {% endif %}
+                                {% if entity.estado==0 %}
+                                    <i style="color:peru; font-size:20px" class="icon-time "></i>
+                                {% endif %}
+                            </td>
+                            <td id="centrado">
+                                {% if entity.fechadesolicitud2 %}{{ entity.fechadesolicitud2|date('d-m-Y H:i:s') }}{% endif %}
+                            </td>
+                            <td id="centrado">
+                                {% if entity.fechacompensatorio1 %}{{ entity.fechacompensatorio1|date('d-m-Y') }}-{{ entity.turno1 }}{% endif %}
+                            </td>
+                            <td id="centrado">
+                                {% if entity.estado2==2 %}
+                                    <i class="icon-minus-sign"></i>
+                                {% endif %}
+                                {% if entity.estado2==1 %}
+                                <i style="color:green; font-size:20px" class="icon-ok-sign"></i>
+                                {% endif %}
+                                {% if entity.estado2==0 %}
+                                    <i style="color:peru; font-size:20px" class="icon-time "></i>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a class="rojo" href="#{#{ path('compensatorios_edit', { 'id': entity.id }) }#}">editar</a>
+                            </td>
+                        </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+{% else %}
+    <h1>Sistema en mantenimiento</h1>
+{% endif %}
 {% endblock body %}
+
+

@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class CompensatoriosRepository extends EntityRepository
 {
+	public function findSolicitudesNoaprobadas()
+    {
+        $em = $this->getEntityManager();
+          $query = $em->createQuery('
+            select c 
+            from OrhBundle:Compensatorios c
+            where  c.fechadesolicitud <=:fechai
+
+            ');
+          $query->setParameter('fechai', new \DateTime('-5days'));
+          return $query->getResult();  
+    }
 }

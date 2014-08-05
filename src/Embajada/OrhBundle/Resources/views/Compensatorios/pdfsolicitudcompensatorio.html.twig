@@ -1,0 +1,102 @@
+<html>  
+<head>  
+  <style>  
+    table{
+    font-size: 11px;
+    }
+    .tabulaciones{
+        padding: 5px;
+        vertical-align: middle;;
+    }
+    .margensuperior{
+        padding-top: 10px;
+    }
+    .sangria {  
+        text-indent: 50px; 
+    }
+    .sangriad {  
+    text-indent: 60px; 
+    }
+    p{
+        font-family: Arial;
+        font-size: 11;
+    }
+  </style>  
+</head>  
+<body>
+    <table border="0">
+        <tr>
+            <td colspan="3" height="20">          
+                <img src="{{ pdf_image('NotasBundle:logoembajadaes.jpg') }}" width="140" height="85"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" height="20">
+            <p><strong>FORMATO Nº 03</strong></p>
+            <p align="center"><strong>SOLICITUD USO DE DIAS COMPENSATORIOS</strong></p>
+            </td>
+        </tr>
+        <p></p>
+        <tr>
+            <td height="25px" width="50px"></td>
+            <td width="100px">AL</td>
+            <td width="20px">:</td>
+            <td width="400">JEFE DE CANCILLERIA</td>
+        </tr>
+        <tr>
+            <td height="25px" width="50px"></td>
+            <td width="100px">DE</td>
+            <td width="20px">:</td>
+            <td>{{ entity.ucreado.name|upper}} {{ entity.ucreado.apellidos|upper}}</td>
+        </tr>
+        <tr>
+            <td height="25px" width="50px"></td>
+            <td width="100px">FECHA</td>
+            <td width="20px">:</td>
+            <td>{{ entity.fechadesolicitud2|fecha ('long','none','es')|upper }}</td>
+        </tr>
+    </table>
+    <p></p>
+    <p></p>
+    <hr>
+    <p></p>
+    <table>
+        <tr>
+            <td align="justify">De conformidad con los Memoranda Circulares Nº 04/2012 y Nº 01/2013, me permito solicitar el uso de  {{ entity.diasdecompensatorio }}
+            {% if entity.diasdecompensatorio==1 %}día compensatorio
+            {% else %}días compensatorios
+            {% endif %} 
+            {% if entity.cantidaddehoras1 > 1 %} turno {{ entity.turno1 }} {% endif %}
+            
+            
+            {% if entity.diasdecompensatorio==1 %}
+            el {{ entity.fechacompensatorio1|fecha ('long','none','es')}} 
+            {% else %}
+            el {{ entity.fechacompensatorio1|fecha ('long','none','es')}} y el {{ entity.fechacompensatorio2|fecha ('long','none','es')}}
+            {% endif %}
+            
+            correspondientes a las actividades registradas y aprobadas por usted con registro ID{{entity.id}} .
+            <p></p>
+            </td>
+        </tr>
+        
+        <tr>
+            <td align="justify"> Durante el (los) dia(s) compensantorio que no asistere a la Embajada, se hara cargo temporalmente de mis temas la (el) Sr.(a) {{entity.personaacargo}}
+            </td>
+        </tr>
+    </table>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <table>
+        <tr>
+            <td width="150"></td>
+            <td align="center">Firma del Solicitante</td>
+            <td width="200"></td>
+        </tr>
+    </table>
+</body>
+</html>

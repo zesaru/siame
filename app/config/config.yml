@@ -26,6 +26,7 @@ twig:
     strict_variables: %kernel.debug%
     globals:
         directorio_imagenes: '/uploads/guias/'
+        ruta: '172.18.28.21'
 
 # Assetic Configuration
 assetic:

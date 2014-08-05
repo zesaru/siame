@@ -89,6 +89,7 @@ ValijaBundle_Oficios:
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
+#ruta para aprobar las hojas de remision desde el archivo index
 hremision_aprobar:
     pattern:  /{id}/aprobar
     defaults: { _controller: "ValijaBundle:Hremision:aprobar" }

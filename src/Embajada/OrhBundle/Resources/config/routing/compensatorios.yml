@@ -6,18 +6,19 @@ compensatorios_show:
     pattern:  /{id}/show
     defaults: { _controller: "OrhBundle:Compensatorios:show" }
 
+#PDFs
+#---------------------------------------------------------------------------------
 compensatorios_pdf:
     pattern:  /{id}/pdf
     defaults: { _controller: "OrhBundle:Compensatorios:pdf" }
 
+compensatorios_pdfsolicitudcompensatorio:
+    pattern:  /{id}/pdfsolicitudcompensatorio
+    defaults: { _controller: "OrhBundle:Compensatorios:pdfsolicitudcompensatorio" }
+#---------------------------------------------------------------------------------
 compensatorios_new:
     pattern:  /new
     defaults: { _controller: "OrhBundle:Compensatorios:new" }
-
-compensatorios_create:
-    pattern:  /create
-    defaults: { _controller: "OrhBundle:Compensatorios:create" }
-    requirements: { _method: post }
 
 compensatorios_edit:
     pattern:  /{id}/edit
@@ -37,6 +38,12 @@ compensatorios_actualizarregistro:
     defaults: { _controller: "OrhBundle:Compensatorios:actualizarregistro" }
     requirements: { _method: post }
 
+#actualizarsolicituddecompensatorio
+compensatorios_actualizarsolicitud:
+    pattern:  /{id}/actualizarsolicitud
+    defaults: { _controller: "OrhBundle:Compensatorios:actualizarsolicitud" }
+    requirements: { _method: post }
+
 compensatorios_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "OrhBundle:Compensatorios:delete" }
@@ -46,6 +53,16 @@ compensatorios_aprobarregistro:
     pattern:  /{id}/aprobarregistro
     defaults: { _controller: "OrhBundle:Compensatorios:aprobarregistro" }
 
+compensatorios_aprobarcompensatorio:
+    pattern:  /{id}/aprobarcompensatorio
+    defaults: { _controller: "OrhBundle:Compensatorios:aprobarcompensatorio" }
+
 compensatorios_solicitarcompensatorio:
     pattern:  /{id}/solicitarcompensatorio
     defaults: { _controller: "OrhBundle:Compensatorios:solicitarcompensatorio" }
+
+#ruta ingresar un dia de compensatorio
+compensatorios_create:
+    pattern:  /create
+    defaults: { _controller: "OrhBundle:Compensatorios:create" }
+    requirements: { _method: post }

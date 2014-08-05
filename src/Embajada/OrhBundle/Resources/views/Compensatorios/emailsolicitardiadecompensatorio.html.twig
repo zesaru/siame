@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <style>
+        body { font: 13px/1.5 Arial, sans-serif; }
+        ul { margin-left: .5em; padding-left: 0; }
+    </style>
+</head>
+
+<body>
+    <table cellpadding="0" cellspacing="0" style="width:100%;" width="100%">
+        <tr style="background: #1BE022; color: #FFF;">
+            <td style="padding: 1em;"><a style="color: #FFF; font-size: 21px; text-decoration: none;" >Solicitud de Compensatorio</a></td>
+            <td style="text-align: right; padding: 1em;"><span style="color: #FFF; display: block; font-size: 18px;"></span></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" style="font-size: 18px; padding: 1em .5em;"><br>La presente es para comunicarle que el Senor(a) {{entity.uaprobado.name}} {{entity.uaprobado.apellidos}} ha solicitado  hacer uso de su compensatorio el {{ entity.fechacompensatorio1|date('d-m-Y')}} .
+
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="http://172.18.28.21{{ path('compensatorios_pdf', { 'id': entity.id }) }}" style="background:#0066FF ; border-radius: 5px; color: #FFF; font-size: 16px; padding: .5em 1em; text-decoration: none;" >Ver solicitud de registro</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="http://172.18.28.21{{ path('compensatorios_pdfsolicitudcompensatorio', { 'id': entity.id }) }}" style="background:#0066FF ; border-radius: 5px; color: #FFF; font-size: 16px; padding: .5em 1em; text-decoration: none;" >Ver solicitud de uso de compensatorio</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="http://172.18.28.21/siame/web/app.php/vacaciones/vista" style="background:#0066FF ; border-radius: 5px; color: #FFF; font-size: 16px; padding: .5em 1em; text-decoration: none;" >Ver Vista General en Calendario</a>
+            </td>
+        <tr>
+            <td>
+                <br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="http://172.18.28.21{{ path('compensatorios_aprobarcompensatorio', { 'id': entity.id }) }}" style="background:#0066FF ; border-radius: 5px; color: #FFF; font-size: 16px; padding: .5em 1em; text-decoration: none;" >Aprobar Solicitud</a>
+            </td>
+        <tr>
+            <td>
+                <br>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="color: #AAA; font-size: 13px;">
+                &copy;  - Embajada del Per&uacute; en Jap&oacute;n</em>
+            </td>
+        </tr>      
+</body>
+
+</html>

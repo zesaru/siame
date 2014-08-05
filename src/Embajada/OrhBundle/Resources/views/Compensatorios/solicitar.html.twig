@@ -2,6 +2,7 @@
 {% block body %}
 <!-- Timepicker -->
 <script src="{{ asset('bundles/notas/js/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
+{% set iddeusuario = app.user.id %}
 <div class="row-row-fluid">
     <div class="span12">
         <div class="box">
@@ -9,61 +10,117 @@
                 <h3><i class="icon-list"></i>Solicitar Compensatorios</h3>
             </div>
         </div>
-        {% if entity.estado==1 %}
-        <div class="box-content">
-        	<h5>Usted tiene {{entity.diasdecompensatorio}} registros aprobado(s) con su solicitud con ID R{{entity.id}} y aprobada por el Jefe de Cancillería con fecha {{ entity.fechadeaprobado|date('d/m/Y') }}.</h5>
-            <form action="{{ path('compensatorios_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
 
-        <div class="1">
-            <div class="span6">
-	            {{ form_errors  (edit_form.fechacompensatorio1) }}
-	            {{ form_label  (edit_form.fechacompensatorio1, "Fecha de Solicitud") }}
-	            {{ form_widget (edit_form.fechacompensatorio1, { 'attr': 
-	            	{'class':"datepick"}} 
-	            )}}
-            </div>
-            <div class="span6"></div>
-        </div>
-        <div class="2">
-            <div class="span12">
-	            {{ form_errors  (edit_form.fechacompensatorio2) }}
-	            {{ form_label  (edit_form.fechacompensatorio2, "Fecha de Solicitud") }}
-	            {{ form_widget (edit_form.fechacompensatorio2, { 'attr': 
-	            	{'class':"datepick"}} 
-	            )}}
-            </div>
-        </div>
-        <div class="3">
-            <div class="span12">
-	            {{ form_errors  (edit_form.fechacompensatorio3) }}
-	            {{ form_label  (edit_form.fechacompensatorio3, "Fecha de Solicitud") }}
-	            {{ form_widget (edit_form.fechacompensatorio3, { 'attr': 
-	            	{'class':"datepick"}} 
-	            )}}
-            </div>
-        </div>   
-        <div class="4">
-            <div class="span12">
-	            {{ form_errors  (edit_form.fechacompensatorio4) }}
-	            {{ form_label  (edit_form.fechacompensatorio4, "Fecha de Solicitud") }}
-	            {{ form_widget (edit_form.fechacompensatorio4, { 'attr': 
-	            	{'class':"datepick"}} 
-	            )}}
-            </div>
-        </div>
-        <div class="span12">
-        		{{ form_errors(edit_form.personaacargo)}}
-        		{{ form_label (edit_form.personaacargo, "Nombre de la persona que se quedara a cargo de sus temas")}}
-        		{{ form_widget (edit_form.personaacargo)}}
+        	
+		    <div class="box-content">
+	        	<h5>Usted tiene {{entity.diasdecompensatorio}} registros aprobado(s) con su solicitud con ID R{{entity.id}} y aprobada por el Jefe de Cancillería con fecha {{ entity.fechadeaprobado|date('d/m/Y') }}.</h5>
 
-    	</div>
-        <div style="display:none">
-        	{{ form_rest(edit_form) }}
-        </div>
+	            <form action="{{ path('compensatorios_solicitarcompensatorio', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
 
+	        <div class="1 span12">
+	            <div class="span6">
+		            {{ form_errors (edit_form.fechacompensatorio1) }}
+		            {{ form_label  (edit_form.fechacompensatorio1, "Fecha de Solicitud") }}
+		            {{ form_widget (edit_form.fechacompensatorio1, { 'attr': 
+		            	{'class':"datepick", 'required':"true",}
+		            	} 
+		            )}}
+	            </div>
+	            {% if entity.cantidaddehoras1 <= 4 and entity.diasdecompensatorio >= 1 %}
+		            <div class="span5">
+			            {{ form_errors  (edit_form.turno1) }}
+			            {{ form_label  (edit_form.turno1, "Turno") }}            	
+		            	{{ form_widget (edit_form.turno1,
+		            		{'attr':
+		            			{'required':"true",}
+		            		}
+		            	)}}
+		            </div>
+	            {% endif %}
+	        </div>
+	        <div class="2 span12">
+	        	{% if entity.diasdecompensatorio >= 2 %}
+	            <div class="span5">
+		            {{ form_errors  (edit_form.fechacompensatorio2) }}
+		            {{ form_label  (edit_form.fechacompensatorio2, "Fecha de Solicitud") }}
+		            {{ form_widget (edit_form.fechacompensatorio2, { 'attr': 
+		            	{'class':"datepick",
+		            	 'required':"true",
+		            	}} 
+		            )}}
+	            </div>
+	            {% endif %}
+	            {% if entity.cantidaddehoras2 <= 4 and entity.diasdecompensatorio >= 2 %}
+	            <div class="span5">
+		            {{ form_errors  (edit_form.turno2) }}
+		            {{ form_label  (edit_form.turno2, "Turno") }}            	
+	            	{{ form_widget (edit_form.turno2,
+	            		{'attr':
+	            			{'required':"true",}
+	            		}
+	            	)}}
+	            </div>
+	            {% endif %}            
+	        </div>
+	        <div class="3 span12">
+	            <div class="span12">
+		            {{ form_errors  (edit_form.fechacompensatorio3) }}
+		            {{ form_label  (edit_form.fechacompensatorio3, "Fecha de Solicitud") }}
+		            {{ form_widget (edit_form.fechacompensatorio3, 
+		            	{ 'attr': 
+		            		{'class':"datepick",
+		            		
+		            	}	} 
+		            )}}
+	            </div>
+	            {% if entity.cantidaddehoras3 <= 4 and entity.diasdecompensatorio >= 3 %}
+	            <div class="span5">
+		            {{ form_errors  (edit_form.turno3) }}
+		            {{ form_label  (edit_form.turno3, "Turno") }}            	
+	            	{{ form_widget (edit_form.turno3,
+	            		{'attr':
+	            			{'required':"true",}
+	            		}
+	            	)}}
+	            </div>
+	            {% endif %}            
+	        </div>   
+	        <div class="4 span12">
+	            <div class="span6">
+		            {{ form_errors  (edit_form.fechacompensatorio4) }}
+		            {{ form_label  (edit_form.fechacompensatorio4, "Fecha de Solicitud") }}
+		            {{ form_widget (edit_form.fechacompensatorio4, { 'attr': 
+		            	{'class':"datepick"}} 
+		            )}}
+	            </div>
+	            {% if entity.cantidaddehoras4 <= 4 and entity.diasdecompensatorio >= 4 %}
+	            <div class="span5">
+		            {{ form_errors  (edit_form.turno4) }}
+		            {{ form_label  (edit_form.turno4, "Turno") }}            	
+	            	{{ form_widget (edit_form.turno4,
+	            		{'attr':
+	            			{'required':"true",}
+	            		}
+	            	)}}
+	            </div>
+	            {% endif %}            
+	        </div>
+	        <div class="span12">
+	        	<div class="span12">
+	        		{{ form_errors(edit_form.personaacargo)}}
+	        		{{ form_label (edit_form.personaacargo, "Nombre de la persona que se quedara a cargo de sus temas")}}
+	        		{{ form_widget (edit_form.personaacargo,
+	        			{'attr':
+	        				{'required':true}
+	        			}
+	        		)}}
+	        	</div>
+	    	</div>
+	        <div style="display:none">
+	        	{{ form_rest(edit_form) }}
+	        </div>
+                           
 
-                            
-            {#{ form_widget(edit_form) }#}
             {{ form_widget(edit_form._token) }}    
             <div class="span12">
             <br>
@@ -75,23 +132,26 @@
             </div>
             </form>
         </div>
-        {% else %}
-        	<h1>No tiene permisos de Ingreso</h1>
-        {% endif %}
     </div>
 </div>
 <script type="text/javascript">
 $(function() {
 	var registros=$('#embajada_orhbundle_compensatoriostype_diasdecompensatorio').val();
-
 	if (registros==1) {
 		$('.2').css("display","none");
-	};
+		$('.3').css('display','none');
+		$('.4').css('display','none');		
+	}
 	if (registros==2) { 
 		console.log("es dos");
 		$('.3').css('display','none');
 		$('.4').css('display','none');
-	} 
+	}
+	if (registros==3) { 
+		console.log("es dos");
+		$('.4').css('display','none');
+	}
+
 });
 </script>
 {% endblock body %}

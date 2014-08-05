@@ -14,7 +14,7 @@ class HremisionType extends AbstractType
             ->add('numero')
             ->add('destino')
             ->add('asunto')
-            ->add('fecha','date', array('widget' => 'single_text','format' => 'MM/dd/yyyy'
+            ->add('fecha','date', array('widget' => 'single_text','format' => 'dd/MM/yyyy'
             ))
             ->add('ferencia','text',array('required'=> false)) 
             ->add('descripcion')

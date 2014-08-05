@@ -122,7 +122,7 @@ class Compensatorios
     /**
      * @var string
      *
-     * @ORM\Column(name="personaacargo", type="string", length=140)
+     * @ORM\Column(name="personaacargo", type="string", length=140, nullable=true)
      */
     private $personaacargo;
 

@@ -1,7 +1,29 @@
 {% extends "::base8.html.twig" %}
 {% block body %}
+<style type="text/css">
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('http://i.stack.imgur.com/FhHRx.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;   
+}
+</style>
 <!-- Timepicker -->
 <script src="{{ asset('bundles/notas/js/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
+<div class="modal"><!-- Place at bottom of page --></div>
 <div class="row-row-fluid">
 	<div class="span12">
 		<div class="box">
@@ -10,7 +32,7 @@
 			</div>
 		</div>
 		<div class="box-content">
-		<form action="{{ path('compensatorios_create') }}" method="post" {{ form_enctype(form) }}>
+		<form onsubmit="mensaje()" action="{{ path('compensatorios_create') }}" method="post" {{ form_enctype(form) }}>
 
 	        {{ form_errors  (form.diasdecompensatorio) }}
 	    	{{ form_label  (form.diasdecompensatorio, "Dias a solicitar") }}
@@ -148,13 +170,11 @@
 	    		</div>
 	    	</div>
 	    </div> 
-
-	                        
             {#{ form_widget(form) }#}
             {{ form_widget(form._token) }}	
             <div class="span12">
             <br>
-        		<button class="btn btn-primary"type="submit"><i class="icon-save"></i> Guardar</button>
+        		<button id="guardar" class="btn btn-primary"type="submit"><i class="icon-save"></i> Guardar</button>
         		<a class="btn btn-inverse" href="{{ path('compensatorios') }}"><i class="icon-reply"></i>
 	             Regresar
 	        	</a>
@@ -166,8 +186,15 @@
 </div>
 <script>
 
+function mensaje () {
+
+	if (confirm("Esta seguro que desea enviar esta información")){ 
+
+	}
+}
 // se inicia despuesde haber cargado el dom
 $(function() {
+
 
 	$('body').on('mousedown click mouseup', function(){ 
   	var inicio1= ($('#embajada_orhbundle_compensatoriostype_horadefin1').val()).substring(0,2);
